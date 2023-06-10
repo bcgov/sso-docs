@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksso_docs=self.webpackChunksso_docs||[]).push([[678],{8951:e=>{e.exports=JSON.parse('{"title":"Guides","description":"User Guides","slug":"/category/guides","permalink":"/category/guides","navigation":{"previous":{"title":"Pathfinder SSO","permalink":"/"},"next":{"title":"Creating a Role","permalink":"/guides/create-role"}}}')}}]);
