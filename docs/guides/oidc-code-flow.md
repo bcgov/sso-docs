@@ -2,11 +2,14 @@
 sidebar_position: 2
 ---
 
-# How to set up and use your Client
-
+#  OIDC and Us 
 ---
 
-# OIDC Setup and Keycloak's Authentication Flow
+### OIDC learnings/video
+
+some links to our videos or sprint demo recording
+
+### OIDC setup and Keycloak's authentication flow
 
 All clients of Pathfinder SSO will use [Authorization Code Flow](https://auth0.com/docs/authorization/flows/authorization-code-flow). This is the modern, recommended OIDC setup for web applications and mobile applications.
 
