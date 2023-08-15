@@ -1,11 +1,10 @@
 ---
-sidebar_position: 1
+sidebar_position: 12
 ---
 
 # Gold Identity Mapper Guide
 
 ---
-# Gold Identity Mapper Guide
 
 ## IDP Attributes & Mappers
 
