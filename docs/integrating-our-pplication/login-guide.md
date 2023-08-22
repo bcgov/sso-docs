@@ -1,6 +1,5 @@
 ---
-sidebar_position: 11
-
+sidebar_position: 1
 ---
 
 # Login Page Guide
@@ -8,8 +7,8 @@ sidebar_position: 11
 ---
 
 ### Skipping the standard login page
-Recommend Skipping the Standard Login Page and if you ABSOLUTELY need it, then as you've read in [do's and don'ts](dos-donts#do-skip-the-standard-login-page), our recommendation is to skip the keycloak login page.
 
+Recommend Skipping the Standard Login Page and if you ABSOLUTELY need it, then as you've read in [do's and don'ts](dos-donts#do-skip-the-standard-login-page), our recommendation is to skip the keycloak login page.
 
 **If you need it, please specify dedicated text for login page**
 
