@@ -14,7 +14,7 @@ Once your [request has been completed](https://bcgov.github.io/sso-request), you
 
 This file includes the client information to set up your SSO configuration.
 
-The main difference between `confidential` and `public` clients is that confidential clients require client secret. Learn more on [client types](client-types)
+The main difference between `confidential` and `public` clients is that confidential clients require client secret. Learn more on [client types](../getting-started/client-types)
 
 An example installation JSON for `public` client type
 

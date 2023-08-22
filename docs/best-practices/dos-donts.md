@@ -42,7 +42,7 @@ In KeyCloak, if the realm that contains your client has more than one IDP config
 | GitHub BC Gov           |  githubbcgov  |
 | GitHub Public           | githubpublic  |
 
-We do have a work around for those of you who ABSOLUTELY need the [keycloak login page](login-guide#skipping-the-standard-login-page), please talk to us about this
+We do have a work around for those of you who ABSOLUTELY need the [keycloak login page](../integrating-your-application/login-guide#skipping-the-standard-login-page), please talk to us about this
 
 ### Do validate the IDP in the JWT
 

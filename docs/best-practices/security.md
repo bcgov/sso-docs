@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ### Confidential client security
 
-The KeyCloak adapter for a Confidential client is configured in your _server-side component_ because it requires a client ID and client secret that must be kept securely on the server and never provided to the user's browser. You can specify in your application logic which routes are secure and which are not. Use the [adapter](settingup-adapter) for this unless you really want to code your own OIDC logic. Your secure routes should invoke the adapter on each request to make sure the user is authenticated.
+The KeyCloak adapter for a Confidential client is configured in your _server-side component_ because it requires a client ID and client secret that must be kept securely on the server and never provided to the user's browser. You can specify in your application logic which routes are secure and which are not. Use the [adapter](../integrating-your-application/settingup-adapter) for this unless you really want to code your own OIDC logic. Your secure routes should invoke the adapter on each request to make sure the user is authenticated.
 
 ### If you have an insecure "home" page
 
