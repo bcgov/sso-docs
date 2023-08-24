@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ---
 
-### OIDC learnings/video
+### Please ensure your developers understand the basics of OIDC 
 
 some links to our videos or sprint demo recording
 
