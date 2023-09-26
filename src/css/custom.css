@@ -35,47 +35,71 @@
 
 
 .intro-style {
-
-
-  .h3 {
-    font-size: 20px;
-    }
-  .ul {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-  }
-
-  
+  margin-bottom: 1em;
 }
 
-.flex-container {
+.intro-style > h3 {
+  font-size: 20px;
+}
 
-  display: flex;
+.intro-style > ul {
+  padding: 0;
+  margin: 0;
+  margin-left: 1em;
+}
+
+.sso-image-card {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
   border: 1px solid #f2f2f2;
   margin-bottom: 60px;
   box-shadow: 5px 5px #f2f2f2;
-
-  .h2 {
-    font-size: 20px;
-    font-weight: 600;
- }
-
- .h3 {
-  font-size: 20px;
-  }
-  .ul.yellowtick {
-    columns: 2;
-    -webkit-columns:2;
-    -moz-columns: 2;
-    list-style-image: url('images/yellow_tick.png')
-  }
-  .div {
-    margin: 20px;
-    padding: 20px;
-    font-size: 30px;
+  padding: 1em;
 }
+
+.sso-image-card > .card-text {
+  padding: 2em;
+}
+
+.sso-image-card > h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.sso-image-card > h3 {
+  font-size: 20px;
+}
+
+.sso-image-card ol.yellowtick {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style-image: url('/img/yellow_tick.svg')
+}
+
+.sso-image-card ul > li {
+  list-style-image: none;
+}
+
+.sso-image-card ol.greentick {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style-image: url('/img/green_tick.svg')
+}
+
+.sso-image-card ol.redcross {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  list-style-image: url('/img/red_cross.svg')
+}
+
+.p-0 {
+  padding: 0
+}
+
+.m-0 {
+  margin: 0;
 }
