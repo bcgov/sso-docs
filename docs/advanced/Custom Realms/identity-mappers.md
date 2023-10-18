@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Gold Identity Mapper Guide
 
+**Note**: The first column (`User Property/Attribute`) is just a reference title and must not be consumed for attribute mapping, instead please use the last column (`Standard Realm - OIDC Payload`) to use it as the claim name in your Identity Providers Mappers configuration.
+
 ---
 
 ## IDP Attributes & Mappers
