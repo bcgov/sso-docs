@@ -12,7 +12,7 @@ Please visit the [Common hosted Single Sign on
 
 **(\*) Note for BCeID and Digital Credential Requests**
 
-The Pathfinder SSO team will provision your DEV and TEST clients right away. You will be provided the client name and secret for each environment via a secure channel. The PROD client will be set up after receiving approval from the IDIM team for BCeID or from the Digital Identity Trust team for Digital Credential, as applicable.
+The Pathfinder SSO team will provision your DEV and TEST clients right away. You will be provided the client name and secret for each environment via a secure channel. The PROD client will be set up after receiving approval from the IDIM team for BCeID requests or from the Digital Identity Trust team for Digital Credential requests, as applicable.
 
 **(\*) Note for Azure IDIR Requests**
 
