@@ -10,9 +10,9 @@ Thanks for visiting this site. We are currently focused on building guides and r
 Please visit the [Common hosted Single Sign on
 (CSS) App](https://bcgov.github.io/sso-requests/) if you are looking for integration with a login component. The process is completely self-serve and takes only minutes. You will need an IDIR to log in and you _should_ be a product owner, product admin, or team lead for a project. Once the automated provisioning is complete, your client details will be available securely through the web app (\*)
 
-**(\*) Note for BCeID Requests**
+**(\*) Note for BCeID and Digital Credential Requests**
 
-The Pathfinder SSO team will provision your DEV and TEST clients right away. You will be provided the client name and secret for each environment via a secure channel. The PROD client will be provisioned upon approval from the IDIM team.
+The Pathfinder SSO team will provision your DEV and TEST clients right away. You will be provided the client name and secret for each environment via a secure channel. The PROD client will be set up after receiving approval from the IDIM team for BCeID or from the Digital Identity Trust team for Digital Credential, as applicable.
 
 **(\*) Note for Azure IDIR Requests**
 
