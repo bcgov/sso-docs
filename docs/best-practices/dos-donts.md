@@ -16,6 +16,10 @@ Another important technique to be aware of is that you should cache the JWT in a
 
 Please let the SSO team in advance when you want to do load testing in DEV and TEST so we can plan ahead and coordinate with other teams. These are shared environments that many teams are actively using. A failed load test can affect many other teams.
 
+### Do not reuse clients for multiple applications
+
+If you have multiple web applications you would like to integrate with our service we recommend creating a new request for each one. This will allow you to customize your configuration appropriately, e.g when setting your valid redirect URIs, as well as lower your application's potential exposure by having unique client secrets per application.
+
 ### Do protect the client secret (confidential client only)
 
 It stays on the server. Use OCP secrets if you are on OpenShift. Don't put it in your public JavaScript or in your GitHub repository. Don't build it into your Docker image.
