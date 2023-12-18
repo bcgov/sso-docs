@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Redirects
 
----
+--- Learn what Redirect URI(s) are and why they are required in OIDC. 
 
 ## What is a redirect?
 

@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Client setup without an adapter
 
----
+--- Learn how to set up your OpenID connection if you are not using an adapter/library.
 
 ### Using a client without an adapter
 
