@@ -14,7 +14,7 @@ Recommend Skipping the Standard Login Page and if you ABSOLUTELY need it, then a
 
 [Through our CSS App](https://bcgov.github.io/sso-requests), you can specify the text under the field setting Keycloak Login Page Name
 
-![Login Title](login-title-aug2023.png)
+![Login Title](login_page_Dec2023.svg)
 
 ### Specifying an identity provider (IDP) to bypass the standard login page
 

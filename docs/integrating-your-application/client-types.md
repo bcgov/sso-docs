@@ -20,7 +20,7 @@ See the diagram below for use cases where each option is appropriate.
 
 ### Diagram
 
-![Private vs Confidential](public-conf-aug2023.png)
+![Private vs Confidential](client_type_Dec2023.svg)
 
 ### Proof Key for Code Exchange (PKCE)
 

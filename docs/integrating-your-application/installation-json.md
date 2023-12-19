@@ -8,7 +8,7 @@ sidebar_position: 3
 
 Once your [request has been completed](https://bcgov.github.io/sso-request), you will be able to download your installation file for each environment. It includes the client information to set up your SSO configuration.
 
-![technical detail with installation json](tech-detail-installation-json.png)
+![technical detail with installation json](using_json_Dec2023.svg)
 
 ## Understanding the installation JSON
 
