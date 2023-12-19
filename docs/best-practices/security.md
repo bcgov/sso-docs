@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Security considerations
 
----
+--- Security best practices
 
 ### Confidential client security
 

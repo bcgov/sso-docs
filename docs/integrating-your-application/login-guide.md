@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Login Page Guide
 
----
+--- Learn how to configure your login page.
 
 ### Skipping the standard login page
 

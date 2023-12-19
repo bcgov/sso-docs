@@ -4,7 +4,7 @@ sidebar_position: 11
 
 # Additional Settings
 
----
+--- Learn about all the additional settings in the CSS app and how you can configure them.
 
 ## What are the additional settings
 

@@ -121,4 +121,3 @@ In Gold
 
   - `org_verified`: `true` if the authenticated user has `bcgov` GitHub org membership, otherwise, `false`.
   - `orgs`: `space-separated` list of BCGov GitHub org that the authenticated user has a membership of.
-

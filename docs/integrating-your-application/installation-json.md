@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Using your installation JSON file
 
----
+--- Learn more about verified/digital credential
 
 Once your [request has been completed](https://bcgov.github.io/sso-request), you will be able to download your installation file for each environment. It includes the client information to set up your SSO configuration.
 

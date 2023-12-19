@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Do's and Don'ts
 
----
+--- Our advice on what to do
 
 ### Do Not call the KeyCloak API on every request
 

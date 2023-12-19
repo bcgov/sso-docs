@@ -1,6 +1,9 @@
 ---
-title: Gold Custom Realm Community Ways of Working
+sidebar_position: 3
 ---
+
+# Gold Custom Realm Community Ways of Working
+--- Our gold custom service and how we work
 
 import StandardRealmSvg from './images/standard_realm.svg';
 import CustomRealmSvg from './images/custom_realm.svg';

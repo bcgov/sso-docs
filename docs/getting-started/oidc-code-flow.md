@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # OIDC and Us
 
----
+--- Learn about OIDC. 
 
 ### Please ensure your developers understand the basics of OIDC
 
