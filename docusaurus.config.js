@@ -103,7 +103,7 @@ const config = {
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/bcgov/sso-keycloak/wiki",
+            href: "https://mvp.developer.gov.bc.ca/docs/default/component/css-docs",
             label: "Wiki",
             position: "right",
           },
@@ -113,7 +113,7 @@ const config = {
             position: "right",
           },
           {
-            href: "https://github.com/bcgov/sso-keycloak/wiki/Pathfinder-Uptime-Monitoring",
+            href: "https://mvp.developer.gov.bc.ca/docs/default/component/css-docs/Pathfinder-Uptime-Monitoring",
             label: "Uptime",
             position: "right",
           },
