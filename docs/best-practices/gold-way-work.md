@@ -130,6 +130,8 @@ import BestPracticeSvg from './images/best_practice.svg';
       <li>Automated testing (we recommend cypress)</li>
       <li>Visit our Example Repo: <a href="https://github.com/bcgov/keycloak-example-apps" target="_blank">https://github.com/bcgov/keycloak-example-apps</a></li>
    </ul>
+   <h1>Common Questions</h1>
+   
    <h4>Have any questions? We would love to hear from you. <a href="https://chat.developer.gov.bc.ca/channel/sso">Rocketchat</a> OR <a href="mailto:bcgov.sso@gov.bc.ca">Email</a>
    </h4>
 </div>
