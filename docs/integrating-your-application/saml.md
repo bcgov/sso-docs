@@ -10,8 +10,8 @@ sidebar_position: 21
 
 ## Custom Client ID
 
-- If your product requires a custom Client ID a.k.a Entity ID, please reach out to us through [Email](bcgov.sso@gov.bc.ca) or [Rocket.Chat](https://chat.developer.gov.bc.ca/channel/sso) and we will set up one for you.
+- If your product requires a custom Client ID a.k.a Entity ID, please reach out to us through [Email](mailto:bcgov.sso@gov.bc.ca) or [Rocket.Chat](https://chat.developer.gov.bc.ca/channel/sso) and we will set up one for you.
 
 ## Additional Roles Attribute
 
-Currently, upon successful authentication, we return associated client roles for user under `client_roles` attribute. If your product does not accept this attribute then reach out to us through [Email](bcgov.sso@gov.bc.ca) or [Rocket.Chat](https://chat.developer.gov.bc.ca/channel/sso) and we will try to find a workaround for you.
+Currently, upon successful authentication, we return associated client roles for user under `client_roles` attribute. If your product does not accept this attribute then reach out to us through [Email](mailto:bcgov.sso@gov.bc.ca) or [Rocket.Chat](https://chat.developer.gov.bc.ca/channel/sso) and we will try to find a workaround for you.
