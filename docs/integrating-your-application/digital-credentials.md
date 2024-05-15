@@ -26,4 +26,4 @@ export const handleLogin = (keycloak, loginOptions) => {
 
 ## Security Consideration
 
-only for Digital Credential integrations, please be mindful that for security reaosns, using our Standard Service, your application session ends when an end user consents to another application using the same Digital Credential.
+Only for Digital Credential integrations, please be mindful that for security reasons, using our Standard Service, end user’s sessions are ended when they consent to another application using Digital Credential in the standard realm.
