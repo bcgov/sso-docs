@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Redirects
 
---- Learn what Redirect URI(s) are and why they are required in OIDC. 
+--- Learn what Redirect URI(s) are and why they are required in OIDC.
 
 ## What is a redirect?
 
@@ -36,7 +36,7 @@ In CSS app, the allowed URI syntax consists of two parts with `://` in the middl
   1. must be greater than one character.
   2. must start with an alphabet character followed by optional characters (`alphabets`, `hyphens(-)`, and `periods(.)`)
 - `path`: a minimum of one character is required except for `white spaces` and `#`.
-- For the `dev` and `test` redirect URIs please refer to the regular expression `/^[a-zA-Z][a-zA-Z-\.]*:\/\/\S+/`
-- For `prod` URIs there are additional restrictions on wildcards ( ) please refer to the regular expression `/^[a-zA-Z][a-zA-Z-\.]*:\/\/([^*\s]+\/\S*|[^*\s]*[^*\s]$)/` . This prevents domain level wildcards like `https://www.example.com*` while accepting non-domain level wildcards `https://www.example.com/*`.
+- The wildcard character `*` is not permitted in the domain or subdomain part of a redirect URI. However, it can be used within the path of the URI. Essentially, any valid domain or subdomain can be used as long as they don't include a wildcard. For instance, `https://www.example.com/path*` would be valid, but `https://www.example*.com` would not.
+- The wildcard `*` is allowed to be added to the path, however, this is not recommended in prod environments.
 
 * We made an exception to allow wildcard (\*) in the dev, and test environments to satisfy the various development processes.
