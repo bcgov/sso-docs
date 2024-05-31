@@ -29,14 +29,21 @@ You can use any valid URI for your redirect URIs. At least one redirect URI is r
 
 ### Valid Redirect Format
 
-In CSS app, the allowed URI syntax consists of two parts with `://` in the middle:
+Redirect URIs are commonly used in a http(s) scheme (`http(s)://`) or custom scheme (`scheme://path`). The allowed URI syntax consists of:
 
-- `<scheme>://<path>`
-- `scheme`: the following rules must be met:
-  1. must be greater than one character.
-  2. must start with an alphabet character followed by optional characters (`alphabets`, `hyphens(-)`, and `periods(.)`)
-- `path`: a minimum of one character is required except for `white spaces` and `#`.
-- The wildcard character `*` is not permitted in the domain or subdomain part of a redirect URI. However, it can be used within the path of the URI. Essentially, any valid domain or subdomain can be used as long as they don't include a wildcard. For instance, `https://www.example.com/path*` would be valid, but `https://www.example*.com` would not.
+- `Scheme`: the following rules must be met:
+  1. Must be greater than one character.
+  2. Must start with an alphabet character followed by optional characters (`alphabets`, `hyphens(-)`, and `periods(.)`).
+- `Path`: a minimum of one character is required except for `white spaces` and `#`.
+- Notes on the wildcard character `*`:
+  - In the HTTP(S) scheme (`http(s)://`):
+    - Wildcard (\*) is allowed in dev and test environments to satisfy the various development processes.
+    - This is is not allowed in prod environments.
+    - **Examples of valid redirects**: `https://www.example.com/path*` would be valid, but `https://www.example*.com` would not. The wildcard character `*` is not permitted in the domain or subdomain part of a redirect URI. However, it can be used within the path of the URI. Essentially, any valid domain or subdomain can be used as long as they don't include a wildcard.
+  - In custom schemes (`scheme://path`):
+    - If an application client is using non http(s) custom schemes, the validation now requires that a valid redirect pattern explicitly allows that scheme.
+    - Example patterns for allowing custom schemes are `custom:/test`, `custom:/test/`, `custom:`, or `custom:/test/*`.
+    - For security reasons, a general pattern such as wildcard `*` is no longer supported by keycloak. See more [here](https://access.redhat.com/documentation/it-it/red_hat_build_of_keycloak/22.0/html/migration_guide/migrating-applications#changes_in_validating_schemes_for_valid_redirect_uris).
 - The wildcard `*` is allowed to be added to the path, however, this is not recommended in prod environments.
 
 * We made an exception to allow wildcard (\*) in the dev, and test environments to satisfy the various development processes.
