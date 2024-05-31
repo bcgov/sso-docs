@@ -29,14 +29,14 @@ You can use any valid URI for your redirect URIs. At least one redirect URI is r
 
 ### Valid Redirect Format
 
-Redirect URIs are commonly used in a standard scheme (https://) or custom scheme (scheme://path). The allowed URI syntax consists of:
+Redirect URIs are commonly used in a http(s) scheme (`http(s)://`) or custom scheme (`scheme://path`). The allowed URI syntax consists of:
 
 - `Scheme`: the following rules must be met:
-  1. must be greater than one character.
-  2. must start with an alphabet character followed by optional characters (`alphabets`, `hyphens(-)`, and `periods(.)`).
+  1. Must be greater than one character.
+  2. Must start with an alphabet character followed by optional characters (`alphabets`, `hyphens(-)`, and `periods(.)`).
 - `Path`: a minimum of one character is required except for `white spaces` and `#`.
 - Notes on the wildcard character `*`:
-  - In the standard scheme (`http(s)://`):
+  - In the HTTP(S) scheme (`http(s)://`):
     - Wildcard (\*) is allowed in dev and test environments to satisfy the various development processes.
     - This is is not allowed in prod environments.
     - **Examples of valid redirects**: `https://www.example.com/path*` would be valid, but `https://www.example*.com` would not. The wildcard character `*` is not permitted in the domain or subdomain part of a redirect URI. However, it can be used within the path of the URI. Essentially, any valid domain or subdomain can be used as long as they don't include a wildcard.
