@@ -16,7 +16,7 @@ BC Services Team has defined several standard claims or user attributes that can
 
 Once an integration request is approved by the BC Services Card team, the Pathfinder SSO Service configures the required scopes for the client, enabling access to approved attributes that are subsequently returned to the client system. For `dev` and `test` environments, approval from the BC Services Card team is typically not necessary. Clients can expect their integration to be provisioned within 5 minutes of submitting a request. Any requests for custom claims shall be taken up with BC Services Card team directly.
 
-## HomePage URI
+## Home Page URI
 
 The URL provided in this field must link to a valid web page, serving as the home page of the client application. This URL will be displayed to end users in BCSC Account Activity and potentially during authentication. Typically, the BC Services Card team lists all integrated client applications [here](https://id.gov.bc.ca/account/services), including this URL for user reference and navigation.
 
