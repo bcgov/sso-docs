@@ -41,8 +41,6 @@ spec:
     - Egress
 ```
 
-This network policy was implemented in the hsb-dashboard project [here](https://github.com/bcgov/hsb-dashboard/blob/main/devops/kustomize/base/api/network-policy.yaml).  
-
 ## Depployment config
 
 The deployment config, must have the loginproxy.gov.bc.ca urls added to the `NO_PROXY` env variable.  See the following example:
@@ -62,4 +60,4 @@ spec:
               value: .cluster.local,.svc,10.91.0.0/16,172.30.0.0/16,127.0.0.1,localhost,dev.loginproxy.gov.bc.ca,test.loginproxy.gov.bc.ca,loginproxy.gov.bc.ca
 ```
 
-The comma separated list excludes traffic going to those urls from using the platform's proxy. This example is also from the hsb-dashboard project.  The deployment config in question is [here](https://github.com/bcgov/hsb-dashboard/blob/main/devops/kustomize/base/api/deploy.yaml).  Further reading about the `NO_PROXY` environment variable can be found in the openshift [documentation](https://docs.openshift.com/container-platform/3.11/install_config/http_proxies.html).
+The comma separated list excludes traffic going to those urls from using the platform's proxy.  Further reading about the `NO_PROXY` environment variable can be found in the openshift [documentation](https://docs.openshift.com/container-platform/3.11/install_config/http_proxies.html).
