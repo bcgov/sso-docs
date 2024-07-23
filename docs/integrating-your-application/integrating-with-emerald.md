@@ -45,7 +45,7 @@ This network policy was implemented in the hsb-dashboard project [here](https://
 
 ## Depployment config
 
-The deployment config, must have loginproxy added to the `NO_PROXY` env variable as in the following example:
+The deployment config, must have the loginproxy.gov.bc.ca urls added to the `NO_PROXY` env variable.  See the following example:
 
 ```
 kind: DeploymentConfig
@@ -57,16 +57,6 @@ spec:
         - name: api
           image: ""
           imagePullPolicy: Always
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources:
-            limits:
-              cpu: 100m
-              memory: 1500Mi
-            requests:
-              cpu: 50m
-              memory: 500Mi
           env:
             - name: NO_PROXY
               value: .cluster.local,.svc,10.91.0.0/16,172.30.0.0/16,127.0.0.1,localhost,dev.loginproxy.gov.bc.ca,test.loginproxy.gov.bc.ca,loginproxy.gov.bc.ca
