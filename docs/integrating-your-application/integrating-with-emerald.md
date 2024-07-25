@@ -57,7 +57,7 @@ spec:
           imagePullPolicy: Always
           env:
             - name: NO_PROXY
-              value: .cluster.local,.svc,10.91.0.0/16,172.30.0.0/16,127.0.0.1,localhost,dev.loginproxy.gov.bc.ca,test.loginproxy.gov.bc.ca,loginproxy.gov.bc.ca
+              value: <<COMMA SEPARATED LIST>>,loginproxy.gov.bc.ca
 ```
 
-The comma separated list excludes traffic going to those urls from using the platform's proxy.  Further reading about the `NO_PROXY` environment variable can be found in the openshift [documentation](https://docs.openshift.com/container-platform/3.11/install_config/http_proxies.html).
+The comma separated list excludes traffic going to those urls from using the platform's proxy.  Further reading about the `NO_PROXY` environment variable can be found in the curl [documentation](https://curl.se/docs/manpage.html#--noproxy).
