@@ -4,7 +4,7 @@ sidebar_position: 12
 
 # Emerald Integrations
 
-If your project is hosted from the emerald cluster, the security restrictions and network policies will need to be taken into account if you wish to use our keycloak instance as a login proxy.
+If your project is hosted on the emerald cluster, the security restrictions and network policies will need to be taken into account if you wish to use our keycloak instance as a login proxy.
 
 For your standard integration to work, you will need to create a network policy, and add a yaml stanza to the app's deployment config.
 
@@ -19,7 +19,7 @@ metadata:
   name: enable-api-to-keycloak
   labels:
     name: enable-api-to-keycloak
-    part-of: <<DEPLOYMENT_LABEL>>
+    <<LABEL_KEY>>: <<DEPLOYMENT_LABEL>>
     version: 1.0.0
   annotations:
     description: Enable the api to communicate with the keycloak
@@ -35,13 +35,13 @@ spec:
           port: 443
   podSelector:
     matchLabels:
-      part-of: <<DEPLOYMENT_LABEL>>
-      component: <<COMPONENT_LABEL>>
+      <<LABEL_KEY>>: <<DEPLOYMENT_LABEL>>
+      <<LABEL_KEY_2>>: <<COMPONENT_LABEL>>
   policyTypes:
     - Egress
 ```
 
-## Depployment config
+## Deployment config
 
 The deployment config, must have the loginproxy.gov.bc.ca urls added to the `NO_PROXY` env variable.  See the following example:
 
