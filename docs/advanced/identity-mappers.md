@@ -6,7 +6,6 @@ sidebar_position: 1
 
 --- Our gold custom service and how we work
 
-
 **Note**: The first column (`User Property/Attribute`) is just a reference title and must not be consumed for attribute mapping, instead please use the last column (`Standard Realm - OIDC Payload`) to use it as the claim name in your Identity Providers Mappers configuration.
 
 ---
@@ -121,3 +120,24 @@ In Gold
 
   - `org_verified`: `true` if the authenticated user has `bcgov` GitHub org membership, otherwise, `false`.
   - `orgs`: `space-separated` list of BCGov GitHub org that the authenticated user has a membership of.
+
+### BC Services Card
+
+- In Gold
+- Clients can request additional claims when creating their client in the CSS App. See [here](https://id.gov.bc.ca/oauth2/claim-types) for an up-to-date list of available claims
+- The `idp-name` will be generated from your client name and id
+
+  | User Property/Attribute               | IDP - Payload(\*) | Custom/Standard Realm Mapper            | Standard Realm - OIDC Payload           |
+  | ------------------------------------- | ----------------- | --------------------------------------- | --------------------------------------- |
+  | Keycloak Generated Preferred Username | sub               | preferred_username=`{{sub}}@<idp-name>` | preferred_username=`{{sub}}@<idp-name>` |
+
+### Digital Credential
+
+- In Gold
+- The requested credential information will be in JSON format under the vc_presented_attributes claim
+
+  | User Property/Attribute                   | IDP - Payload(\*)       | Custom/Standard Realm Mapper                   | Standard Realm - OIDC Payload                  |
+  | ----------------------------------------- | ----------------------- | ---------------------------------------------- | ---------------------------------------------- |
+  | Keycloak Generated Preferred Username     | sub                     | preferred_username=`{{sub}}@digitalcredential` | preferred_username=`{{sub}}@digitalcredential` |
+  | Digital Credential Content (JSON)         | vc_presented_attributes | vc_presented_attributes                        | vc_presented_attributes                        |
+  | The Presentation Request Configuration ID | pres_req_conf_id        | pres_req_conf_id                               | pres_req_conf_id                               |
