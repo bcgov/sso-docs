@@ -6,6 +6,12 @@ sidebar_position: 2
 
 The BC Services Card is an optional IDP offered for new and existing Integrations. The Pathfinder SSO Service assumes that clients have secured the required approvals before submitting requests for Integration with BC Services Card through the [CSS](https://bcgov.github.io/sso-requests/) app. These approvals enable client systems to retrieve pertinent attributes from approved privacy zones.
 
+## Limitations
+
+Due to the high-security nature of the BC Services Card and the sensitive personal information involved in its authentication process, user personal information (PI) is not stored in the Keycloak database. As a result, we are unable to offer the Role Management feature, which is available with other identity providers such as IDIR and BCeID.
+
+Each application requires separate user consent for authentication. Therefore, even if a user has an active BC Services Card session with one application, they must go through the authentication process again when logging into a different application, as Single Sign-On (SSO) is not supported in this case.
+
 ## Privacy Zones
 
 A Privacy zone is a logical grouping of services that would share the same user identifiers between them. When choosing a Privacy Zone for your service, think of the government sector you are in or supporting (Health, Justice, Natural Resources, etc.) and the type of user that is logging in (member of the public vs a Professional in that sector).
