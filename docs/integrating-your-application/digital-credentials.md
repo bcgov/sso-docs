@@ -2,9 +2,15 @@
 sidebar_position: 10
 ---
 
-# A note on digital credential
+# Digital Credentials
 
---- Learn more about verified/digital credential
+## Limitations
+
+The Pathfinder SSO Service provides the Digital Credentials as a login option for only OpenID clients. The reason this is not available for SAML clients due to lack of support for additional request query param pres_req_conf_id.
+
+In our system, we do not store user attributes after a successful login using Digital Credentials. As a result, we lack access to persistent user data, which is essential for managing user roles and permissions. Consequently, this limitation means that we are unable to offer Role Management feature, as we cannot maintain or reference user-specific information required for such functionality. This design choice prioritizes user privacy and security by ensuring that personal data is not retained, aligning with the principles of decentralized identity management.
+
+Since we do not retain any user-specific data during authentication with Digital Credentials, we cannot offer Single Sign-On (SSO) across client applications. As a result, users must provide consent each time they log into a new application using Digital Credentials.
 
 ## using the keycloak-js library
 
