@@ -5,14 +5,12 @@ sidebar_position: 7
 # 1. Where to find information about BC Govt. Keycloak offerings?
 
 The BC Gov SSO team has created significant documentation available here. You can also create issues & make requests from these links:
-•	https://github.com/bcgov/sso-keycloak/issues
-•	https://github.com/bcgov/sso-keycloak/discussions/new?category=q-a
-
+• https://github.com/bcgov/sso-keycloak/issues
+• https://github.com/bcgov/sso-keycloak/discussions/new?category=q-a
 
 # 2. Where can I find libraries (client adapters) to connect to Keycloak?
 
 : Keycloak offers both SAML and OIDC as a means to connect your client applications. OIDC is recommended. You can find a number of adapters here: https://www.keycloak.org/downloads
-
 
 # 3.How to share Keycloak realm between application teams without sharing the admin credentials?
 
