@@ -46,8 +46,8 @@ spec:
 The deployment config, must have the loginproxy.gov.bc.ca urls added to the `NO_PROXY` env variable.  See the following example:
 
 ```
-kind: DeploymentConfig
-apiVersion: apps.openshift.io/v1
+kind: Deployment
+apiVersion: apps/v1
 spec:
   template:
     spec:
