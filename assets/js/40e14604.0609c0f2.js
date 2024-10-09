@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksso_docs=self.webpackChunksso_docs||[]).push([[5427],{9640:s=>{s.exports=JSON.parse('{"title":"FAQs","description":"FAQs","slug":"/category/faqs","permalink":"/sso-docs/category/faqs","navigation":{"previous":{"title":"CSS v1.0.3","permalink":"/sso-docs/releases/v1.0.3"},"next":{"title":"Keycloak","permalink":"/sso-docs/FAQs/keycloak"}}}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunksso_docs=self.webpackChunksso_docs||[]).push([[5513],{6796:s=>{s.exports=JSON.parse('{"label":"SSO","permalink":"/sso-docs/tags/sso","allTagsPath":"/sso-docs/tags","count":1,"items":[{"id":"FAQs/SSO","title":"SSO","description":"","permalink":"/sso-docs/FAQs/SSO"}]}')}}]);
