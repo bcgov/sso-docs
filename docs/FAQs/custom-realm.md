@@ -13,7 +13,11 @@ export const faqs = [
 title: "How do I create and use a custom Authentication flow in my custom realm?",
 content: <><p>Custom authentication flows can be created & used by any team with a custom realm. For more information, please visit:   </p><ul><li><a href={"https://stackoverflow.developer.gov.bc.ca/questions/483/484#484"}>Link to stackoverflow thread</a></li></ul></>},
 {title: "Is it possible to change the client type / Auth. type change in Gold after the integration has been created?",
+<<<<<<< HEAD
 content: <><p>Auth. type is not changeable once the integration is completed, need to create a new integration with another auth. Type.</P></>},
+=======
+content: <><p>Guidance: Auth. type is not changeable once the integration is completed, need to create a new integration with another authentication type. Refer this: </p><ul><li><a href={"https://github.com/bcgov-c/pathfinder-sso-docs/discussions/21"}>Link to github discussion</a></li></ul></>},
+>>>>>>> 08b8f4dcb4a603650a0bd5590929b0b41e3b5f88
 {title: "How to add another admin in Gold custom realm?",
 content: <><p>Please refer to the following stack overflow thread for more information:
 </p><ul><li><a href={"https://stackoverflow.developer.gov.bc.ca/questions/939/940#940"}>Link to stackoverflow thread</a></li></ul></>},
