@@ -18,7 +18,6 @@ content: <><p>To add client roles to an existing user, please refer to the follo
 content: <><p>This can be done by following the steps provided in following stack overflow thread:
 </p><ul><li><a href={"https://stackoverflow.developer.gov.bc.ca/questions/1041/1042#1042"}>Link to stackoverflow thread</a></li></ul></>},
 {title: "Is there a way to manage service account roles in Gold?",
-content: <><p>Please refer below given link to learn more about this:
-</p><ul><li><a href={"https://github.com/bcgov-c/pathfinder-sso-docs/discussions/26S"}>Link to stackoverflow thread</a></li></ul></>}];
+content: <><p>Not available at this point. You can only assign client roles to users via the CSS interface but it is in our backlog.</p></>}];
 
 <FaqItem faqs={faqs}/>
