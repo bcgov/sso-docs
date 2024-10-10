@@ -28,16 +28,9 @@ content: <><p>The time zone used is PST (Pacific Standard Time). Please refer to
 content: <><p>Yes, it does. This question has been answered in following stackoverflow thread:
 </p><ul><li><a href={"https://stackoverflow.developer.gov.bc.ca/questions/1267/1268#1268"}>Link to stackoverflow thread</a></li></ul></>},
 {title: "When using the IDIR IDP is there a way to automatically detect the BC Gov VPN so the user doesn’t have to enter their credentials? E.g. Compass Intranet?",
-<<<<<<< HEAD
 content: <><p> This is a functionality specifically on the identity provider side and needs to be discussed with them. </p></>},
 {title: "Could SSO/Keycloak be used to allow members of the federal gov to authenticate and access resources?",
 content: <><p>This is restricted to BC Gov only at the moment.</p></>},
-=======
-content: <><p>Guidance: This is a functionality specifically on the identity provider side and needs to be discussed with them. Refer: </p><ul><li><a href={"https://github.com/bcgov-c/pathfinder-sso-docs/discussions/15"}>Link to stackoverflow thread</a></li></ul></>},
-{title: "Could SSO/Keycloak be used to allow members of the federal gov to authenticate and access resources?",
-content: <><p>Guidance: This is restricted to BC Gov only at the moment.
-Refer: </p><ul><li><a href={"https://github.com/bcgov-c/pathfinder-sso-docs/discussions/1"}>Link to stackoverflow thread</a></li></ul></>},
->>>>>>> 08b8f4dcb4a603650a0bd5590929b0b41e3b5f88
 {title: "Is there a way to check if an IDIR user exists in an automated fashion?",
 content: <><p>There are a couple of approaches to this which can be found in following thread:
 </p><ul><li><a href={"https://stackoverflow.developer.gov.bc.ca/questions/1237/1238#1238"}>Link to stackoverflow thread</a></li></ul></>},
