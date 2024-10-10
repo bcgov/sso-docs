@@ -20,7 +20,6 @@ content: <><p>GUID is Globally unique identifier and the identity partners we wo
 content: <><p>Please refer to the following stack overflow link for the similar question:
 </p><ul><li><a href={"https://stackoverflow.developer.gov.bc.ca/questions/1185/1186#1186"}>Link to stackoverflow thread</a></li></ul></>},
 {title: "Is there any reason why the SSO project doesn’t support Personal BCeID?",
-content: <><p>This has been discussed in SSO-DOCS page and the below given link can be used to access the discussion:
-</p><ul><li><a href={"https://github.com/bcgov-c/pathfinder-sso-docs/discussions/29"}>Link to the thread</a></li></ul></>}];
+content: <><p>Personal BCeID is now being deprecated by the IDIM team; they discourage use of it and are actively trying to move teams using it to use BC Services Card</p></>}];
 
 <FaqItem faqs={faqs}/>
