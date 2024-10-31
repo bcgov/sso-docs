@@ -34,7 +34,6 @@ For an example of a custom PKCE implementation, see here for generating the auth
 ### Why choose PKCE over Implicit flow:
 PKCE provides dynamic client secrets, meaning your app’s client secrets can stay secret (even without a back end for your app). PKCE is better and more secure than the implicit flow (AKA the “token flow”). 
 If you’re using the implicit flow, then you should switch to PKCE. If you use an implicit flow to authorize your Dropbox app, then PKCE is a better, more secure replacement, and you should no longer use implicit flow.
-sw
 See the diagram below for use cases where each option is appropriate.
 
 ### Diagram
