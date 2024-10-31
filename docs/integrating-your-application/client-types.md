@@ -25,16 +25,16 @@ For example, when initializing the adapter you can call `keycloak.init({ pkceMet
 
 If not using the adapter, you can use a custom implementation. This will require 4 steps:
 
-Create a `code_verifier` (cryptographically secure string)
-Hash the code verifier with the SHA256 method to create a `code_challenge`
-Send the code challenge and code challenge method (S256) as query parameters when redirecting users to the authorization endpoint.
-When exchanging the received code for an access token, send the initial `code_verifier` to ensure your application initiated the current exchange.
+1. Create a `code_verifier` (cryptographically secure string)
+2. Hash the code verifier with the SHA256 method to create a `code_challenge`
+3. Send the code challenge and code challenge method (S256) as query parameters when redirecting users to the authorization endpoint.
+4. When exchanging the received code for an access token, send the initial `code_verifier` to ensure your application initiated the current exchange.
 For an example of a custom PKCE implementation, see here for generating the authentication URL and [here](https://github.com/bcgov/sso-requests/blob/dev/app/utils/openid.ts) for exchanging the received code for an access token.
 
 ### Why choose PKCE over Implicit flow:
 PKCE provides dynamic client secrets, meaning your app’s client secrets can stay secret (even without a back end for your app). PKCE is better and more secure than the implicit flow (AKA the “token flow”). 
 If you’re using the implicit flow, then you should switch to PKCE. If you use an implicit flow to authorize your Dropbox app, then PKCE is a better, more secure replacement, and you should no longer use implicit flow.
-
+sw
 See the diagram below for use cases where each option is appropriate.
 
 ### Diagram
