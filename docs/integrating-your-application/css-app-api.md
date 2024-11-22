@@ -8,13 +8,11 @@ sidebar_position: 20
 
 ### If you need to interact with the CSS App in a RESTful way
 
-Through our engagements with our clients, we listened to your request to have an api so your apps can connect to our CSS App. 
+Through our engagements with our clients, we listened to your request to have an api so your apps can connect to our CSS App.
 
 Note: Often times, you do not want to be the only person with access to your client details or you may want to create multiple clients. If this the case, please visit [CSS App and My Teams](https://github.com/bcgov/sso-keycloak/wiki/CSS-App-My-Teams) for more info on Team Admins and Team Members.
 
-
 The SSO CSS API let's you interact with CSS Application in a RESTful way for both user and role management. To get the access to this API, an admin from a team needs to request CSS API Account through CSS Application.
-
 
 ## How to request a CSS API Account:
 
@@ -38,17 +36,27 @@ The SSO CSS API let's you interact with CSS Application in a RESTful way for bot
 1. Under `CSS API Account` tab, you can find delete icon to delete your CSS API Account for that team
 
 ## FAQs
+
 ### Q: How many CSS API Accounts are permitted per team?
+
 A: Only one CSS API Account is permitted per team
 
 ### Q: Can I use my CSS API Account to manage other team's integrations?
+
 A: No, your CSS API Account is used only to manage your team's integrations
 
 ### Q: Can I use my CSS API Account to manage all my team's integrations in silver and gold clusters?
+
 A: No, your CSS API Account is used only to manage your team's gold integrations
 
 ### Q: Do I need to delete CSS API Account before deleting a team?
+
 A: When the team is deleted, the associated CSS API Account gets deleted automatically
 
 ### Q: Do I need to create an integration before requesting CSS API Account?
-A: You can request CSS API Account even if there are no integrations associated with your team 
+
+A: You can request CSS API Account even if there are no integrations associated with your team
+
+### Q: Can I manage my service account's roles through the CSS API?
+
+A: Yes, you can. For integrations that include a service account, the installation JSON will include the service account's username. You can use this username with the CSS API's role management endpoints to manage its roles.
