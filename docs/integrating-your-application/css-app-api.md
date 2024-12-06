@@ -59,4 +59,4 @@ A: You can request CSS API Account even if there are no integrations associated 
 
 ### Q: Can I manage my service account's roles through the CSS API?
 
-A: Yes, you can. For integrations that include a service account, you can provide the client ID as the username for your service account.
+A: Yes, you can. For integrations that include a service account, you can provide the client ID as the username to manage that account's roles.
