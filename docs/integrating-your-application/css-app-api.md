@@ -10,14 +10,14 @@ sidebar_position: 20
 
 Through our engagements with our clients, we listened to your request to have an api so your apps can connect to our CSS App.
 
-Note: Often times, you do not want to be the only person with access to your client details or you may want to create multiple clients. If this the case, please visit [CSS App and My Teams](https://github.com/bcgov/sso-keycloak/wiki/CSS-App-My-Teams) for more info on Team Admins and Team Members.
+Note: Often times, you do not want to be the only person with access to your client details or you may want to create multiple clients. If this the case, please visit [CSS App and My Teams](https://mvp.developer.gov.bc.ca/docs/default/component/css-docs/CSS-App-My-Teams/) for more info on Team Admins and Team Members.
 
 The SSO CSS API let's you interact with CSS Application in a RESTful way for both user and role management. To get the access to this API, an admin from a team needs to request CSS API Account through CSS Application.
 
 ## How to request a CSS API Account:
 
 1. Login to CSS Application and select `My Dashboard` tab
-1. Navigate to `My Teams` tab and select a team. [More on teams here](https://github.com/bcgov/sso-keycloak/wiki/CSS-App-My-Teams)
+1. Navigate to `My Teams` tab and select a team. [More on teams here](https://mvp.developer.gov.bc.ca/docs/default/component/css-docs/CSS-App-My-Teams/)
 1. Select `CSS API Account` tab and click on `+ Request CSS API Account` to request for an API Account
 1. The request shall be approved within a few seconds and you shall be provided with the options to `copy` or `download` your CSS API Account credentials
 
