@@ -45,6 +45,10 @@ In KeyCloak, if the realm that contains your client has more than one IDP config
 | Basic or Business BCeID |   bceidboth   |
 | GitHub BC Gov           |  githubbcgov  |
 | GitHub Public           | githubpublic  |
+| Digital Credential      | digitalcredential  |
+| BC Services Card        |  Client_ID *  |
+
+\* Client_ID can be found through the Resource value in your Installation JSON file containing your integration details.
 
 We do have a work around for those of you who ABSOLUTELY need the [keycloak login page](../integrating-your-application/login-guide#skipping-the-standard-login-page), please talk to us about this
 
