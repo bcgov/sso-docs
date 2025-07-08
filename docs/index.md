@@ -8,7 +8,7 @@ slug: /
 Thanks for visiting this site. We are currently focused on building guides and release notes here. Stay tuned as we develop more
 
 Please visit the [Common hosted Single Sign on
-(CSS) App](https://bcgov.github.io/sso-requests/) if you are looking for integration with a login component. The process is completely self-serve and takes only minutes. You will need an IDIR to log in and you _should_ be a product owner, product admin, or team lead for a project. Once the automated provisioning is complete, your client details will be available securely through the web app (\*)
+(CSS) App](https://sso-requests.apps.gold.devops.gov.bc.ca/) if you are looking for integration with a login component. The process is completely self-serve and takes only minutes. You will need an IDIR to log in and you _should_ be a product owner, product admin, or team lead for a project. Once the automated provisioning is complete, your client details will be available securely through the web app (\*)
 
 **(\*) Note for BCeID and Digital Credential Requests**
 

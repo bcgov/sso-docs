@@ -12,7 +12,7 @@ Recommend Skipping the Standard Login Page and if you ABSOLUTELY need it, then a
 
 **If you need it, please specify dedicated text for login page**
 
-[Through our CSS App](https://bcgov.github.io/sso-requests), you can specify the text under the field setting Keycloak Login Page Name
+[Through our CSS App](https://sso-requests.apps.gold.devops.gov.bc.ca/), you can specify the text under the field setting Keycloak Login Page Name
 
 ![Login Title](login_page_Dec2023.svg)
 
