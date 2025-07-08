@@ -108,7 +108,7 @@ const config = {
             position: "right",
           },
           {
-            href: "https://bcgov.github.io/sso-requests",
+            href: "https://sso-requests.apps.gold.devops.gov.bc.ca/",
             label: "CSS",
             position: "right",
           },

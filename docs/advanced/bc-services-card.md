@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # BC Services Card
 
-The BC Services Card is an optional IDP offered for new and existing Integrations. The Pathfinder SSO Service assumes that clients have secured the required approvals before submitting requests for Integration with BC Services Card through the [CSS](https://bcgov.github.io/sso-requests/) app. These approvals enable client systems to retrieve pertinent attributes from approved privacy zones.
+The BC Services Card is an optional IDP offered for new and existing Integrations. The Pathfinder SSO Service assumes that clients have secured the required approvals before submitting requests for Integration with BC Services Card through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) app. These approvals enable client systems to retrieve pertinent attributes from approved privacy zones.
 
 ## Limitations
 
