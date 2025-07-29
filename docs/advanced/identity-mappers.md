@@ -141,3 +141,14 @@ In Gold
   | Keycloak Generated Preferred Username     | sub                     | preferred_username=`{{sub}}@digitalcredential` | preferred_username=`{{sub}}@digitalcredential` |
   | Digital Credential Content (JSON)         | vc_presented_attributes | vc_presented_attributes                        | vc_presented_attributes                        |
   | The Presentation Request Configuration ID | pres_req_conf_id        | pres_req_conf_id                               | pres_req_conf_id                               |
+
+### One-Time Passcode
+
+- In Gold
+
+  | User Property/Attribute               | IDP Payload(\*) | Custom/Standard Realm Mapper     | Standard Realm - OIDC Payload |
+  | ------------------------------------- | --------------- | -------------------------------- | ----------------------------- |
+  | Email                                 | email           | email                            | email                         |
+  | Keycloak Generated Preferred Username | sub             | preferred_username=`{{sub@otp}}` | preferred_username=`{{ppid}}` |
+
+**Note**: A Pairwise Pseudonymous Identifier is an unique identifier of an user in each [privacy zone](./bc-services-card#privacy-zones)
