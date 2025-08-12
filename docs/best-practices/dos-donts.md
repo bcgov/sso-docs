@@ -1,10 +1,8 @@
 ---
 sidebar_position: 1
+title: Do's and Don'ts
+description: Our advice on what to do
 ---
-
-# Do's and Don'ts
-
---- Our advice on what to do
 
 ### Do Not call the KeyCloak API on every request
 

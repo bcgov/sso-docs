@@ -1,10 +1,8 @@
 ---
 sidebar_position: 1
+title: Client types
+description: Learn about various client types to choose from based on the security needs of your app.
 ---
-
-# Client types
-
---- Learn about various client types to choose from based on the security needs of your app.
 
 ### Client type confidential vs public
 

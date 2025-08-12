@@ -1,10 +1,8 @@
 ---
 sidebar_position: 5
+title: Client setup with an adapter
+description: Learn how to set up your OpenID connection if you are using an adapter/library.
 ---
-
-# Client setup with an adapter
-
---- Learn how to set up your OpenID connection if you are using an adapter/library.
 
 ## Using a client with an adapter
 

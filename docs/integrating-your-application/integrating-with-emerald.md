@@ -1,8 +1,7 @@
 ---
 sidebar_position: 12
+title: Emerald Integrations
 ---
-
-# Emerald Integrations
 
 If your project is hosted on the emerald cluster, the security restrictions and network policies will need to be taken into account if you wish to use our keycloak instance as a login proxy.
 
@@ -10,7 +9,7 @@ For your standard integration to work, you will need to create a network policy,
 
 ## Network Policies
 
-The following is an example of a network policy you can use to give your app access to keycloak.  Note: that the labels will need to be customized for your application.  Also note this network policy is in addition to other network policies your app may need to function.
+The following is an example of a network policy you can use to give your app access to keycloak. Note: that the labels will need to be customized for your application. Also note this network policy is in addition to other network policies your app may need to function.
 
 ```
 kind: NetworkPolicy
@@ -43,7 +42,7 @@ spec:
 
 ## Deployment config
 
-The deployment config, must have the loginproxy.gov.bc.ca urls added to the `NO_PROXY` env variable.  See the following example:
+The deployment config, must have the loginproxy.gov.bc.ca urls added to the `NO_PROXY` env variable. See the following example:
 
 ```
 kind: Deployment
@@ -60,4 +59,4 @@ spec:
               value: <<COMMA SEPARATED LIST>>,loginproxy.gov.bc.ca
 ```
 
-The comma separated list excludes traffic going to those urls from using the platform's proxy.  Further reading about the `NO_PROXY` environment variable can be found in the curl [documentation](https://curl.se/docs/manpage.html#--noproxy).
+The comma separated list excludes traffic going to those urls from using the platform's proxy. Further reading about the `NO_PROXY` environment variable can be found in the curl [documentation](https://curl.se/docs/manpage.html#--noproxy).

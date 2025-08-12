@@ -1,10 +1,8 @@
 ---
 sidebar_position: 2
+title: Security considerations
+description: Security best practices
 ---
-
-# Security considerations
-
---- Security best practices
 
 ### Confidential client security
 

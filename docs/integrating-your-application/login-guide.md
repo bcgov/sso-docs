@@ -1,10 +1,8 @@
 ---
 sidebar_position: 2
+title: Login Page Guide
+description: Learn how to configure your login page.
 ---
-
-# Login Page Guide
-
---- Learn how to configure your login page.
 
 ### Skipping the standard login page
 

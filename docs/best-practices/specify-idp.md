@@ -1,10 +1,8 @@
 ---
 sidebar_position: 3
+title: Login page best practices
+description: For more than 1 Identity Provider in your app, use IDP hint
 ---
-
-# Login Page best practices 
-
---- For more than 1 Identity Provider in your app, use IDP hint
 
 If there is more than one IDP in the realm, the Keycloak server directs your users into a login page to let them choose the IDP that they want to authenticate with. It is possible to skip the login page or override the default IDP in Keycloak by passing the optional query param" kc_idp_hint". [List of kc_idp_hints here](dos-donts#do-skip-the-standard-login-page)
 

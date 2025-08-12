@@ -1,10 +1,8 @@
 ---
 sidebar_position: 4
+title: Redirects
+description: Learn what Redirect URI(s) are and why they are required in OIDC.
 ---
-
-# Redirects
-
---- Learn what Redirect URI(s) are and why they are required in OIDC.
 
 ## What is a redirect?
 
