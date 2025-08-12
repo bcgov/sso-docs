@@ -1,10 +1,8 @@
 ---
 sidebar_position: 3
+title: Usecases
+description: Learn about the different types of usecases
 ---
-
-# Usecases 
-
---- Learn about the different types of usecases 
 
 **Browser Login** - A web based application requiring a login component
 

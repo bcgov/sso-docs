@@ -1,8 +1,6 @@
 ---
 title: Pathfinder SSO Developer Guide
---- Learn how to set up and run local environment 
-
-
+---
 
 ## Setting up the local development environment
 

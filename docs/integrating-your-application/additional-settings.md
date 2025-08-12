@@ -1,10 +1,8 @@
 ---
 sidebar_position: 11
+title: Additional Settings
+description: Learn about all the additional settings in the CSS app and how you can configure them.
 ---
-
-# Additional Settings
-
---- Learn about all the additional settings in the CSS app and how you can configure them.
 
 ## What are the additional settings
 

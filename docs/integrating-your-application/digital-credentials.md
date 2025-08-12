@@ -1,8 +1,7 @@
 ---
 sidebar_position: 10
+title: Digital Credentials
 ---
-
-# Digital Credentials
 
 ## Limitations
 

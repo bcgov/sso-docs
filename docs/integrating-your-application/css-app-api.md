@@ -1,10 +1,8 @@
 ---
 sidebar_position: 20
+title: CSS App API
+description: RESTful interaction
 ---
-
-# CSS App API
-
---- RESTful interaction
 
 ### If you need to interact with the CSS App in a RESTful way
 
