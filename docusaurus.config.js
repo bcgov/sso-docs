@@ -30,12 +30,17 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  themes: ["@saucelabs/theme-github-codeblock"],
-  plugins: [
+  themes: [
+    "@saucelabs/theme-github-codeblock",
     [
-      require.resolve("@cmfcmf/docusaurus-search-local"),
+      "@easyops-cn/docusaurus-search-local",
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
       {
-        indexBlog: false,
+        hashed: true,
+        language: ["en"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        docsRouteBasePath: "/",
       },
     ],
   ],
