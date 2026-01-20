@@ -122,12 +122,13 @@ In Gold
 ### BC Services Card
 
 - In Gold
-- Clients can request additional claims when creating their client in the CSS App. See [here](https://id.gov.bc.ca/oauth2/claim-types) for an up-to-date list of available claims. The BCSC sub will not be available for selection in the app, however the received token's sub or preferred_username claim can be used as an identifier.
+- Clients can request additional claims when creating their client in the CSS App. See [here](https://id.gov.bc.ca/oauth2/claim-types) for an up-to-date list of available claims. The BCSC sub will not be available for selection in the app, but will be automatically added to the token under the `bcsc_did` claim. The received token's sub and preferred_username claim can be used as an identifier which will include the `@<idp-name>` suffix.
 - The `idp-name` will be generated from your client name and id
 
   | User Property/Attribute               | IDP - Payload(\*) | Custom/Standard Realm Mapper            | Standard Realm - OIDC Payload           |
   | ------------------------------------- | ----------------- | --------------------------------------- | --------------------------------------- |
   | Keycloak Generated Preferred Username | sub               | preferred_username=`{{sub}}@<idp-name>` | preferred_username=`{{sub}}@<idp-name>` |
+  | BC Services Card Subject ID           | sub               | bcsc_did                                | bcsc_did                                |
 
 ### Digital Credential
 
