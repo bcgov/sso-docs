@@ -1,75 +1,78 @@
 ---
 sidebar_position: 5
-title: Client setup with an adapter
+title: Client Setup With an Adapter
 description: Learn how to set up your OpenID connection if you are using an adapter/library.
 ---
 
-## Using a client with an adapter
+## Using a Client With an Adapter
 
-After having your `Installation JSON`, you can setup your application quickly using the Keycloak adapters/libaries. Keycloak has adapters for a number of languages, including java, javascript and C#. For a list of adapters and instructions on how to connect see here.
+Once you have downloaded your `Installation JSON`, you can configure your application quickly using a Keycloak adapter or a standards‑based OpenID Connect (OIDC) client library. Keycloak provides adapters for several languages, including Java, JavaScript, and .NET (C#).
 
-There are example applications available to demonstrate integrating with Keycloak here
-In most cases, it does not require any additional information than the `Installation JSON` you can download.
+In most cases, no additional configuration is required beyond the Installation JSON generated during the request process.
+Keycloak and the community also provide example applications that demonstrate common integration patterns, including authentication, token handling, and logout flows.
+For more details on what the Installation JSON contains and how it is used, see [installation-json](installation-json).
 
-More [on understanding the json file](installation-json)
 
-## Our guidance on libraries/adapters
+## Our Guidance on Libraries and Adapters
 
-Evaluation of existing OIDC client libraries to select which example apps we should create for our client teams.
+We regularly evaluate existing OIDC client libraries to decide which technologies to reference and which example applications to maintain for our client teams.
 
-We are evaluating on the following criteria:
+Libraries are evaluated using the following criteria::
 
-- **Being maintained?** - Is the library being currently maintained? Recent commits/publish?
-- **Meets feature set** - Does the library allow teams to perform auth flows? Will it allow for custom KC params? (kc_idp_hint)
-- **Popularity** - How popular is it?
-- **Open source** - Is it Open Source?
-- **Support for PKCE** - Does it support PKCE?
-- **Works for SPAs** - Does the library work for single page applications?
-- **Comments** - Relevant comments
+- **Actively maintained?** - Evidence of recent commits, releases, or issue resolution.
+- **Meets required feature set** - Supports standard OIDC authorization flows and Keycloak‑specific parameters (for example, kc_idp_hint).
+- **Popularity** - Relative adoption based on community usage (for example, approximate weekly downloads).
+- **Open source** - Source code is publicly available and community‑reviewable.
+- **PCKE Support** - Required for modern, secure public‑client implementations.
+- **SPA compatibility** - Suitable for single‑page application (SPA) architectures where applicable.
+- **Comments** - Notable limitations, use cases, or ecosystem considerations.
+
+**Note**
+Popularity values are approximate and change over time. They are provided for comparison only and should not be the sole factor in library selection. Data collected as of May 2026
 
 ### JavaScript
 
-| Library                                                                            | Being Maintained? | Meets feature set | Popularity     | Open source | Support for PKCE | Works for SPAs | Comments                                   |
+| Library                                                                            | Being Maintained? | Meets Feature Set | Popularity (~ weekly)    | Open Source | PKCE Support | SPA Support | Comments                                   |
 | ---------------------------------------------------------------------------------- | ----------------- | ----------------- | -------------- | ----------- | ---------------- | -------------- | ------------------------------------------ |
-| [passport-keycloak-bearer](https://www.npmjs.com/package/passport-keycloak-bearer) | &#10004;          | &#10004;          | 1889 DL/Week   | &#10004;    | &#10004;         | &#10004;       |                                            |
-| [oidc-client-ts](https://authts.github.io/oidc-client-ts/)                         | &#10004;          | &#10004;          | 38550 DL/Week  | &#10004;    | &#10004;         | &#10004;       |
-| [sso-express](https://www.npmjs.com/package/@bcgov-cas/sso-express)                | &#10004;          | &#10004;          | 127 DL/Week    | &#10004;    | &#10004;         | &#10004;       | Being used by some community teams.        |
-| [openid-client](https://www.npmjs.com/package/openid-client)                       | &#10004;          | &#10004;          | 940475 DL/Week | &#10004;    | &#10004;         |                | For Node.js only.                          |
-| [keycloak-js](https://www.npmjs.com/package/keycloak-js)                           | &#10004;          | &#10004;          | 222218 DL/Week | &#10004;    | &#10004;         | &#10004;       | Keycloak supported in their documentation. |
+| [passport-keycloak-bearer](https://www.npmjs.com/package/passport-keycloak-bearer) | &#10004;          | &#10004;          | ~500   | &#10004;    | &#10004;         | &#10004;       |                                            |
+| [oidc-client-ts](https://authts.github.io/oidc-client-ts/)                         | &#10004;          | &#10004;          | ~35k-40k  | &#10004;    | &#10004;         | &#10004;       |
+| [sso-express](https://www.npmjs.com/package/@bcgov-cas/sso-express)                | &#10004;          | &#10004;          | ~100-150    | &#10004;    | &#10004;         | &#10004;       | Being used by some community teams.        |
+| [openid-client](https://www.npmjs.com/package/openid-client)                       | &#10004;          | &#10004;          | ~300k-900k| &#10004;    | &#10004;         |                | For Node.js only.                          |
+| [keycloak-js](https://www.npmjs.com/package/keycloak-js)                           | &#10004;          | &#10004;          | ~90k-120k | &#10004;    | &#10004;         | &#10004;       | Keycloak supported in their documentation. |
 
 ### TypeScript
 
-| Library                                                             | Being Maintained? | Meets feature set | Popularity     | Open source | Support for PKCE | Works for SPAs | Comments                                                         |
+| Library                                                             | Being Maintained? | Meets Feature Set | Popularity (~ weekly)    | Open Source | PKCE Support | SPA Support | Comments                                                         |
 | ------------------------------------------------------------------- | ----------------- | ----------------- | -------------- | ----------- | ---------------- | -------------- | ---------------------------------------------------------------- |
-| [oidc-client-ts](https://authts.github.io/oidc-client-ts/)          | &#10004;          | &#10004;          | 38550 DL/Week  | &#10004;    | &#10004;         | &#10004;       |                                                                  |
-| [sso-express](https://www.npmjs.com/package/@bcgov-cas/sso-express) | &#10004;          | &#10004;          | 127 DL/Week    | &#10004;    | &#10004;         | &#10004;       | Being used by some community teams. Works for TypeScript.        |
-| [keycloak-js](https://www.npmjs.com/package/keycloak-js)            | &#10004;          | &#10004;          | 222218 DL/Week | &#10004;    | &#10004;         | &#10004;       | Keycloak supported in their documentation. Works for TypeScript. |
+| [oidc-client-ts](https://authts.github.io/oidc-client-ts/)          | &#10004;          | &#10004;          | ~35k-40k  | &#10004;    | &#10004;         | &#10004;       |                                                                  |
+| [sso-express](https://www.npmjs.com/package/@bcgov-cas/sso-express) | &#10004;          | &#10004;          | ~100-150    | &#10004;    | &#10004;         | &#10004;       | Being used by some community teams. Works for TypeScript.        |
+| [keycloak-js](https://www.npmjs.com/package/keycloak-js)            | &#10004;          | &#10004;          | ~90k-120k | &#10004;    | &#10004;         | &#10004;       | Keycloak supported in their documentation. Works for TypeScript. |
 
 ### C#/.Net
 
-| Library                                                                               | Being Maintained? | Meets feature set | Popularity | Open source | Support for PKCE | Works for SPAs | Comments |
+| Library                                                                               | Being Maintained? | Meets Feature Set | Popularity (~ weekly) | Open Source | PKCE Support | SPA Support | Comments |
 | ------------------------------------------------------------------------------------- | ----------------- | ----------------- | ---------- | ----------- | ---------------- | -------------- | -------- |
 | [IdentityModel.OidcClient](https://github.com/IdentityModel/IdentityModel.OidcClient) | &#10004;          | &#10004;          | N/A        |             | &#10004;         |                |          |
 
 ### Python
 
-| Library                                                                                | Being Maintained? | Meets feature set | Popularity  | Open source | Support for PKCE | Works for SPAs | Comments |
+| Library                                                                                | Being Maintained? | Meets Feature Set | Popularity (~ weekly)  | Open Source | PKCE Support | SPA Support | Comments |
 | -------------------------------------------------------------------------------------- | ----------------- | ----------------- | ----------- | ----------- | ---------------- | -------------- | -------- |
-| [JWTConnect-Python-OidcRP](https://github.com/IdentityPython/JWTConnect-Python-OidcRP) | &#10004;          | &#10004;          | 400 DL/Week | &#10004;    | &#10004;         | &#10004;       |          |
+| [JWTConnect-Python-OidcRP](https://github.com/IdentityPython/JWTConnect-Python-OidcRP) | &#10004;          | &#10004;          | ~400 | &#10004;    | &#10004;         | &#10004;       |          |
 | [pyoidc](https://github.com/OpenIDC/pyoidc/)                                           | &#10004;          | &#10004;          | N/A         | &#10004;    | &#10004;         | &#10004;       |          |
 
 ### Java
 
-| Library                                                                                           | Being Maintained? | Meets feature set | Popularity         | Open source | Support for PKCE | Works for SPAs | Comments |
+| Library                                                                                           | Being Maintained? | Meets Feature Set | Popularity         | Open Source | PKCE Support | SPA Support | Comments |
 | ------------------------------------------------------------------------------------------------- | ----------------- | ----------------- | ------------------ | ----------- | ---------------- | -------------- | -------- |
-| [Spring Security](https://www.baeldung.com/spring-security-openid-connect)                        | &#10004;          | &#10004;          | N/A (Very popular) | &#10004;    | N/A              |                |          |
-| [SpringBoot ](https://www.keycloak.org/docs/latest/securing_apps/index.html#_spring_boot_adapter) | &#10004;          | &#10004;          | N/A (Very popular) | &#10004;    | N/A              |                |          |
+| [Spring Security](https://www.baeldung.com/spring-security-openid-connect)                        | &#10004;          | &#10004;          | Very high | &#10004;    | N/A              |                |          |
+| [SpringBoot ](https://www.keycloak.org/docs/latest/securing_apps/index.html#_spring_boot_adapter) | &#10004;          | &#10004;          | Very high | &#10004;    | N/A              |                |          |
 
 ### AngularJS
 
-| Library                                                                           | Being Maintained? | Meets feature set | Popularity    | Open source | Support for PKCE | Works for SPAs | Comments |
+| Library                                                                           | Being Maintained? | Meets Feature Set | Popularity (~ weekly)    | Open Source | PKCE Support | SPA Support | Comments |
 | --------------------------------------------------------------------------------- | ----------------- | ----------------- | ------------- | ----------- | ---------------- | -------------- | -------- |
-| [angular-auth-oidc-client](https://github.com/damienbod/angular-auth-oidc-client) | &#10004;          | &#10004;          | 28000 DL/week | &#10004;    | &#10004;         | &#10004;       |          |
+| [angular-auth-oidc-client](https://github.com/damienbod/angular-auth-oidc-client) | &#10004;          | &#10004;          | ~25k-30k | &#10004;    | &#10004;         | &#10004;       |          |
 
 ### Additional Notes
 

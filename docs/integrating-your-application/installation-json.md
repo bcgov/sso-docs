@@ -1,20 +1,24 @@
 ---
 sidebar_position: 3
-title: Using your installation JSON file
+title: Using Your Installation JSON File
 description: Learn more about verified/digital credential
 ---
 
-Once your [request has been completed](https://bcgov.github.io/sso-request), you will be able to download your installation file for each environment. It includes the client information to set up your SSO configuration.
+Once your integration in [CSS App](https://sso-requests.apps.gold.devops.gov.bc.ca/) has been approved and completed, you’ll be able to download an installation file for each environment (DEV, TEST, and PROD). These files contain the client configuration details required to integrate your application with Pathfinder SSO.
 
 ![technical detail with installation json](using_json_Dec2023.svg)
 
 ## Understanding the installation JSON
 
-This file includes the client information to set up your SSO configuration.
+The installation JSON includes all client‑specific information needed to configure your SSO integration.
 
-The main difference between `confidential` and `public` clients is that confidential clients require client secret. Learn more on [client types](client-types)
+One key distinction in the configuration is the client type:
+- **Confidential clients** require a client secret, which must be stored securely on a back end.
+- **Public clients** do not use a client secret and must instead rely on PKCE for security.
 
-An example installation JSON for `public` client type
+For more details, see [client types](client-types).
+
+Below is an example of an installation JSON for a `public` client.
 
 ```json
 {
@@ -29,7 +33,7 @@ An example installation JSON for `public` client type
 }
 ```
 
-An example installation JSON for `confidential` client type
+Below is an example of an installation JSON for a `confidential` client.
 
 ```json
 {

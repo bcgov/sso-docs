@@ -4,18 +4,32 @@ title: Additional Settings
 description: Learn about all the additional settings in the CSS app and how you can configure them.
 ---
 
-## What are the additional settings
 
-Through the Common Hosted Single Sign On Application, with a suitable justification, you can request to configure the following settings
+## What Are the Additional Settings?
 
-- **Access Token Lifespan** - This setting is for the max time before an access token is expired. The value is recommended to be short relative to the SSO timeout. _Default set to 5 mins_
+Through the Common Hosted Single Sign‑On (CSS) Application, you may request configuration of the following settings, provided you supply an appropriate justification. These settings allow you to fine‑tune session and token behavior for your client.
 
-- **Client Session Idle** - this setting is the time a client session is allowed to be idle before it expires. Tokens are invalidated when a client session is expired. If not set it uses the standard SSO session idle value. This value should not be set longer than SSO session idle, since the tokens will still expire when the SSO session does. _Default set to 30 mins_
+- **Access Token Lifespan**  
+  Defines the maximum lifetime of an access token before it expires. This value should generally be short relative to the overall SSO session timeout.  
+  _Default: 5 minutes_
 
-- **Client Session Max** - this setting is the max time for a client session before it expires. Tokens are invalidated when a client session is expired. If not set it uses the standard SSO session max value. This value should not be set longer than the SSO session max, since the tokens cannot be refreshed beyond the maximum SSO session. _Default set to 10hrs_
+- **Refresh Token Lifespan**  
+  Specifies how long a client session may remain idle before it expires. When the client session expires, all associated tokens are invalidated.  
+  If not explicitly set, the standard SSO session idle value is used. This value should not exceed the SSO session idle timeout, as tokens will still expire when the SSO session ends.  
+  _Default: 30 minutes_
 
-- **Client Offline Session Idle** - this setting is the time that client offline session is allowed to be idle before it expires. Offline tokens are invalidated when a client offline session is expired. If not set it uses the offline session idle value. _Default setting - talk to us_
+- **Session Max Lifespan**  
+  Specifies the maximum lifetime of a client session, regardless of activity. Once this limit is reached, the client session expires and all tokens are invalidated.  
+  If not set, the standard SSO session maximum is applied. This value must not exceed the SSO session maximum, as tokens cannot be refreshed beyond it.  
+  _Default: 10 hours_
 
-- **Client Offline Session Max** - this setting is the max time before a client offline session is expired. Offline tokens are invalidate when a client offline session is expired. If not set, it uses the offline session max value. _Default setting - talk to us_
+- **Client Offline Session Idle**  
+  Determines how long an offline client session may remain idle before it expires. When the offline session expires, all offline tokens are invalidated.  
+  If not set, the standard offline session idle value applies.  
+  _Default: Contact the SSO team_
 
-More information can be found [here](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.5/html/server_administration_guide/managing_user_sessions#timeouts)
+- **Client Offline Session Max**  
+  Defines the maximum lifetime of an offline client session. Once expired, all offline tokens are invalidated.  
+  If not set, the standard offline session maximum is applied.  
+  _Default: Contact the SSO team_
+

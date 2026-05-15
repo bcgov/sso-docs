@@ -1,13 +1,15 @@
 ---
 sidebar_position: 3
-title: Login page best practices
+title: Login Page Best Practices
 description: For more than 1 Identity Provider in your app, use IDP hint
 ---
 
-If there is more than one IDP in the realm, the Keycloak server directs your users into a login page to let them choose the IDP that they want to authenticate with. It is possible to skip the login page or override the default IDP in Keycloak by passing the optional query param" kc_idp_hint". [List of kc_idp_hints here](dos-donts#do-skip-the-standard-login-page)
+If more than one Identity Provider (IDP) is configured in a realm, Keycloak directs users to a login page where they can select the IdP they want to use for authentication. You can skip this selection page or override the default IdP by passing the optional query parameter `kc_idp_hint`. See [List of kc_idp_hints here](dos-donts#do-skip-the-standard-login-page)
 
-- If using an adapter, there is an option for providing `idpHint`, and
-- if not, please specify it in the `Authorization URL` in your code or configuration, i.e. `http://localhost:8080/auth?kc_idp_hint=<idp_name>`
-- Please see [here](https://www.keycloak.org/docs/latest/server_admin/index.html#_client_suggested_idp) for more detail.
+There are two common ways to provide the IdP hint:
+- **When using a Keycloak adapter:** configure the idpHint option in the adapter settings.
+- **When not using an adapter:** include the parameter directly in the authorization URL in your code or configuration, for example: `http://localhost:8080/auth?kc_idp_hint=<idp_name>`
 
-If the framework you are using prevents you from being able to pass through the _IDP hint_, please reach out to our team through rocket chat or email to ask about alternative options.
+For more details, refer to the [Keycloak documentation](https://www.keycloak.org/docs/latest/server_admin/index.html#_client_suggested_idp).
+
+If the framework you are using does not allow you to pass an IDP hint, please contact our team via [Microsoft Teams Keycloak How-to Channel](https://teams.microsoft.com/l/channel/19%3A35d0b3389e39479590ba45a19a67a3ba%40thread.tacv2/SSOKeycloak-howto?groupId=a80418da-c27b-406e-89ab-7695b61924d8&tenantId=6fdb5200-3d0d-4a8a-b036-d3685e359adc) or by [email](mailto:bcgov.sso@gov.bc.ca) to discuss alternative options.
