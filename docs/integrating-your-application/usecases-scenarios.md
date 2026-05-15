@@ -4,8 +4,8 @@ title: Usecases
 description: Learn about the different types of usecases
 ---
 
-**Browser Login** - A web based application requiring a login component
+**Browser Login** - A browser‑based application that requires an interactive user login.
 
-**Service Account** - A service account is a digital identity used by an application software or service to interact with other applications or the operating system. They are often used for machine to machine communication (M2M), for example for application programming interfaces (API).
+**Service Account** - A service account is a non‑human (digital) identity used by an application or service to authenticate and interact with other applications or systems. Service accounts are commonly used for machine‑to‑machine (M2M) scenarios, such as API integrations.
 
-**Browser Login and Service Account** - A combination of the above
+**Browser Login and Service Account** - A hybrid approach that supports both interactive user login and service‑to‑service authentication.

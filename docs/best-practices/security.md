@@ -4,10 +4,12 @@ title: Security considerations
 description: Security best practices
 ---
 
-### Confidential client security
+### Confidential Client Security
 
-The KeyCloak adapter for a Confidential client is configured in your _server-side component_ because it requires a client ID and client secret that must be kept securely on the server and never provided to the user's browser. You can specify in your application logic which routes are secure and which are not. Use the [adapter](../integrating-your-application/settingup-adapter) for this unless you really want to code your own OIDC logic. Your secure routes should invoke the adapter on each request to make sure the user is authenticated.
+For a confidential client, the Keycloak adapter must be configured in a server-side component. This is required because the configuration includes a client ID and client secret, which must be kept secure and must never be exposed to the user’s browser.
+Within your application logic, you can define which routes require authentication and which are public. Unless you have a strong reason to implement your own OpenID Connect (OIDC) logic, you should use the [adapter](../integrating-your-application/settingup-adapter).  Any route marked as secure should invoke the adapter on each request to ensure the user is authenticated.
 
-### If you have an insecure "home" page
+### Handling an Insecure “Home” Page
 
-If you have an insecure "Home" page, the URI to load that page should not be secured and should not invoke authentication. If you create a "Login" button that makes an http request to a secure resource, that should kick off an authentication process. Any non-public API calls to your server-side component should be secured with the KeyCloak adapter.
+If your application has an insecure “Home” page, the URI for that page should remain public and should not trigger authentication. A common pattern is to include a Login button on the home page that sends an HTTP request to a secure resource; this request then initiates the authentication flow.
+All non-public API calls to your server-side component must be protected using the Keycloak adapter to ensure proper authentication and access control.

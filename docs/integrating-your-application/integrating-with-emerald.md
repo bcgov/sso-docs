@@ -3,13 +3,17 @@ sidebar_position: 12
 title: Emerald Integrations
 ---
 
-If your project is hosted on the emerald cluster, the security restrictions and network policies will need to be taken into account if you wish to use our keycloak instance as a login proxy.
+If your project is hosted on the **Emerald cluster**, you must account for its security restrictions and network policies when using our Keycloak instance as a login proxy.
 
-For your standard integration to work, you will need to create a network policy, and add a yaml stanza to the app's deployment config.
+To support a standard integration, you’ll need to define an appropriate network policy, and add a yaml stanza to the app's deployment configuration to allow outbound connectivity to Keycloak.
 
 ## Network Policies
 
-The following is an example of a network policy you can use to give your app access to keycloak. Note: that the labels will need to be customized for your application. Also note this network policy is in addition to other network policies your app may need to function.
+Below is an example of a network policy that grants your application access to keycloak. 
+
+**Note:**
+- The labels shown must be customized to match your application’s namespace and selectors.
+- This policy is additional to any other network policies your application may require to operate correctly.
 
 ```
 kind: NetworkPolicy
@@ -40,9 +44,12 @@ spec:
     - Egress
 ```
 
-## Deployment config
 
-The deployment config, must have the loginproxy.gov.bc.ca urls added to the `NO_PROXY` env variable. See the following example:
+## Deployment Config
+
+
+Your application deployment config must include the `loginproxy.gov.bc.ca` domain in the `NO_PROXY` environment variable. This ensures traffic destined for Keycloak bypasses the platform proxy.
+
 
 ```
 kind: Deployment
@@ -59,4 +66,4 @@ spec:
               value: <<COMMA SEPARATED LIST>>,loginproxy.gov.bc.ca
 ```
 
-The comma separated list excludes traffic going to those urls from using the platform's proxy. Further reading about the `NO_PROXY` environment variable can be found in the curl [documentation](https://curl.se/docs/manpage.html#--noproxy).
+The comma‑separated list specifies destinations that should bypass the platform proxy, ensuring traffic to those URLs is sent directly. For more details on how the NO_PROXY environment variable is interpreted, see the [curl documentation](https://curl.se/docs/manpage.html#--noproxy). 
