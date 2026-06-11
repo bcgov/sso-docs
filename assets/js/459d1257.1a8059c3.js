@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunksso_docs=globalThis.webpackChunksso_docs||[]).push([[6096],{6054(s){s.exports=JSON.parse('{"tag":{"label":"Keycloak","permalink":"/sso-docs/tags/keycloak","allTagsPath":"/sso-docs/tags","count":1,"items":[{"id":"FAQs/keycloak","title":"Keycloak","description":"","permalink":"/sso-docs/FAQs/keycloak"}],"unlisted":false}}')}}]);

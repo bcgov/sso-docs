@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksso_docs=self.webpackChunksso_docs||[]).push([[5483],{5680:s=>{s.exports=JSON.parse('{"tag":{"label":"Custom realm","permalink":"/sso-docs/tags/custom-realm","allTagsPath":"/sso-docs/tags","count":1,"items":[{"id":"FAQs/custom-realm","title":"Custom Realms","description":"","permalink":"/sso-docs/FAQs/custom-realm"}],"unlisted":false}}')}}]);
