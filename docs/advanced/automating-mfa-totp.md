@@ -40,23 +40,23 @@ The flow to obtain the secret key from the Microsoft interface is a bit unusual 
 
 1. Click **Add sign-in method**.
 
-   ![Add sign-in method from the My Sign-Ins Security info page](./images/totp-add-sign-in-method.png)
+   <img src={require('./images/totp-add-sign-in-method.png').default} alt="Add sign-in method from the My Sign-Ins Security info page" width="520" />
 
 2. Choose **Microsoft Authenticator**.
 
-   ![Choosing Microsoft Authenticator as the sign-in method](./images/totp-select-authenticator.png)
+   <img src={require('./images/totp-select-authenticator.png').default} alt="Choosing Microsoft Authenticator as the sign-in method" width="360" />
 
 3. Select **Set up a different authentication app**.
 
-   ![Set up a different authentication app option](./images/totp-set-up-different-app.png)
+   <img src={require('./images/totp-set-up-different-app.png').default} alt="Set up a different authentication app option" width="360" />
 
 4. When prompted to scan the QR code, click **Can't scan QR code?**.
 
-   ![Can't scan QR code link on the QR code screen](./images/totp-cant-scan-qr.png)
+   <img src={require('./images/totp-cant-scan-qr.png').default} alt="Can't scan QR code link on the QR code screen" width="360" />
 
 5. Copy the **Secret key**. This is the value you supply to `otplib` (as a test environment variable) to generate TOTP codes.
 
-   ![Secret key revealed for manual entry into an authenticator](./images/totp-copy-secret-key.png)
+   <img src={require('./images/totp-copy-secret-key.png').default} alt="Secret key revealed for manual entry into an authenticator" width="360" />
 
 :::warning
 The secret key is equivalent to the second factor itself — anyone holding it can generate valid MFA codes for the account. Store it as a protected secret (for example, a masked CI/CD variable) and never commit it to source control.
