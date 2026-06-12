@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: Automating MFA (TOTP) in Tests
 description: Generate time-based one-time passwords for test accounts so automated end-to-end tests can sign in through MFA.
 ---

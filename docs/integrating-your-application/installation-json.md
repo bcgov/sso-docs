@@ -1,20 +1,20 @@
 ---
 sidebar_position: 3
-title: Using Your Installation JSON File
-description: Learn more about verified/digital credential
+description: Learn about your integration credentials
 ---
 
-Once your integration in [CSS App](https://sso-requests.apps.gold.devops.gov.bc.ca/) has been approved and completed, you’ll be able to download an installation file for each environment (DEV, TEST, and PROD). These files contain the client configuration details required to integrate your application with Pathfinder SSO.
+# Integration Credentials
 
-![technical detail with installation json](using_json_Dec2023.svg)
+Once your integration in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) has been provisioned, you can download an **Installation JSON** file for each environment (dev / test / prod). This file contains the client-specific configuration your application needs to communicate with the SSO service — including the realm name, the Keycloak server URL, your client ID, and (for confidential clients) your client secret.
 
-## Understanding the installation JSON
+The Installation JSON is environment-specific, meaning the values for dev, test, and production are different. You should download and configure each environment separately to ensure your application points to the correct Keycloak instance and uses the correct credentials.
 
-The installation JSON includes all client‑specific information needed to configure your SSO integration.
+![integration Details](using_json_Dec2023.svg)
 
-One key distinction in the configuration is the client type:
-- **Confidential clients** require a client secret, which must be stored securely on a back end.
-- **Public clients** do not use a client secret and must instead rely on PKCE for security.
+## Client Types
+
+- **Confidential clients** include a `credentials.secret` field. This secret must be stored securely on your back end and never exposed to the browser or end users.
+- **Public clients** omit the client secret entirely and set `"public-client": true`. They must use PKCE to secure the Authorization Code Flow.
 
 For more details, see [client types](client-types).
 

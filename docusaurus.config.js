@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Documentation",
-  tagline: "SSO Pathfinder Knowledge Base",
+  tagline: "SSO Knowledge Base",
   favicon: "img/favicon.ico",
   // Set the production url of your site here
   url: "https://bcgov.github.io",
@@ -98,7 +98,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: "Pathfinder SSO",
+        title: "Single Sign-On (SSO)",
         items: [
           {
             type: "docSidebar",

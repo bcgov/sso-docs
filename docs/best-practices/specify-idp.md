@@ -4,9 +4,10 @@ title: Login Page Best Practices
 description: For more than 1 Identity Provider in your app, use IDP hint
 ---
 
-If more than one Identity Provider (IDP) is configured in a realm, Keycloak directs users to a login page where they can select the IdP they want to use for authentication. You can skip this selection page or override the default IdP by passing the optional query parameter `kc_idp_hint`. See [List of kc_idp_hints here](dos-donts#do-skip-the-standard-login-page)
+If more than one Identity Provider (IDP) is configured in a realm, Keycloak directs users to a login page where they can select the IDP they want to use for authentication. You can skip this selection page or override the default IDP by passing the optional query parameter `kc_idp_hint`. See [here](dos-donts#do-skip-the-standard-login-page) for list of supported kc_idp_hints
 
 There are two common ways to provide the IdP hint:
+
 - **When using a Keycloak adapter:** configure the idpHint option in the adapter settings.
 - **When not using an adapter:** include the parameter directly in the authorization URL in your code or configuration, for example: `http://localhost:8080/auth?kc_idp_hint=<idp_name>`
 

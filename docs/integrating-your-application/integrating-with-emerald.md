@@ -1,6 +1,7 @@
 ---
 sidebar_position: 12
 title: Emerald Integrations
+description: Learn how to configure keycloak client with your application in emerald cluster
 ---
 
 If your project is hosted on the **Emerald cluster**, you must account for its security restrictions and network policies when using our Keycloak instance as a login proxy.
@@ -12,10 +13,11 @@ To support a standard integration, you’ll need to define an appropriate networ
 Below is an example of a network policy that grants your application access to keycloak. 
 
 **Note:**
+
 - The labels shown must be customized to match your application’s namespace and selectors.
 - This policy is additional to any other network policies your application may require to operate correctly.
 
-```
+```yaml
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
@@ -44,14 +46,11 @@ spec:
     - Egress
 ```
 
-
 ## Deployment Config
-
 
 Your application deployment config must include the `loginproxy.gov.bc.ca` domain in the `NO_PROXY` environment variable. This ensures traffic destined for Keycloak bypasses the platform proxy.
 
-
-```
+```yaml
 kind: Deployment
 apiVersion: apps/v1
 spec:
