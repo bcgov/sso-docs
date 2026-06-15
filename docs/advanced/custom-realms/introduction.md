@@ -66,7 +66,6 @@ If you operate a Custom Realm, the following guidelines help ensure the realm is
 ### Configuration Principles
 
 - **Minimise log retention** — Keycloak logs can contain sensitive user information. Ensure logs are either not stored, or stored only for the shortest period required and with appropriate access controls.
-- **Avoid realm-level shared resources** — do not use realm-level groups, roles, or other resources as a mechanism to share the realm across multiple application teams. This creates tight coupling between tenants and makes governance and troubleshooting significantly harder. Each application team should operate independently within its own client.
 
 ### User Identity
 
@@ -134,3 +133,14 @@ The SSO team provisions each Custom Realm with a set of roles, groups, and clien
 
 > **If any of these resources are accidentally deleted or modified**, contact the SSO team immediately. Recovery may require restoring from a realm export — which is another reason to maintain regular infrastructure-as-code exports of your realm configuration.
 
+### Never Assign `manage-account` role
+
+In Keycloak, `manage-account` is a built-in client role on the default account client. It grants users access to the self-service Keycloak Account Console, where they can update their profile, manage active sessions, configure two-factor authentication, and review linked identity providers.
+
+The SSO team removes this role from the default realm roles so new users created in the realm do not receive it automatically. **Do not assign `manage-account` to a user or a client in your custom realm.** It is intended only for the built-in account console and does not belong in application authorization.
+
+If this role is assigned, it can cause several problems:
+
+- Users may gain access to account-console functions that were not meant to be exposed through your realm
+- Users may be able to change their own account settings (first name, last name, and profile fields), linked identity providers, or session state in ways that conflict with your governance model
+- If the role is granted broadly, it can weaken your security posture by giving users more self-service control than your team intended

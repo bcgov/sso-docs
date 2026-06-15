@@ -57,6 +57,20 @@ If you have multiple web applications, create a **separate integration request**
 
 ---
 
+### Don't Use Email Addresses as Application Identifiers
+
+Do not use a user's email address as the primary identifier in your application. Email addresses are not a stable unique identifier for authentication and authorisation decisions. A user may change their email address over time, and different users can sometimes share the same email address pattern across identity providers or account migration scenarios.
+
+If your application keys access to the email address, a second user who signs in with the same email value could inherit the access that was originally granted to the first user. This creates a serious account-linking and privilege-assignment risk.
+
+**What to do instead:**
+
+- Use the OIDC `sub` claim as the stable identifier for the user.
+- Treat `sub` as the canonical user key in your application database and access-control logic.
+- If you need a display value, store email as a profile attribute, not as the identity key.
+
+---
+
 ## ✅ Do's
 
 ### Do Protect the Client Secret
@@ -190,11 +204,3 @@ The introspection endpoint is appropriate **only** in these two cases:
 - You are validating an **opaque (non-JWT) token**.
 
 > **If you do use introspection:** Cache the results with a short TTL (30–60 seconds) to avoid a synchronous Keycloak call on every request.
-
----
-
-## Next Steps
-
-- Review [Client Types](../css-application/client-types.md) to ensure you have chosen the right client configuration for your application.
-- Check the [Additional Settings](../css-application/additional-settings.md) page to configure appropriate token and session lifespans.
-- Read the [Login Guide](../integrating-your-application/login-guide.md) for guidance on IDP hints and login page customisation.
