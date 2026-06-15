@@ -148,6 +148,7 @@ For any **additional attributes** your application needs, you must create an **A
 | `bceidbusiness` | `display_name`, `bceid_user_guid`, `bceid_business_guid`, `bceid_business_name`, `bceid_username` |
 | `bceidboth` | `display_name`, `bceid_user_guid`, `bceid_business_guid`, `bceid_business_name`, `bceid_username` |
 | `githubbcgov` | `display_name`, `github_id`, `github_username`, `org_verified`, `orgs` |
+| `githubpublic` | `display_name`, `github_id`, `github_username`, `org_verified`, `orgs` |
 
 **To create a mapper for an attribute:**
 

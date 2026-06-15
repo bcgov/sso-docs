@@ -148,35 +148,6 @@ When a client is configured with multiple IDPs, Keycloak displays a login page p
 | Digital Credential      | `digitalcredential` |
 | BC Services Card        | `bcservicescard`    |
 
-> **If you need the Keycloak login page:** We do have a supported workaround. See [Skipping the Standard Login Page](../integrating-your-application/login-guide#skipping-the-standard-login-page) or contact the SSO team.
-
----
-
-### Do Validate the Identity Provider in the Token
-
-Completing the OIDC flow is not sufficient on its own. Your application must verify **how** the user authenticated, not just **that** they authenticated.
-
-#### Why This Matters
-
-- **SSO session bypass:** If your application requires BCeID but the user already has an active IDIR session from another application sharing the same realm, Keycloak may grant them access via SSO without a BCeID login prompt.
-- **Malicious IDP hint manipulation:** A user could modify the `kc_idp_hint` parameter in the authorization URL to authenticate with a different IDP than your application intended.
-
-#### How to Validate
-
-Every token issued by Keycloak includes an `identity_provider` claim containing the alias of the IDP used. Check this claim after decoding the ID token and reject the session if it does not match your requirements.
-
-```js
-// Pseudocode example
-if (token.claims["identity_provider"] !== "bceidbasic") {
-  rejectSession();
-  redirectToLogin();
-}
-```
-
-#### Forcing Re-Authentication
-
-To ensure users always authenticate fresh — ignoring any existing Keycloak session — include `prompt=login` in your authorization request. See [OIDC spec §3.1.2.3](https://openid.net/specs/openid-connect-core-1_0.html#Authenticates) for details.
-
 ---
 
 ### Do Revoke Offline Tokens Appropriately
@@ -186,7 +157,7 @@ Offline tokens provide long-lived access on behalf of a user and do not expire w
 **Best practices:**
 
 - **Revoke immediately after use** for one-time or short-lived background tasks.
-- **Set a maximum offline session lifespan** via [Additional Settings](../integrating-your-application/additional-settings.md) — never leave it unconstrained.
+- **Set a maximum offline session lifespan** via [Additional Settings](../css-application/additional-settings.md) — never leave it unconstrained.
 - **Revoke on logout** — when a user explicitly logs out, revoke any offline tokens issued to them.
 - **Store securely** — treat offline tokens like client secrets. Never log them, store them in browser storage, or expose them in client-side code.
 
@@ -224,6 +195,6 @@ The introspection endpoint is appropriate **only** in these two cases:
 
 ## Next Steps
 
-- Review [Client Types](../integrating-your-application/client-types.md) to ensure you have chosen the right client configuration for your application.
-- Check the [Additional Settings](../integrating-your-application/additional-settings.md) page to configure appropriate token and session lifespans.
+- Review [Client Types](../css-application/client-types.md) to ensure you have chosen the right client configuration for your application.
+- Check the [Additional Settings](../css-application/additional-settings.md) page to configure appropriate token and session lifespans.
 - Read the [Login Guide](../integrating-your-application/login-guide.md) for guidance on IDP hints and login page customisation.

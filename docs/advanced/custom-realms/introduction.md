@@ -65,7 +65,6 @@ If you operate a Custom Realm, the following guidelines help ensure the realm is
 
 ### Configuration Principles
 
-- **Prefer out-of-the-box configuration** — rely on Keycloak's built-in capabilities wherever possible. Custom extensions (SPIs, custom authenticators, event listeners) are difficult to maintain, upgrade, and audit. Only introduce custom extensions if there is a clear, justified requirement that cannot be met otherwise.
 - **Minimise log retention** — Keycloak logs can contain sensitive user information. Ensure logs are either not stored, or stored only for the shortest period required and with appropriate access controls.
 - **Avoid realm-level shared resources** — do not use realm-level groups, roles, or other resources as a mechanism to share the realm across multiple application teams. This creates tight coupling between tenants and makes governance and troubleshooting significantly harder. Each application team should operate independently within its own client.
 
@@ -79,7 +78,7 @@ If you operate a Custom Realm, the following guidelines help ensure the realm is
 
 - **Set appropriate session and token timeouts** — configure access token lifespan, session idle timeout, and session max lifespan to values that balance security and usability for your use case. Do not leave these at Keycloak defaults without reviewing them against your application's requirements.
 - **Manage offline tokens explicitly** — offline tokens do not expire when the Keycloak session ends. Revoke them after use for one-time tasks, and set a maximum offline session lifespan for all other cases. Never leave offline token lifespans unconstrained.
-- **Validate tokens at the application level** — verify JWT signatures locally using Keycloak's JWKS endpoint rather than calling the Token Introspection endpoint on every request. See [Do's and Don'ts](./dos-donts.md#do-validate-tokens-at-the-application-level) for implementation guidance.
+- **Validate tokens at the application level** — verify JWT signatures locally using Keycloak's JWKS endpoint rather than calling the Token Introspection endpoint on every request. See [Do's and Don'ts](../../best-practices/dos-donts.md#do-validate-tokens-at-the-application-level) for implementation guidance.
 
 ### Environment Management
 
@@ -92,7 +91,7 @@ If you operate a Custom Realm, the following guidelines help ensure the realm is
 | Practice | Why It Matters |
 | --- | --- |
 | **Write clear realm usage documentation** | Reduces dependency on individuals and helps new team members onboard without needing to reverse-engineer the configuration. |
-| **Automate login testing with Cypress** | Catches authentication regressions before they reach production. Login flows are often broken by Keycloak upgrades or configuration changes. |
+| **Automate login testing** | Catches authentication regressions before they reach production. Login flows are often broken by Keycloak upgrades or configuration changes. |
 | **Document support tiers and escalation paths** | Teams using your realm need to know who to contact for realm-level issues (your team) vs. IDP-level issues (SSO team) vs. platform issues. |
 | **Create and maintain a disaster recovery plan** | Covers scenarios such as realm configuration loss, accidental client deletion, credential rotation, and IDP federation failures. |
 

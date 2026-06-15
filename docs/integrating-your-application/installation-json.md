@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 description: Learn about your integration credentials
 ---
 
@@ -10,6 +10,52 @@ Once your integration in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/)
 The Installation JSON is environment-specific, meaning the values for dev, test, and production are different. You should download and configure each environment separately to ensure your application points to the correct Keycloak instance and uses the correct credentials.
 
 ![integration Details](using_json_Dec2023.svg)
+
+## Approvals
+
+### Production Approval Required for Certain IDPs
+
+For the following identity providers, **production provisioning is not automatic**. Instead, the respective IDP owner must manually approve your production integration before it becomes active:
+
+- **BCeID** (Basic, Business, or Both variants)
+- **BC Services Card**
+- **GitHub** (BC Gov or Public)
+
+For dev and test environments, these IDPs are provisioned immediately upon [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) submission. Production, however, requires an explicit approval step from the IDP owner.
+
+### The Approval Process
+
+1. Submit your integration in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) with the desired IDP(s) and select the production environment.
+2. If the integration request includes `BCeID / BC Services Card / GitHub` IDP(S), then the request enters a **pending approval** state for production environment.
+3. The respective IDP owner reviews your request (usually within 1–2 business days, though integration status update after approval itself takes less than a few minutes).
+4. Once approved, the production environment is automatically provisioned and your Installation JSON becomes available for download.
+
+### Expediting Approval
+
+If you have tight timelines or deadlines, do not wait passively for approval. **Proactively reach out to the IDP owner** directly to inform them of your approval request and ask them to prioritize it. This significantly reduces approval delays.
+
+### IDP Contact Information
+
+| IDP | Contact Method |
+|---|---|
+| **BCeID** | Reach out to [IDIM Consulting](mailto:idim.consulting@gov.bc.ca) |
+| **BC Services Card** | Reach out to [IDIM Consulting](mailto:idim.consulting@gov.bc.ca) |
+| **GitHub BC Gov** | Contact the SSO team |
+
+### Important: Approved IDP Restrictions
+
+Once an IDP variant has been approved for production, **you cannot add additional related IDP variants** to the same integration, though you may remove the approved one if needed and re-add right IDP(S) and wait for approval from IDP owners.
+
+**Examples:**
+
+- If `bceidbasic` (Basic BCeID) is approved for production, you **cannot** add `bceidbusiness` (Business BCeID) or `bceidboth` (Both variants) to the same integration. You can always de-select `bceidbasic` and select `bceidbusiness` or `bceidboth` and wait for approval.
+- If `githubbcgov` (GitHub BC Gov) is approved for production, you **cannot** add `githubpublic` (GitHub Public) to the same integration, and vice versa. You can always de-select `githubbcgov` and select `githubpublic` and wait for approval.
+
+**To use a different IDP variant** in production, you will need to request a new integration through CSS.
+
+> This restriction is in place to prevent IDP confusion and to ensure that teams maintain clear governance over which identity provider is authorized for each application's user base.
+
+---
 
 ## Client Types
 

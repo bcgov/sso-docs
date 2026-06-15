@@ -51,7 +51,7 @@ This flow ensures that user credentials are only ever handled by Keycloak, and t
 
 ### What is Keycloak's role?
 
-Within the SSO service, Keycloak acts as an **identity broker** — it does not authenticate users itself, but instead mediates authentication by delegating to [supported identity providers (IDPs)](../index.md#supported-identity-providers). Your application only ever communicates with Keycloak using OIDC; Keycloak handles the underlying trust relationships and protocol translations with each upstream IDP transparently.
+Within the SSO service, Keycloak acts as an **identity broker** — it does not authenticate users itself, but instead mediates authentication by delegating to [supported identity providers (IDPs)](./index.md#supported-identity-providers). Your application only ever communicates with Keycloak using OIDC; Keycloak handles the underlying trust relationships and protocol translations with each upstream IDP transparently.
 
 Keycloak supports both **OIDC** and **SAML 2.0** client protocols. While SAML is available for legacy or enterprise systems that require it, **OIDC is strongly recommended** for new integrations. OIDC is a modern, lightweight protocol with broad library support across all major languages and frameworks, simpler token handling via JSON Web Tokens (JWTs), and better alignment with current security best practices.
 

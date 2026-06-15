@@ -31,3 +31,35 @@ The [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) is fully self-serve 
 - A role of **product owner**, **product admin**, or **team lead** on the project
 
 Once you have access, you can submit an integration request directly through the CSS. Provisioning is automated and typically completes within minutes. After provisioning, your client credentials — including the client ID and, for confidential clients, the client secret — are available securely within the CSS.
+
+## Raising an Integration request
+
+1. Sign in to [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/)
+2. Click on `+ Request SSO Integration`
+3. Under `Requester Info`
+   1. Add `Project Name:`, example: Driver's Licensing Portal
+   2. Choose the categories of the user base using your application
+   3. Optionally create or select a team
+   4. You need to be a **product owner** or **technical contact** to proceed further, if yes click `Next`
+4. Under `Basic Info`
+   1. Select `Protocol`. `OpenID Connect` is recommended for most applications as it is modern and popular
+   2. Select `Usecase`. Follow this [guide](./usecases-scenarios.md) to choose right option
+   3. Select `Client Type`. Follow this [guide](./client-types.md) to choose right option
+   4. Choose appropriate `Identity Providers`
+   5. Choose right `Environments`. **Note:** `Development` environment is mandatory and cannot be unchecked
+   6. Enter `Additional Role Attribute`, an optional claim that holds roles assigned to the user. This is useful if your application expects a custom claim name instead of `client_roles`. **Note:** This is not available for SAML integrations
+   7. Click on `Next`
+5. Under `Development`
+   1. Use this [guide](../integrating-your-application/login-guide.md) to customize default login page
+   2. Add your application URI(S) under `Redirect URIs`
+   3. Normally you do not require to modify additional settings but just in case you need to then contact SSO team
+   4. Click `Next`
+   5. Repeat above steps for other environments
+6. Under `Terms and Conditions`, read all the Terms Of Use (TOU) and check `I agree to the Terms and Conditions` and click `Next`
+7. Review your integration information and click `Submit`
+
+### BC Services Card
+
+When you opt-in for BC Services Card identity provider, its expected that you have received formal go-ahead from that team and the last step to configure this IDP is through [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/).
+
+After you select `BC Services Card` under `Identity Providers (S)`, you have to choose `Privacy Zone` and `Attributes`. Please refer to this [guide](../advanced/bc-services-card.md#privacy-zones) for more information on privacy zones. If you further need assistance, please reach out to [IDIM](mailto:idim.consulting@gov.bc.ca) team

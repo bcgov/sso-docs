@@ -67,4 +67,4 @@ This pattern gives users a clear, intentional entry point into the authenticated
 
 - Review the [Do's and Don'ts](./dos-donts.md) guide for a broader set of integration best practices, including token validation, logout handling, and client secret management.
 - See [Client Setup with an Adapter](../integrating-your-application/configuring-your-client.md) for implementation guidance for your language or framework.
-- See [Client Types](../integrating-your-application/client-types.md) if you are unsure whether your application should use a confidential or public client.
+- See [Client Types](../css-application/client-types.md) if you are unsure whether your application should use a confidential or public client.

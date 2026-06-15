@@ -31,6 +31,19 @@ The SSO service supports a range of identity providers (IDPs) to cover different
 
 > **Note:** In line with the BC Government's MFA Everywhere policy **IDIR is no longer available for new integrations**. Teams requiring employee authentication should use **Azure IDIR** instead, which enforces MFA by default. Existing IDIR integrations continue to function and are not affected.
 
+## Features
+
+- **Self-serve integration provisioning** — request and manage OIDC or SAML integrations through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) without involving the SSO team for routine changes.
+- **Multi-IDP federation** — broker authentication across IDIR, Azure IDIR, BCeID (Basic and Business), BC Services Card, Digital Credential, and GitHub BC Gov from a single integration.
+- **Standard and Custom Realm options** — use the shared Standard Realm for most use cases, or request a Custom Realm for teams with unique IDP, protocol, or policy requirements.
+- **OIDC Authorization Code Flow with PKCE** — industry-standard secure login flow for web and mobile applications, with PKCE enforced for public clients.
+- **Service account support** — machine-to-machine authentication via the OAuth 2.0 Client Credentials Flow for backend integrations that do not involve a human user.
+- **Role-based access control (RBAC)** — define roles per integration and assign users to roles through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) or [CSS API](https://api.loginproxy.gov.bc.ca/openapi/swagger/); roles are included in the access token for your application to consume.
+- **Configurable token and session lifetimes** — adjust access token lifespan, refresh token lifespan, and session maximums per integration to match your application's security requirements.
+- **Token signature validation** — all tokens are signed with realm-specific keys and exposed via JWKS endpoints, enabling your application to verify token integrity without a network call to Keycloak.
+- **Programmatic management via CSS API** — automate user and role management using the RESTful [CSS API](https://api.loginproxy.gov.bc.ca/openapi/swagger/), secured with a dedicated API account.
+- **High Availability** — the SSO service is deployed across a primary and a secondary site. In the event of a primary site failure, traffic is automatically redirected to the secondary site, ensuring continued availability of authentication for all integrated applications with minimal disruption.
+
 ## Quickstart
 
 You should be a **product owner, product admin, or technical team lead** for the project before submitting a request, as you will be responsible for managing the integration lifecycle.
@@ -42,7 +55,7 @@ Requesting integration is **fully self-serve** process and typically takes minut
 3. Carefully read and accept the Terms Of Use (TOU) and submit the integration request
 4. Once provisioning is complete, your client credentials are available securely through the CSS Application.
 
-For a step-by-step walkthrough, see the [Getting Started guide](./getting-started/css-app.md).
+For a step-by-step walkthrough, see the [CSS Guide](./css-application/introduction.md#raising-an-integration-request).
 
 ## Hosting on BCGov Private Cloud (OpenShift)?
 
