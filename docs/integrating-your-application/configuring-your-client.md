@@ -78,9 +78,9 @@ For more details on what the Installation JSON contains and how it is used, see 
 
 ### Our Guidance on Libraries and Adapters
 
-The SSO team regularly evaluates OIDC client libraries across common languages and frameworks used by BC Government teams. The goal is to identify well-maintained, standards-compliant libraries that work reliably with Keycloak, so teams can make informed decisions without having to evaluate options from scratch.
+Before selecting a library or adapter, review the official [Keycloak Securing Applications Guide](https://www.keycloak.org/securing-apps/overview). It provides implementation patterns, security considerations, and language-specific guidance for integrating applications and services.
 
-The tables below reflect our current assessment. Libraries that are no longer actively maintained have been excluded. We recommend choosing a library that best fits your technology stack and application type (SPA, server-side, mobile, etc.), using the criteria below as a guide.
+Use the criteria below to evaluate whether a library is suitable for production use in BC Government environments.
 
 **Evaluation criteria:**
 
@@ -93,53 +93,3 @@ The tables below reflect our current assessment. Libraries that are no longer ac
 | **PKCE support** | Required for public clients (SPAs, mobile apps). Without PKCE, public clients are vulnerable to authorization code interception attacks. |
 | **SPA compatibility** | Suitable for browser-based single-page applications where tokens are handled client-side. |
 | **Comments** | Notable use cases, limitations, or ecosystem considerations relevant to BC Government teams. |
-
-> **Note:** Popularity figures are approximate and change over time. They are provided for relative comparison only and should not be the sole basis for library selection. Data collected as of May 2026.
-
-### JavaScript
-
-| Library                                                                            | Being Maintained? | Meets Feature Set | Popularity (~ weekly)    | Open Source | PKCE Support | SPA Support | Comments                                   |
-| ---------------------------------------------------------------------------------- | ----------------- | ----------------- | -------------- | ----------- | ---------------- | -------------- | ------------------------------------------ |
-| [passport-keycloak-bearer](https://www.npmjs.com/package/passport-keycloak-bearer) | &#10004;          | &#10004;          | ~500   | &#10004;    | &#10004;         | &#10004;       |                                            |
-| [oidc-client-ts](https://authts.github.io/oidc-client-ts/)                         | &#10004;          | &#10004;          | ~35k-40k  | &#10004;    | &#10004;         | &#10004;       |
-| [sso-express](https://www.npmjs.com/package/@bcgov-cas/sso-express)                | &#10004;          | &#10004;          | ~100-150    | &#10004;    | &#10004;         | &#10004;       | Being used by some community teams.        |
-| [openid-client](https://www.npmjs.com/package/openid-client)                       | &#10004;          | &#10004;          | ~300k-900k| &#10004;    | &#10004;         |                | For Node.js only.                          |
-| [keycloak-js](https://www.npmjs.com/package/keycloak-js)                           | &#10004;          | &#10004;          | ~90k-120k | &#10004;    | &#10004;         | &#10004;       | Keycloak supported in their documentation. |
-
-### TypeScript
-
-| Library                                                             | Being Maintained? | Meets Feature Set | Popularity (~ weekly)    | Open Source | PKCE Support | SPA Support | Comments                                                         |
-| ------------------------------------------------------------------- | ----------------- | ----------------- | -------------- | ----------- | ---------------- | -------------- | ---------------------------------------------------------------- |
-| [oidc-client-ts](https://authts.github.io/oidc-client-ts/)          | &#10004;          | &#10004;          | ~35k-40k  | &#10004;    | &#10004;         | &#10004;       |                                                                  |
-| [sso-express](https://www.npmjs.com/package/@bcgov-cas/sso-express) | &#10004;          | &#10004;          | ~100-150    | &#10004;    | &#10004;         | &#10004;       | Being used by some community teams. Works for TypeScript.        |
-| [keycloak-js](https://www.npmjs.com/package/keycloak-js)            | &#10004;          | &#10004;          | ~90k-120k | &#10004;    | &#10004;         | &#10004;       | Keycloak supported in their documentation. Works for TypeScript. |
-
-### C#/.Net
-
-| Library                                                                               | Being Maintained? | Meets Feature Set | Popularity (~ weekly) | Open Source | PKCE Support | SPA Support | Comments |
-| ------------------------------------------------------------------------------------- | ----------------- | ----------------- | ---------- | ----------- | ---------------- | -------------- | -------- |
-| [IdentityModel.OidcClient](https://github.com/IdentityModel/IdentityModel.OidcClient) | &#10004;          | &#10004;          | N/A        |             | &#10004;         |                |          |
-
-### Python
-
-| Library                                                                                | Being Maintained? | Meets Feature Set | Popularity (~ weekly)  | Open Source | PKCE Support | SPA Support | Comments |
-| -------------------------------------------------------------------------------------- | ----------------- | ----------------- | ----------- | ----------- | ---------------- | -------------- | -------- |
-| [JWTConnect-Python-OidcRP](https://github.com/IdentityPython/JWTConnect-Python-OidcRP) | &#10004;          | &#10004;          | ~400 | &#10004;    | &#10004;         | &#10004;       |          |
-| [pyoidc](https://github.com/OpenIDC/pyoidc/)                                           | &#10004;          | &#10004;          | N/A         | &#10004;    | &#10004;         | &#10004;       |          |
-
-### Java
-
-| Library                                                                                           | Being Maintained? | Meets Feature Set | Popularity         | Open Source | PKCE Support | SPA Support | Comments |
-| ------------------------------------------------------------------------------------------------- | ----------------- | ----------------- | ------------------ | ----------- | ---------------- | -------------- | -------- |
-| [Spring Security](https://www.baeldung.com/spring-security-openid-connect)                        | &#10004;          | &#10004;          | Very high | &#10004;    | N/A              |                |          |
-| [SpringBoot ](https://www.keycloak.org/docs/latest/securing_apps/index.html#_spring_boot_adapter) | &#10004;          | &#10004;          | Very high | &#10004;    | N/A              |                |          |
-
-### AngularJS
-
-| Library                                                                           | Being Maintained? | Meets Feature Set | Popularity (~ weekly)    | Open Source | PKCE Support | SPA Support | Comments |
-| --------------------------------------------------------------------------------- | ----------------- | ----------------- | ------------- | ----------- | ---------------- | -------------- | -------- |
-| [angular-auth-oidc-client](https://github.com/damienbod/angular-auth-oidc-client) | &#10004;          | &#10004;          | ~25k-30k | &#10004;    | &#10004;         | &#10004;       |          |
-
-### Additional Notes
-
-- Libraries being considered which were not maintained are not included in this list.
