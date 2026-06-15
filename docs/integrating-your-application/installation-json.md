@@ -62,7 +62,7 @@ Once an IDP variant has been approved for production, **you cannot add additiona
 - **Confidential clients** include a `credentials.secret` field. This secret must be stored securely on your back end and never exposed to the browser or end users.
 - **Public clients** omit the client secret entirely and set `"public-client": true`. They must use PKCE to secure the Authorization Code Flow.
 
-For more details, see [client types](client-types).
+For more details, see [client types](../css-application/client-types).
 
 Below is an example of an installation JSON for a `public` client.
 
