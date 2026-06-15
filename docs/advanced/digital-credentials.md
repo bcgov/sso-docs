@@ -1,19 +1,21 @@
 ---
-sidebar_position: 10
+sidebar_position: 2
 title: Digital Credentials
 ---
 
+## Overview
+
+Digital credentials are the electronic equivalent of physical documents that you already have. It's a digital equivalent of your physical documents that you could store in a secure digital wallet on your mobile device.
+
 ## Limitations
 
-The Pathfinder SSO service supports **Digital Credentials only for OpenID Connect (OIDC) clients**. Digital Credentials are not available for SAML clients due to SAML’s lack of support for the required request query parameter `pres_req_conf_id`.
-
+The SSO service supports **Digital Credentials only for OpenID Connect (OIDC) clients**. Digital Credentials are not available for SAML clients due to SAML’s lack of support for the required request query parameter `pres_req_conf_id`.
 
 When users authenticate using Digital Credentials, we **do not store user attributes** after a successful login. As a result, we do not have access to persistent user data, which is required to manage user roles or permissions. For this reason, **role management is not supported** for Digital Credential integrations.
 
 This design intentionally prioritizes **user privacy and security**. By not retaining personal or identifying information, the service aligns with decentralized identity principles and minimizes data retention risks.
 
 Because no user‑specific data is retained, **Single Sign‑On (SSO) across client applications is not supported** for Digital Credentials. Users must provide consent each time they authenticate with a new application using Digital Credentials.
-
 
 ## Using the `keycloak-js` Library
 

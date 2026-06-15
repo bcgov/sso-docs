@@ -1,34 +1,28 @@
 ---
 sidebar_position: 1
-title: Gold Identity Mapper Guide
-description: Our gold custom service and how we work
+title: User Identity Mappers
+description: List of identity provider specific user attribute mappers
 ---
 
 **Note**: The first column (`User Property/Attribute`) is just a reference title and must not be consumed for attribute mapping, instead please use the last column (`Standard Realm - OIDC Payload`) to use it as the claim name in your Identity Providers Mappers configuration.
 
 ---
 
-## IDP Attributes & Mappers
+## IDIR
 
-### IDIR
+**Note**: The SAML payload contains `<NameID>`, whose value is same as that of the `idir_user_guid` will be mapped to `username` of the logging in user inside parent realm
 
-**Note**:
+| User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper                     | Standard Realm - OIDC Payload |
+| ------------------------------------- | ---------------------- | ------------------- | ------------------------------------------------ | ----------------------------- |
+| First Name                            | first_name             | given_name          | given_name                                       | given_name                    |
+| Last Name                             | last_name              | family_name         | family_name                                      | family_name                   |
+| Email                                 | email                  | email               | email                                            | email                         |
+| Display Name                          | display_name           | display_name        | display_name                                     | display_name                  |
+| IDIR Username                         | idir_username          | idir_username       | idir_username                                    | idir_username                 |
+| IDIR User GUID                        | idir_user_guid         | idir_user_guid      | idir_user_guid                                   | idir_user_guid                |
+| Keycloak Generated Preferred Username | idir_user_guid         | preferred_username  | preferred_username=`{{preferred_username}}@idir` | preferred_username            |
 
-- In Gold, the SAML payload contains `<NameID>`, whose value is same as that of the `idir_user_guid` will be mapped to `username` of the logging in user inside parent realm
-
-  | User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper                     | Standard Realm - OIDC Payload |
-  | ------------------------------------- | ---------------------- | ------------------- | ------------------------------------------------ | ----------------------------- |
-  | First Name                            | first_name             | given_name          | given_name                                       | given_name                    |
-  | Last Name                             | last_name              | family_name         | family_name                                      | family_name                   |
-  | Email                                 | email                  | email               | email                                            | email                         |
-  | Display Name                          | display_name           | display_name        | display_name                                     | display_name                  |
-  | IDIR Username                         | idir_username          | idir_username       | idir_username                                    | idir_username                 |
-  | IDIR User GUID                        | idir_user_guid         | idir_user_guid      | idir_user_guid                                   | idir_user_guid                |
-  | Keycloak Generated Preferred Username | idir_user_guid         | preferred_username  | preferred_username=`{{preferred_username}}@idir` | preferred_username            |
-
-### Azure IDIR
-
-In Gold
+## Azure IDIR
 
 | User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper                          | Standard Realm - OIDC Payload |
 | ------------------------------------- | ---------------------- | ------------------- | ----------------------------------------------------- | ----------------------------- |
@@ -41,113 +35,102 @@ In Gold
 | User Principal Name                   | user_principal_name    | user_principal_name | user_principal_name                                   | user_principal_name           |
 | Keycloak Generated Preferred Username | idir_user_guid         | preferred_username  | preferred_username=`{{preferred_username}}@azureidir` | preferred_username            |
 
-### Basic BCeID
+## Basic BCeID
 
-- In Gold
+| User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper                        | Standard Realm - OIDC Payload |
+| ------------------------------------- | ---------------------- | ------------------- | --------------------------------------------------- | ----------------------------- |
+| Email                                 | email                  | email               | email                                               | email                         |
+| Display Name                          | display_name           | display_name        | display_name                                        | display_name                  |
+| Display Name                          | display_name           | display_name        | given_name                                          | given_name                    |
+| BCeID Username                        | bceid_username         | bceid_username      | bceid_username                                      | bceid_username                |
+| BCeID User GUID                       | bceid_user_guid        | bceid_user_guid     | bceid_user_guid                                     | bceid_user_guid               |
+| Keycloak Generated Preferred Username | bceid_user_guid        | preferred_username  | preferred_username=`{{bceid_user_guid}}@bceidbasic` | preferred_username            |
 
-  | User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper                        | Standard Realm - OIDC Payload |
-  | ------------------------------------- | ---------------------- | ------------------- | --------------------------------------------------- | ----------------------------- |
-  | Email                                 | email                  | email               | email                                               | email                         |
-  | Display Name                          | display_name           | display_name        | display_name                                        | display_name                  |
-  | Display Name                          | display_name           | display_name        | given_name                                          | given_name                    |
-  | BCeID Username                        | bceid_username         | bceid_username      | bceid_username                                      | bceid_username                |
-  | BCeID User GUID                       | bceid_user_guid        | bceid_user_guid     | bceid_user_guid                                     | bceid_user_guid               |
-  | Keycloak Generated Preferred Username | bceid_user_guid        | preferred_username  | preferred_username=`{{bceid_user_guid}}@bceidbasic` | preferred_username            |
+## Business BCeID
 
-### Business BCeID
+| User Property/Attribute               | IDP - SAML Payload(\*)  | Parent Realm Mapper | Custom/Standard Realm Mapper                           | Standard Realm - OIDC Payload |
+| ------------------------------------- | ----------------------- | ------------------- | ------------------------------------------------------ | ----------------------------- |
+| Email                                 | email                   | email               | email                                                  | email                         |
+| Display Name                          | display_name            | display_name        | display_name                                           | display_name                  |
+| Display Name                          | display_name            | display_name        | given_name                                             | given_name                    |
+| BCeID Username                        | bceid_username          | bceid_username      | bceid_username                                         | bceid_username                |
+| BCeID User GUID                       | bceid_user_guid         | bceid_user_guid     | bceid_user_guid                                        | bceid_user_guid               |
+| Keycloak Generated Preferred Username | bceid_user_guid         | preferred_username  | preferred_username=`{{bceid_user_guid}}@bceidbusiness` | preferred_username            |
+| BCeID Business Guid                   | SMGOV_BUSINESSGUID      | bceid_business_guid | bceid_business_guid                                    | bceid_business_guid           |
+| BCeID Business Name                   | SMGOV_BUSINESSLEGALNAME | bceid_business_name | bceid_business_name                                    | bceid_business_name           |
 
-- In Gold
+## BCeID Both
 
-  | User Property/Attribute               | IDP - SAML Payload(\*)  | Parent Realm Mapper | Custom/Standard Realm Mapper                           | Standard Realm - OIDC Payload |
-  | ------------------------------------- | ----------------------- | ------------------- | ------------------------------------------------------ | ----------------------------- |
-  | Email                                 | email                   | email               | email                                                  | email                         |
-  | Display Name                          | display_name            | display_name        | display_name                                           | display_name                  |
-  | Display Name                          | display_name            | display_name        | given_name                                             | given_name                    |
-  | BCeID Username                        | bceid_username          | bceid_username      | bceid_username                                         | bceid_username                |
-  | BCeID User GUID                       | bceid_user_guid         | bceid_user_guid     | bceid_user_guid                                        | bceid_user_guid               |
-  | Keycloak Generated Preferred Username | bceid_user_guid         | preferred_username  | preferred_username=`{{bceid_user_guid}}@bceidbusiness` | preferred_username            |
-  | BCeID Business Guid                   | SMGOV_BUSINESSGUID      | bceid_business_guid | bceid_business_guid                                    | bceid_business_guid           |
-  | BCeID Business Name                   | SMGOV_BUSINESSLEGALNAME | bceid_business_name | bceid_business_name                                    | bceid_business_name           |
+| User Property/Attribute               | IDP - SAML Payload(\*)  | Parent Realm Mapper | Custom/Standard Realm Mapper                       | Standard Realm - OIDC Payload |
+| ------------------------------------- | ----------------------- | ------------------- | -------------------------------------------------- | ----------------------------- |
+| Email                                 | email                   | email               | email                                              | email                         |
+| Display Name                          | display_name            | display_name        | display_name                                       | display_name                  |
+| Display Name                          | display_name            | display_name        | given_name                                         | given_name                    |
+| BCeID Username                        | bceid_username          | bceid_username      | bceid_username                                     | bceid_username                |
+| BCeID User GUID                       | bceid_user_guid         | bceid_user_guid     | bceid_user_guid                                    | bceid_user_guid               |
+| Keycloak Generated Preferred Username | bceid_user_guid         | preferred_username  | preferred_username=`{{bceid_user_guid}}@bceidboth` | preferred_username            |
+| BCeID Business Guid                   | SMGOV_BUSINESSGUID      | bceid_business_guid | bceid_business_guid                                | bceid_business_guid           |
+| BCeID Business Name                   | SMGOV_BUSINESSLEGALNAME | bceid_business_name | bceid_business_name                                | bceid_business_name           |
 
-### BCeID Both
+## GitHub Public
 
-- In Gold
+| User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper             | Standard Realm - OIDC Payload            |
+| ------------------------------------- | ---------------------- | ------------------- | ---------------------------------------- | ---------------------------------------- |
+| Email                                 | email                  | email               | email                                    | email                                    |
+| Display Name                          | name                   | display_name        | display_name                             | display_name                             |
+| Display Name                          | name                   | display_name        | display_name                             | name                                     |
+| Display Name                          | name                   | display_name        | given_name                               | given_name                               |
+| GitHub ID                             | id                     | github_id           | github_id                                | github_id                                |
+| Keycloak Generated Preferred Username | id                     | preferred_username  | preferred_username=`{{id}}@githubpublic` | preferred_username=`{{id}}@githubpublic` |
+| GitHub Username                       | login                  | github_username     | github_username                          | github_username                          |
+| BCGov Github Membership               |                        | org_verified        | org_verified                             | org_verified                             |
+| BCGov Github Orgs                     |                        | orgs                | orgs                                     | orgs                                     |
 
-  | User Property/Attribute               | IDP - SAML Payload(\*)  | Parent Realm Mapper | Custom/Standard Realm Mapper                       | Standard Realm - OIDC Payload |
-  | ------------------------------------- | ----------------------- | ------------------- | -------------------------------------------------- | ----------------------------- |
-  | Email                                 | email                   | email               | email                                              | email                         |
-  | Display Name                          | display_name            | display_name        | display_name                                       | display_name                  |
-  | Display Name                          | display_name            | display_name        | given_name                                         | given_name                    |
-  | BCeID Username                        | bceid_username          | bceid_username      | bceid_username                                     | bceid_username                |
-  | BCeID User GUID                       | bceid_user_guid         | bceid_user_guid     | bceid_user_guid                                    | bceid_user_guid               |
-  | Keycloak Generated Preferred Username | bceid_user_guid         | preferred_username  | preferred_username=`{{bceid_user_guid}}@bceidboth` | preferred_username            |
-  | BCeID Business Guid                   | SMGOV_BUSINESSGUID      | bceid_business_guid | bceid_business_guid                                | bceid_business_guid           |
-  | BCeID Business Name                   | SMGOV_BUSINESSLEGALNAME | bceid_business_name | bceid_business_name                                | bceid_business_name           |
+## GitHub BCGov
 
-### GitHub Public
+| User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper            | Standard Realm - OIDC Payload           |
+| ------------------------------------- | ---------------------- | ------------------- | --------------------------------------- | --------------------------------------- |
+| Email                                 | email                  | email               | email                                   | email                                   |
+| Display Name                          | name                   | display_name        | display_name                            | display_name                            |
+| Display Name                          | name                   | display_name        | display_name                            | name                                    |
+| Display Name                          | name                   | display_name        | given_name                              | given_name                              |
+| GitHub ID                             | id                     | github_id           | github_id                               | github_id                               |
+| Keycloak Generated Preferred Username | id                     | preferred_username  | preferred_username=`{{id}}@githubbcgov` | preferred_username=`{{id}}@githubbcgov` |
+| GitHub Username                       | login                  | github_username     | github_username                         | github_username                         |
+| BCGov Github Membership               |                        | org_verified        | org_verified                            | org_verified                            |
+| BCGov Github Orgs                     |                        | orgs                | orgs                                    | orgs                                    |
 
-- In Gold
+**Note:**
 
-  | User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper             | Standard Realm - OIDC Payload            |
-  | ------------------------------------- | ---------------------- | ------------------- | ---------------------------------------- | ---------------------------------------- |
-  | Email                                 | email                  | email               | email                                    | email                                    |
-  | Display Name                          | name                   | display_name        | display_name                             | display_name                             |
-  | Display Name                          | name                   | display_name        | display_name                             | name                                     |
-  | Display Name                          | name                   | display_name        | given_name                               | given_name                               |
-  | GitHub ID                             | id                     | github_id           | github_id                                | github_id                                |
-  | Keycloak Generated Preferred Username | id                     | preferred_username  | preferred_username=`{{id}}@githubpublic` | preferred_username=`{{id}}@githubpublic` |
-  | GitHub Username                       | login                  | github_username     | github_username                          | github_username                          |
-  | BCGov Github Membership               |                        | org_verified        | org_verified                             | org_verified                             |
-  | BCGov Github Orgs                     |                        | orgs                | orgs                                     | orgs                                     |
+- `org_verified`: `true` if the authenticated user has `bcgov` GitHub org membership, otherwise, `false`.
+- `orgs`: `space-separated` list of BCGov GitHub org that the authenticated user has a membership of.
 
-### GitHub BCGov
+## BC Services Card
 
-- In Gold
+Clients can request additional claims when creating their client in the CSS App. See [here](https://id.gov.bc.ca/oauth2/claim-types) for an up-to-date list of available claims. The BCSC sub will not be available for selection in the app, but will be automatically added to the token under the `bcsc_did` claim. The received token's sub and preferred_username claim can be used as an identifier which will include the `@<idp-name>` suffix.
 
-  | User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper            | Standard Realm - OIDC Payload           |
-  | ------------------------------------- | ---------------------- | ------------------- | --------------------------------------- | --------------------------------------- |
-  | Email                                 | email                  | email               | email                                   | email                                   |
-  | Display Name                          | name                   | display_name        | display_name                            | display_name                            |
-  | Display Name                          | name                   | display_name        | display_name                            | name                                    |
-  | Display Name                          | name                   | display_name        | given_name                              | given_name                              |
-  | GitHub ID                             | id                     | github_id           | github_id                               | github_id                               |
-  | Keycloak Generated Preferred Username | id                     | preferred_username  | preferred_username=`{{id}}@githubbcgov` | preferred_username=`{{id}}@githubbcgov` |
-  | GitHub Username                       | login                  | github_username     | github_username                         | github_username                         |
-  | BCGov Github Membership               |                        | org_verified        | org_verified                            | org_verified                            |
-  | BCGov Github Orgs                     |                        | orgs                | orgs                                    | orgs                                    |
-
-  - `org_verified`: `true` if the authenticated user has `bcgov` GitHub org membership, otherwise, `false`.
-  - `orgs`: `space-separated` list of BCGov GitHub org that the authenticated user has a membership of.
-
-### BC Services Card
-
-- In Gold
-- Clients can request additional claims when creating their client in the CSS App. See [here](https://id.gov.bc.ca/oauth2/claim-types) for an up-to-date list of available claims. The BCSC sub will not be available for selection in the app, but will be automatically added to the token under the `bcsc_did` claim. The received token's sub and preferred_username claim can be used as an identifier which will include the `@<idp-name>` suffix.
-- The `idp-name` will be generated from your client name and id
+The `idp-name` will be generated from your client name and id
 
   | User Property/Attribute               | IDP - Payload(\*) | Custom/Standard Realm Mapper            | Standard Realm - OIDC Payload           |
   | ------------------------------------- | ----------------- | --------------------------------------- | --------------------------------------- |
   | Keycloak Generated Preferred Username | sub               | preferred_username=`{{sub}}@<idp-name>` | preferred_username=`{{sub}}@<idp-name>` |
   | BC Services Card Subject ID           | sub               | bcsc_did                                | bcsc_did                                |
 
-### Digital Credential
+## Digital Credential
 
-- In Gold
-- The requested credential information will be in JSON format under the vc_presented_attributes claim
+The requested credential information will be in JSON format under the vc_presented_attributes claim
 
-  | User Property/Attribute                   | IDP - Payload(\*)       | Custom/Standard Realm Mapper                   | Standard Realm - OIDC Payload                  |
-  | ----------------------------------------- | ----------------------- | ---------------------------------------------- | ---------------------------------------------- |
-  | Keycloak Generated Preferred Username     | sub                     | preferred_username=`{{sub}}@digitalcredential` | preferred_username=`{{sub}}@digitalcredential` |
-  | Digital Credential Content (JSON)         | vc_presented_attributes | vc_presented_attributes                        | vc_presented_attributes                        |
-  | The Presentation Request Configuration ID | pres_req_conf_id        | pres_req_conf_id                               | pres_req_conf_id                               |
+| User Property/Attribute                   | IDP - Payload(\*)       | Custom/Standard Realm Mapper                   | Standard Realm - OIDC Payload                  |
+| ----------------------------------------- | ----------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| Keycloak Generated Preferred Username     | sub                     | preferred_username=`{{sub}}@digitalcredential` | preferred_username=`{{sub}}@digitalcredential` |
+| Digital Credential Content (JSON)         | vc_presented_attributes | vc_presented_attributes                        | vc_presented_attributes                        |
+| The Presentation Request Configuration ID | pres_req_conf_id        | pres_req_conf_id                               | pres_req_conf_id                               |
 
-### One-Time Passcode
+## One-Time Passcode
 
-- In Gold
-
-  | User Property/Attribute               | IDP Payload(\*) | Custom/Standard Realm Mapper     | Standard Realm - OIDC Payload |
-  | ------------------------------------- | --------------- | -------------------------------- | ----------------------------- |
-  | Email                                 | email           | email                            | email                         |
-  | Keycloak Generated Preferred Username | sub             | preferred_username=`{{sub@otp}}` | preferred_username=`{{ppid}}` |
+| User Property/Attribute               | IDP Payload(\*) | Custom/Standard Realm Mapper     | Standard Realm - OIDC Payload |
+| ------------------------------------- | --------------- | -------------------------------- | ----------------------------- |
+| Email                                 | email           | email                            | email                         |
+| Keycloak Generated Preferred Username | sub             | preferred_username=`{{sub@otp}}` | preferred_username=`{{ppid}}` |
 
 **Note**: A Pairwise Pseudonymous Identifier is an unique identifier of an user in each [privacy zone](./bc-services-card#privacy-zones)

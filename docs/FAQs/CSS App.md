@@ -20,11 +20,13 @@ title: "How to add a new admin in CSS App?",
 content: <><p>To add a new admin, please refer to this <a href={"https://stackoverflow.developer.gov.bc.ca/questions/1231/1232#1232"}>discussion</a>.</p></>},
 {title: "What's the business level description of the Common Hosted Single Sign On App's use cases?",
 content: <><p>As an IDIR user you make use of our CSS App; In the CSS App you can request one of 3 use cases:
+
 <ul>
  <li>Browser Login</li>
  <li>Service Account</li>
  <li>Browser Login and Service Account</li>
 </ul>
+
 For more information, please refer to the following <a href={"https://stackoverflow.developer.gov.bc.ca/questions/984/985#985"}>discussion</a> thread. </p></>},
 {title: "Once I sign up for a test BCeID, is there an easy way to find my GUID for use in CSS App?",
 content: <><p>Unfortunately, it’s IDIM’s policy that folks can’t “phish” for individual BCeIDs by name. They have to know the GUID to find the data.</p></>},
