@@ -160,7 +160,7 @@ When a client is configured with multiple IDPs, Keycloak displays a login page p
 | GitHub BC Gov           | `githubbcgov`       |
 | GitHub Public           | `githubpublic`      |
 | Digital Credential      | `digitalcredential` |
-| BC Services Card        | `bcservicescard`    |
+| BC Services Card        | Your client ID      |
 
 ---
 
