@@ -92,6 +92,6 @@ Navigate to [OIDC & PKCE](https://auth0.com/docs/get-started/authentication-and-
 
 The diagram below can help you determine which client type is right for your application. Use it as a guide based on your application's architecture and security requirements.
 
-![Private vs Confidential](client_type_Dec2023.svg)
+![Private vs Confidential](/img/client_type_Dec2023.svg)
 
 If you are still unsure which client type to choose, or if your use case does not fit neatly into either category, reach out to the [SSO team](../index.md#support-and-contact) for guidance. We can help assess your application's needs and recommend the most appropriate configuration

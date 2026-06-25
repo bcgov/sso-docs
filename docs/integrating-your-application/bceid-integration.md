@@ -15,9 +15,9 @@ please ensure you have BCeID accounts mapped to the correct BCeID environment li
 
 | SSO CSS APP GOLD        | BCeID Env           | Visual Clue          |
 | ------------- |:-------------:| :-----: |
-| DEV     | BCeID DEV| ![bceid dev banner](./bceid-dev-banner.png) |
-| TEST      | BCeID TEST       |   ![bceid test banner](./bceid-test-banner.png) |
-| PROD | BCeID PROD      |    ![bceid prod banner](./bceid-banner.png) |
+| DEV     | BCeID DEV| ![bceid dev banner](/img/bceid-dev-banner.png) |
+| TEST      | BCeID TEST       |   ![bceid test banner](/img/bceid-test-banner.png) |
+| PROD | BCeID PROD      |    ![bceid prod banner](/img/bceid-banner.png) |
 
 **Note:** If you want to point other instances of your application to your clients (such as ephemeral instances that are spun up for pull request validation or something), feel free to use DEV and TEST (but you will have to have valid redirect URIs configured for those instances).
 

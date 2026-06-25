@@ -35,7 +35,7 @@ If a user's IDIR account is not tied to a `gov.bc.ca` email address, they may ne
 
 If users see an Azure IDIR sign-in error, confirm they have an active BC Government Azure IDIR account.
 
-![Azure IDIR error](./azureidir-error.png)
+![Azure IDIR error](/img/azureidir-error.png)
 
 ## Common Login Issues
 
@@ -61,7 +61,7 @@ For implementation guidance, see [vc-authn-oidc best practices](https://github.c
 
 BC Services Card provides an OIDC authentication service and is available in production. Because of the sensitivity of BCSC identity data, integrations require approval from the IDIM team before BCSC can be enabled as a login option.
 
-![Services Card](./services-card.png)
+![Services Card](/img/services-card.png)
 
 ### Options for Teams with BCSC Requirements
 

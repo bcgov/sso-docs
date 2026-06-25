@@ -12,13 +12,13 @@ tags:
 
 Custom authentication flows can be created & used by any team with a custom realm. Navigate to the Authentication menu item on the left hand side. Any of the existing flows can be modified, however it's recommended that you make a copy of the existing `First Broker Login` and `Browser` flows (these are most common to be modified). Modifying the existing flows could result in a lockout in your custom realm.
 
-![Keycloak Custom Authentication Flows](./keycloak_auth_flows.png)
+![Keycloak Custom Authentication Flows](/img/keycloak_auth_flows.png)
 
 You can now modify the flow to your needs. Once the flow ready, you can apply it to either a client or an existing identity provider.
 
-![Keycloak Client Authentication Flow Override](./kc_client_auth_flow_override.png)
+![Keycloak Client Authentication Flow Override](/img/kc_client_auth_flow_override.png)
 
-![Keycloak IDP Authentication Flows](./kc_idp_flow_override.png)
+![Keycloak IDP Authentication Flows](/img/kc_idp_flow_override.png)
 
 ---
 
@@ -63,4 +63,4 @@ Below are the Do(s) and Don't(s) when working with a custom realm. Please contac
     - `https://github.com/bcgov/sso-keycloak/tree/main/docker/keycloak#custom-extensions`
 11. since we don't have a scenario that users regster via Keycloak, and the Keycloak services act as a `IDP broker`, the recommended realm `Login` configs are following:
 
-![Keycloak Recommended Configuration](./keycloak_recommended_config.png)
+![Keycloak Recommended Configuration](/img/keycloak_recommended_config.png)

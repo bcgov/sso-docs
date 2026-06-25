@@ -21,7 +21,7 @@ The CSS was built to abstract away the complexity of the native Keycloak Admin U
 - Promoting integrations across environments (Development, Test, Production)
 - Retrieving client credentials securely
 
-![Overview or SSO Standard Service](./keycloak_overview_Dec2023.png)
+![Overview or SSO Standard Service](/img/keycloak_overview_Dec2023.png)
 
 ## Accessing the CSS
 

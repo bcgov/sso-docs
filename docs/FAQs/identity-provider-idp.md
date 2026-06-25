@@ -56,17 +56,17 @@ Since every BC Services Card integration is different in terms of attribute set 
 
 Find the BCSC identity provider you created and select the `Mappers` tab. The first attribute we're going to import is the directed identifier (DID). Click the `Create` button and fill out the details as below:
 
-![BCSC Sub DID Mapper](./bcsc_sub_did.png)
+![BCSC Sub DID Mapper](/img/bcsc_sub_did.png)
 
 As you can see we've taken the `sub` (subject) claim and mapped it as attribute `did`.
 
 Following the same pattern as above, we also import the `given_name` claim as the `firstName` value for the user.
 
-![BCSC given name mapper](./bcsc_givenname.png)
+![BCSC given name mapper](/img/bcsc_givenname.png)
 
 **Note on the Username Mapper:** The SSO team highly recommends that your team uses a `username` mapper which includes the alias in your username. This will ensure you're able to search for users by IDP type in the interface and elsewhere; it will also ensure there's no username collisions between IDPs. Here is a sample of what it should look like:
 
-![BCSC Username DID Mapper](./bcsc_username_did.png)
+![BCSC Username DID Mapper](/img/bcsc_username_did.png)
 
 ### Create Client Mappers
 
@@ -88,7 +88,7 @@ Navigate to your client using the `Clients` link. Once selected click the `Clien
 
 - *Add to userinfo* -\> On
 
-![BCSC Client Mapper](./bcsc_firstname_mapper.png)
+![BCSC Client Mapper](/img/bcsc_firstname_mapper.png)
 
 Add as many mappers as you need. Once the above is in place, you will have a working BCSC login flow through Keycloak with the attributes available to your team in the token(s).
 

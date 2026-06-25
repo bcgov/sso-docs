@@ -42,7 +42,36 @@ Although the SSO service supports both SAML and OIDC for client integration with
 
 ## How to share Keycloak Realm between application teams without sharing the admin credentials?
 
-The SSO Service is built on top of RedHat Build of Keycloak(RHBK) and it offers Standard and Custom realms. The applications integrating through Standard realm does not have access to Keycloak native admin UI but are provided with [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) to manage their integration instead. However, teams provisioned with custom realm do have access to their realm's admin UI and can use Keycloak's fine-grained admin permissions feature to manage admin access in the realm. Please follow this [guide](https://www.keycloak.org/docs/latest/server_admin/#_fine_grained_permissions) complete the setup
+The SSO Service is built on top of RedHat Build of Keycloak(RHBK) and it offers Standard and Custom realms. The applications integrating through Standard realm does not have access to Keycloak native admin UI but are provided with [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) to manage their integration instead. However, teams provisioned with custom realm do have access to their realm's admin UI and can use Keycloak's fine-grained admin permissions (FGAP) feature to manage admin access in the realm. Please follow this [guide](https://www.keycloak.org/docs/latest/server_admin/#enabling-admin-permissions-to-a-realm) to learn more.
+
+FGAP in Keycloak let you precisely control who can do what on which specific admin resources, instead of giving broad admin roles. It works by combining four things:
+
+1. Resources → what is being managed
+   Examples: users, a specific client, a group
+
+2. Scopes → what action is allowed
+   Examples: view, manage, configure
+
+3. Policies → who is allowed
+   Examples: users with a role, a group, custom rules
+
+4. Permissions → the rule that ties everything together
+   (resource + scope + policy)
+
+### How it works?
+
+When an admin tries to perform an action, Keycloak checks: “Does this user’s policy allow this action (scope) on this resource?”
+
+Admin action → FGAP check → policy evaluation → allow / deny
+
+###  When to Use FGAP?
+
+Use it when you need:
+
+1. Delegated administration
+2. Multi-tenant admin isolation
+3. Per-team resource ownership
+4. Least-privilege admin access
 
 ---
 
@@ -50,44 +79,47 @@ The SSO Service is built on top of RedHat Build of Keycloak(RHBK) and it offers 
 
 ### Overview
 
-Testing pages protected by Keycloak requires authenticating within your Cypress test suite. This section outlines two approaches: using a Keycloak integration library and mocking authentication in tests (recommended best practice).
+Testing pages protected by Keycloak requires authenticating within your Cypress test suite. This section outlines two approaches: 
 
-### Approach 1: Use the cypress-keycloak Package
+1. Using a Keycloak integration library 
+2. Mocking authentication in tests (recommended best practice).
 
-The [cypress-keycloak npm package](https://www.npmjs.com/package/cypress-keycloak) has been updated and is now compatible with recent Cypress versions.
+### Approach 1: Use the `cypress-keycloak` Package
 
-**Installation:**
-
-```sh
-npm install cypress-keycloak
-```
-
-**Configuration:**
-
-Add credentials to your `cypress.env.json`:
-
-```json
-{
-  "username": "<your-username>",
-  "password": "<your-password>",
-  "host": "<your-keycloak-host>",
-  "baseUrl": "<your-app-url>",
-  "authRealm": "<realm-name>",
-  "authClientId": "<client-id>",
-  "authUrl": "https://dev.oidc.gov.bc.ca"
-}
-```
-
-**Usage in tests:**
+The [cypress-keycloak](https://www.npmjs.com/package/cypress-keycloak) npm package has been updated and is now compatible with recent Cypress versions.
 
 ```js
-beforeEach(() => {
-  cy.logout();
-  cy.login();
-});
+describe('thing', () => {
+  beforeEach(() => {
+    cy.login({
+      root: 'https://dev.loginproxy.gov.bc.ca',
+      realm: 'standard',
+      username: '<USERNAME>',
+      password: '<PASSWORD>',
+      client_id: '<CLIENT_ID>',
+      redirect_uri: 'https://<YOUR_APPLICATION_URI>/',
+    });
 
-afterEach(() => {
-  cy.logout();
+    // or login with OTP
+    cy.loginOTP({
+      root: 'https://dev.loginproxy.gov.bc.ca',
+      realm: 'standard',
+      username: '<USERNAME>',
+      password: '<PASSWORD>',
+      client_id: '<CLIENT_ID>',
+      redirect_uri: 'https://<YOUR_APPLICATION_URI>/',
+      otp_secret: '<OTP_SECRET>', // e.g. 32 chars
+      otp_credential_id: '<CREDENTIAL_ID>', // e.g. 36 chars
+    });
+  });
+
+  afterEach(() => {
+    cy.logout({
+      root: 'https://dev.loginproxy.gov.bc.ca',
+      realm: 'standard',
+      post_logout_redirect_uri: 'https://<YOUR_APPLICATION_URI>/',
+    });
+  });
 });
 ```
 
@@ -139,7 +171,7 @@ This returns a JSON response containing the client details, including the `id` f
 **Example using curl:**
 
 ```sh
-curl -X GET "https://dev.oidc.gov.bc.ca/admin/realms/your-realm/clients?clientId=your-client-id" \
+curl -X GET "https://dev.loginproxy.gov.bc.ca/auth/admin/realms/<YOUR_CUSTOM_REALM>/clients?clientId=<YOUR_CLIENT_ID>" \
   -H "Authorization: Bearer $ACCESS_TOKEN"
 ```
 
@@ -151,15 +183,15 @@ The time zone used is PST (Pacific Standard Time)
 
 ---
 
-## Does the SSO/Keycloak support indigenous characters?
+## Does the SSO Keycloak support indigenous characters?
 
 Yes, it does
 
-![indigenous-characters](./indigenous-characters.png)
+![indigenous-characters](/img/indigenous-characters.png)
 
 ---
 
-## When using the IDIR IDP is there a way to automatically detect the BC Gov VPN so the user doesn't have to enter their credentials? E.g. Compass Intranet?
+## When using the IDIR IDP is there a way to automatically detect the BC Government VPN so the user doesn't have to enter their credentials? E.g. Compass Intranet?
 
 ### Integrated Windows Authentication (IWA)
 
@@ -208,7 +240,7 @@ If you need to bypass IWA (for example, to test explicit login flows):
 
 ---
 
-## Could SSO/Keycloak be used to allow members of the federal gov to authenticate and access resources?
+## Could SSO Keycloak be used to allow members of the federal government to authenticate and access resources?
 
 This is restricted to BC Government only at the moment.
 
@@ -218,16 +250,16 @@ This is restricted to BC Government only at the moment.
 
 There are a couple approaches to this:
 
-- Using the Azure (graph) API to lookup the user. This is the more modern approach which allows the use of a service token to make a REST callout. You can setup your own API service account at https://entra.microsoft.com/#home. Note that you will have to grant the `User.ReadAll` permission to your service account. 
+- Using the Azure (graph) API to lookup the user. This is the more modern approach which allows the use of a service token to make a REST callout. You can setup your own API service account at `https://entra.microsoft.com/#home`. Note that you will have to grant the `User.ReadAll` permission to your service account
 
 ```sh
-https://github.com/bcgov/sso-requests/blob/bc195a0db05fb50d5ac95d24046791327caa16c7/lambda/app/src/bceid-webservice-proxy/idir.ts#L39
+https://github.com/bcgov/sso-requests/blob/bfc275c47414570ed1688d486d3d6e92547004a5/app/utils/graph-api.ts#L36
 ```
 
-- The BCeID (CAP) web service. This is a SOAP-based web service which allows IDIR & BCeID account lookup. This requires a sign-up with the IDIM team, you can reach out to them for further detail. 
+- The BCeID (CAP) web service. This is a SOAP-based web service which allows IDIR & BCeID account lookup. This requires a sign-up with the IDIM team, you can reach out to them for further detail
 
 ```sh
-https://github.com/bcgov/sso-requests/blob/bc195a0db05fb50d5ac95d24046791327caa16c7/lambda/app/src/bceid-webservice-proxy/idir.ts#L39
+https://github.com/bcgov/sso-requests/blob/bfc275c47414570ed1688d486d3d6e92547004a5/app/utils/idim-ws-idir.ts#L73
 ```
 
 ---

@@ -9,7 +9,7 @@ Once your integration in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/)
 
 The Installation JSON is environment-specific, meaning the values for dev, test, and production are different. You should download and configure each environment separately to ensure your application points to the correct Keycloak instance and uses the correct credentials.
 
-![integration Details](using_json_Dec2023.svg)
+![integration Details](/img/using_json_Dec2023.svg)
 
 ## Approvals
 
