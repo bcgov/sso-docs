@@ -1,7 +1,10 @@
 ---
 sidebar_position: 3
 tags:
-  - Custom realm
+  - keycloak
+  - custom-realm
+  - faq
+description: Common questions regaring custom realms, authentication flows, admin access, and safe operational practices
 ---
 
 # Custom Realms
@@ -22,19 +25,13 @@ You can now modify the flow to your needs. Once the flow ready, you can apply it
 
 ---
 
-## Is it possible to change the client type / Auth. type change in Gold after the integration has been created?
-
-Auth type cannot be modified after the integration is completed, need to create a new integration with required Auth type.
-
----
-
 ## How to add another admin in a custom realm?
 
 Please follow this [guide](../advanced/custom-realms/guides/grant-admin-permissions.md) to learn about adding more admins to your custom realm
 
 ---
 
-## How to be mindful while working in Gold custom realm?
+## How to be mindful while working in a custom realm?
 
 Below are the Do(s) and Don't(s) when working with a custom realm. Please contact SSO team if you have any questions.
 
@@ -64,3 +61,17 @@ Below are the Do(s) and Don't(s) when working with a custom realm. Please contac
 11. since we don't have a scenario that users regster via Keycloak, and the Keycloak services act as a `IDP broker`, the recommended realm `Login` configs are following:
 
 ![Keycloak Recommended Configuration](/img/keycloak_recommended_config.png)
+
+---
+
+## How do I add client roles to an existing user in custom realm?
+
+In order to add client roles, ensure your client has the role created and then navigate to the user's `Role Mappings` tab. In the Client Roles area, search for your client. Once the client is selected, you should have the ability to add the client role to your user
+
+---
+
+## How to integrate BC Service Card login in my application?
+
+If you are using standard realm, then you can simply login to [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) and select `BC Services Card` IDP when requesting new or updating your existing integration.
+
+If you own a custom realm, your team will first need to follow the on-boarding process provided by IDIM and then follow this [guide](../advanced/custom-realms/guides/setup-bc-services-card.md) to complete the setup

@@ -1,13 +1,10 @@
 ---
 sidebar_position: 2
 tags:
-  - Protocol
-  - Redirects
-  - URI
-  - IDP (Identity provider)
-  - CSS App
-  - Roles
-  - Service accounts Admin and approval
+  - css
+  - faq
+  - css-api
+description: Common questions about CSS integrations, identity providers, roles, and operational support
 ---
 
 # CSS App
@@ -189,13 +186,6 @@ If you hit the limit, wait for the next window or contact the SSO team with your
 
 ---
 
-## Where can I get help?
-
-- Email: [bcgov.sso@gov.bc.ca](mailto:bcgov.sso@gov.bc.ca)
-- Chat: [Microsoft Teams How-to Channel](https://teams.microsoft.com/l/channel/19%3A35d0b3389e39479590ba45a19a67a3ba%40thread.tacv2/SSOKeycloak-howto?groupId=a80418da-c27b-406e-89ab-7695b61924d8&tenantId=6fdb5200-3d0d-4a8a-b036-d3685e359adc)
-
----
-
 ## How to add a new admin in CSS App?
 
 Please refer to this [guide](../css-application/teams.md#how-to-add-members) to learn about adding admins to the team
@@ -204,7 +194,7 @@ Please refer to this [guide](../css-application/teams.md#how-to-add-members) to 
 
 ## What's the business level description of the CSS use cases?
 
-The CSS App provides three common ways to use BC Government SSO, depending on how your application needs to access user identity and protected services.
+The CSS App provides three common ways to use the SSO service, depending on how your application needs to access user identity and protected services.
 
 | Use case | Business purpose | Typical scenario |
 | --- | --- | --- |
@@ -275,7 +265,7 @@ Please use this quickstart [guide](../index.md) to learn about requesting an int
 
 ---
 
-## When you have to translate for a businessperson who doesn't speak technical and not have IDIR yet to know more about your offerings?
+## When you have to translate for a businessperson who doesn't speak technical and does not have IDIR yet to know more about your offerings?
 
 We have created a [video](https://user-images.githubusercontent.com/56739669/231529538-0e1efa5a-51df-401a-99c2-dbc964e8cac6.mp4) to help non-technical folks to understand our service offerings
 
@@ -329,7 +319,7 @@ Yes. [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) can search users fr
 
 ---
 
-## What is the idpHint for BC Services Card?
+## What is the `idpHint` for BC Services Card?
 
 For BC Services Card integrations, the `idpHint` is the same value as the client ID, which is stored in the downloaded Installation JSON under `resource`.
 
@@ -365,24 +355,30 @@ Yes. You can update the client type through [CSS](https://sso-requests.apps.gold
 
 ---
 
-## What should I do if login fails with a redirect_uri error?
-
-Check that the redirect URI configured in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) exactly matches the one your application sends. The most common issues are trailing slashes, scheme mismatches, wrong hosts, and wrong ports.
-
----
-
 ## How do I set up a custom login page?
 
-Use the supported login hint flow instead of building a custom auth bypass. The standard approach is to pass the relevant IDP hint so the user lands on the right provider quickly.
-
----
-
-## What should I use for logout if a third-party Keycloak library gives me issues?
-
-The SSO team recommends using the `keycloak-js` library rather than relying on unsupported third-party Keycloak integrations for logout behavior.
+You can setup a custom login page for your application. However, depending upon number of IDP(S) associated with your integration, you may need to use `idpHint` to bypass the default keycloak's login page. Please refer to this [guide](../integrating-your-application/login-guide.md#skipping-the-default-login-page) to learn more.
 
 ---
 
 ## Can I read first name and last name separately for BCeID?
 
-Not reliably. BCeID shares what it receives through the configured SAML mapping, and first and last name may not always be split into separate attributes.
+Not possible. BCeID only provides a full display name but does not provide separate given and family name attributes. This display name is mapped into the `given_name` (first_name) claim in your token, so you cannot derive or split it into separate first and last name components on the application side. For your reference please check this [link](../advanced/identity-mappers.md#basic-bceid) to learn about how the attributes are mapped to claims in your token.
+
+---
+
+## Is it possible to change the client auth type after the integration has been provisioned?
+
+Auth type cannot be modified after the integration is provisioned, you need to request a new integration with required Auth type.
+
+---
+
+## Is it possible to add users to keycloak and assign groups/roles prior to the user logging on?
+
+Yes. In many cases, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) lets you assign roles before a user's first login. Please refer to this [guide](../css-application/roles.md#user-search) for more details.
+
+---
+
+## Is there a way to manage service account roles in Gold?
+
+Yes, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) lets you assign/un-assingn roles to your service acconts. Please refer to this [section](../css-application/roles.md#service-account-role-management) for more details.

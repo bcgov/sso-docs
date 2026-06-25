@@ -1,0 +1,30 @@
+general:
+  label: "General"
+  description: "General information about Common Hosted Single Sign-on (CSS), Keycloak, and Custom Realms."
+css:
+  label: "CSS"
+  description: "Common Hosted Single Sign-on (CSS)"
+keycloak:
+  label: "Keycloak"
+  description: "Keycloak is an open-source identity and access management solution."
+custom-realm:
+  label: "Custom Realm"
+  description: "Custom Realm is a self-managed identity and access management solution."
+keycloak-adapter:
+  label: "Keycloak Adapter"
+  description: "Keycloak Adapter is a library that allows applications to integrate with Keycloak for authentication and authorization."
+standard-realm:
+  label: "Standard Realm"
+  description: "Standard Realm is a pre-configured identity and access management solution provided by CSS."
+sso:
+  label: "SSO"
+  description: "Single Sign-On (SSO) is an authentication process that allows a user to access multiple applications with one set of login credentials."
+css-api:
+  label: "CSS API"
+  description: "The CSS API is a set of programming interfaces that allow developers to interact with the Common Hosted Single Sign-on (CSS) service programmatically."
+errors:
+  label: "Errors"
+  description: "Common errors and their solutions for Common Hosted Single Sign-on (CSS), Keycloak, and Custom Realms."
+faq:
+  label: "FAQ"
+  description: "Frequently Asked Questions (FAQs) for Common Hosted Single Sign-on (CSS), Keycloak, and Custom Realms."

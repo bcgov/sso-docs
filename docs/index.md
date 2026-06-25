@@ -122,6 +122,6 @@ If your application runs on the BC Government's OpenShift-based Private Cloud Pl
 
 Many development teams have gone through similar processes in exploring SSO integration with their applications. When you have questions or issues, it is highly likely that someone in the community has had a similar experience previously. These issues may already have a solution or are actively resolving. Here are some ways to get SSO help:
 
-- **FAQ(S)** - The SSO team tracks some frequently asked questions and with answers are made available through the following [FAQ(S)](./category/faqs) link
+- **FAQ(S)** - The SSO team tracks some frequently asked questions and with answers are made available through the following [FAQ(S)](./category/frequently-asked-questions) link
 - **Microsoft Teams** — [Keycloak How-to Channel](https://teams.microsoft.com/l/channel/19%3A35d0b3389e39479590ba45a19a67a3ba%40thread.tacv2/SSOKeycloak-howto?groupId=a80418da-c27b-406e-89ab-7695b61924d8&tenantId=6fdb5200-3d0d-4a8a-b036-d3685e359adc) (preferred for quick questions)
 - **Email** — [bcgov.sso@gov.bc.ca](mailto:bcgov.sso@gov.bc.ca)

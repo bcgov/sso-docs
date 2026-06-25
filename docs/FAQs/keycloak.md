@@ -1,10 +1,42 @@
 ---
 sidebar_position: 1
 tags:
-  - Keycloak
+  - keycloak
+  - faq
+  - custom-realm
+  - standard-realm
+description: Frequently asked questions about Keycloak integrations, realms, authentication flows, and operational guidance
 ---
 
 # Keycloak
+
+---
+
+## What are the discovery endpoints for the Keycloak?
+
+The sso configuration or discovery endpoint for the standard realm in different envinonments are the following:
+
+| environment | URI |
+|---|---|
+| dev | https://dev.loginproxy.gov.bc.ca/auth/realms/standard/.well-known/openid-configuration |
+| test | https://test.loginproxy.gov.bc.ca/auth/realms/standard/.well-known/openid-configuration |
+| prod | https://loginproxy.gov.bc.ca/auth/realms/standard/.well-known/openid-configuration |
+
+**Note:** For custom realms, just replace `standard` with `<YOUR_CUSTOM_REALM_ID>` in the above URLs
+
+---
+
+## Where can I find the public keys for the Keycloak?
+
+You can find the public keys for the standard realm in different environments at the following links:
+
+| environment | URI |
+|---|---|
+| dev | https://dev.loginproxy.gov.bc.ca/auth/realms/standard/protocol/openid-connect/certs |
+| test | https://test.loginproxy.gov.bc.ca/auth/realms/standard/protocol/openid-connect/certs |
+| prod | https://loginproxy.gov.bc.ca/auth/realms/standard/protocol/openid-connect/certs |
+
+**Note:** For custom realms, just replace `standard` with `<YOUR_CUSTOM_REALM_ID>` in the above URLs
 
 ---
 
@@ -31,12 +63,6 @@ https://${SM_LOGOUT_URL}?retnow=1&returl=${KC_LOGOUT_URL}?post_logout_redirect_u
 ```sh
 https://logon7.gov.bc.ca/clp-cgi/logoff.cgi?retnow=1&returl=https://dev.loginproxy.gov.bc.ca/auth/realms/<myrealm>/protocol/openid-connect/logout?post_logout_redirect_uri=https://myapp/logout
 ```
-
----
-
-## Where can I find libraries or client adapters to connect to Keycloak?
-
-Although the SSO service supports both SAML and OIDC for client integration with identity providers, we recommend OIDC for new implementations because it is a modern protocol with broad community and library support. For supported adapters and integration libraries, refer to the official Keycloak guidance [here](https://www.keycloak.org/securing-apps/overview)
 
 ---
 
@@ -158,21 +184,31 @@ The client GUID is not available in the **Standard Realm**. This information is 
 
 ### For Custom Realm Owners
 
-If you own a Custom Realm and need to retrieve a client's GUID, use the Keycloak Admin API:
+If you own a Custom Realm and need to retrieve a client's GUID, you can use two ways:
+
+#### Keycloak Admin API
 
 **GET request:**
 
-```js
-GET /admin/realms/{realm-name}/clients?clientId={your-client-id}
+```html
+GET /admin/realms/{realm-name}/clients?clientId=<YOUR_CLIENT_ID>
 ```
 
 This returns a JSON response containing the client details, including the `id` field (the GUID).
 
 **Example using curl:**
 
-```sh
+```html
 curl -X GET "https://dev.loginproxy.gov.bc.ca/auth/admin/realms/<YOUR_CUSTOM_REALM>/clients?clientId=<YOUR_CLIENT_ID>" \
   -H "Authorization: Bearer $ACCESS_TOKEN"
+```
+
+#### Keycloak Native Admin UI
+
+Navigate to your custom realm and select `clients` and search and click on your client. After the client is opened in edit mode, you can copy your client GUID from the browser URL, which should be in the format below.
+
+```html
+https://dev.sandbox.loginproxy.gov.bc.ca/auth/admin/<YOUR_CUSTOM_REALM>/console/#/<YOUR_CUSTOM_REALM>/clients/<YOUR_CLIENT_GUID>/settings
 ```
 
 ---
@@ -183,7 +219,7 @@ The time zone used is PST (Pacific Standard Time)
 
 ---
 
-## Does the SSO Keycloak support indigenous characters?
+## Does the Keycloak support indigenous characters?
 
 Yes, it does
 
@@ -240,30 +276,6 @@ If you need to bypass IWA (for example, to test explicit login flows):
 
 ---
 
-## Could SSO Keycloak be used to allow members of the federal government to authenticate and access resources?
-
-This is restricted to BC Government only at the moment.
-
----
-
-## Is there a way to check if an IDIR user exists in an automated fashion?
-
-There are a couple approaches to this:
-
-- Using the Azure (graph) API to lookup the user. This is the more modern approach which allows the use of a service token to make a REST callout. You can setup your own API service account at `https://entra.microsoft.com/#home`. Note that you will have to grant the `User.ReadAll` permission to your service account
-
-```sh
-https://github.com/bcgov/sso-requests/blob/bfc275c47414570ed1688d486d3d6e92547004a5/app/utils/graph-api.ts#L36
-```
-
-- The BCeID (CAP) web service. This is a SOAP-based web service which allows IDIR & BCeID account lookup. This requires a sign-up with the IDIM team, you can reach out to them for further detail
-
-```sh
-https://github.com/bcgov/sso-requests/blob/bfc275c47414570ed1688d486d3d6e92547004a5/app/utils/idim-ws-idir.ts#L73
-```
-
----
-
 ## What is the recommended timeout for an access token? What about a refresh token?
 
 The recommended settings are the following:
@@ -281,12 +293,6 @@ The pattern most teams take is to keep checking the access token timeout before 
 ## How can I get user details from the KeyCloak API in the custom realm?
 
 If your team has your own custom realm, you'll need a service account client within your realm which has been granted with a client role `view-users` from the client `realm-management`
-
----
-
-## Where can I find more information about the BC Government Keycloak offerings?
-
-You can refer to the [guide](../index.md) for more details or contact the SSO team through [Microsoft Teams How-to Channel](https://teams.microsoft.com/l/channel/19%3A35d0b3389e39479590ba45a19a67a3ba%40thread.tacv2/SSOKeycloak-howto?groupId=a80418da-c27b-406e-89ab-7695b61924d8&tenantId=6fdb5200-3d0d-4a8a-b036-d3685e359adc) (preferred for quick questions) or via [email](mailto:bcgov.sso@gov.bc.ca)
 
 ---
 
@@ -326,4 +332,10 @@ No. Regular authentication callouts do not provide those groups. If your applica
 
 ## Can I have a pop-up style login window instead of redirection?
 
-You can fully customize your login experience from the UI side in terms of your login buttons (using `kc_idp_hint`). That said, you could leverage a popup window to house the IDP login; however you'll still have to enter credentials on the common logon page (CLP) for BCeID and IDIR.
+You can fully customize your login experience from the UI side in terms of your login buttons (using `kc_idp_hint`). That said, you could leverage a popup window to house the IDP login; however you'll still have to enter credentials on the common logon page (CLP) for BCeID and IDIR
+
+---
+
+## What should I do if login fails with a redirect_uri error?
+
+Check that the redirect URI configured in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) exactly matches the one your application sends. The most common issues are trailing slashes, scheme mismatches, wrong hosts, and wrong ports.

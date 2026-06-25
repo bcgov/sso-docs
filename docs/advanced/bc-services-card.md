@@ -5,7 +5,7 @@ title: BC Services Card
 
 ## Overview
 
-The BC Services Card is one of the IDP offered for new and existing Integrations. The SSO Service assumes that clients have secured the required approvals before submitting requests for Integration with BC Services Card through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) app. These approvals enable client systems to retrieve pertinent attributes from approved privacy zones.
+The BC Services Card is one of the IDP(S) offered for new and existing Integrations. The SSO Service assumes that clients have secured the required approvals before submitting requests for Integration with BC Services Card through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) app. These approvals enable client systems to retrieve pertinent attributes from approved privacy zones.
 
 ## Limitations
 
