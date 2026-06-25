@@ -20,7 +20,7 @@ The default login page looks as shown below. The page will show the project name
 
 If your implementation requires the Keycloak login page, you must provide **dedicated, clear, and user‑appropriate text** for the page.
 
-Using the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/), you can specify this text by setting the **Pathfinder SSO Login Page Name** field during integration configuration.
+Using the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/), you can specify this text by setting the **SSO Login Page Name** field during integration configuration.
 
 ![Login Title](login_page_name.png)
 

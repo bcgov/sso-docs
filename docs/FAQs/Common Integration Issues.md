@@ -6,13 +6,14 @@ tags:
 
 # Common Integration Issues
 
-import FaqItem from '../../src/components/FaqItem';
+---
 
-export const faqs = [
-{
-title: "When using the keycloak.js library I get a Content-Security-Policy error in the browser console.",
-content: <>
-<p>When using the keycloak.js library it is possible for the frontend of JavaScript app to throw a Content-Security-Policy error.  Click <a href={"https://stackoverflow.developer.gov.bc.ca/questions/1304"}>here</a> for more informaiton. </p></>} 
-];
+## When using the keycloak.js library I get a Content-Security-Policy error in the browser console?
 
-<FaqItem faqs={faqs}/>
+This is a fairly common error we see when developers are integrating the keycloak javascript library with their application.
+
+This due to how the Keycloak JavaScript client is initialized. While initializing be sure to disable `checkLoginIframe`. See the code snippet below
+
+```js
+kc.init({'messageReceiveTimeout': 100000, checkLoginIframe: false}).then()
+```

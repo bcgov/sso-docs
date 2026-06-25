@@ -5,7 +5,7 @@ title: BC Services Card
 
 ## Overview
 
-The BC Services Card is an optional IDP offered for new and existing Integrations. The Pathfinder SSO Service assumes that clients have secured the required approvals before submitting requests for Integration with BC Services Card through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) app. These approvals enable client systems to retrieve pertinent attributes from approved privacy zones.
+The BC Services Card is one of the IDP offered for new and existing Integrations. The SSO Service assumes that clients have secured the required approvals before submitting requests for Integration with BC Services Card through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) app. These approvals enable client systems to retrieve pertinent attributes from approved privacy zones.
 
 ## Limitations
 
@@ -35,7 +35,7 @@ Have questions about which Privacy Zone to choose, your area is not represented,
 
 BC Services Team has defined several standard claims or user attributes that can requested by client systems when authenticating users. These claims provide information about the authenticated user. Navigate to this [site](https://id.gov.bc.ca/oauth2/claim-types) to find available attributes.
 
-Once an integration request is approved by the BC Services Card team, the Pathfinder SSO Service configures the required scopes for the client, enabling access to approved attributes that are subsequently returned to the client system. For `dev` and `test` environments, approval from the BC Services Card team is typically not necessary. Clients can expect their integration to be provisioned within 5 minutes of submitting a request. Any requests for custom claims shall be taken up with BC Services Card team directly.
+Once an integration request is approved by the BC Services Card team, the SSO Service configures the required scopes for the client, enabling access to approved attributes that are subsequently returned to the client system. For `dev` and `test` environments, approval from the BC Services Card team is typically not necessary. Clients can expect their integration to be provisioned within 5 minutes of submitting a request. Any requests for custom claims shall be taken up with BC Services Card team directly.
 
 ## Home Page URI
 

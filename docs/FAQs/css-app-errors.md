@@ -12,17 +12,47 @@ tags:
 
 # CSS App Errors
 
-import FaqItem from '../../src/components/FaqItem';
+---
 
-export const faqs = [
-{
-title: "After login into CSS App with the IDP, user sees a KeyCloak page with a message: User with (email / username) already exists. How do you want to continue?",
-content: <><p>Please follow this <a href={"https://stackoverflow.developer.gov.bc.ca/questions/1037/1038#1038"}>discussion</a> to debug the issue.</p></>},
-{title: "Warning: You are not authorized to access this page” while accessing Business BCeID account.",
-content: <><p>You need to contact IDIM team to get the access.</p></>},
-{title: "Error message: “InvalidFedratedIdentityActionMessage” while login into CSS app using Business BCeID.",
-content: <><p>This could happen because of a cross-session issue, please try a clean incognito window and log in again. This occurs when you’re logged in with IDIR and then try to login with BCeID or vice-versa.</p></>},
-{title: "How can I resolve Pathfinder SSO login error in dev (Invalid parameter: redirect_uri)?",
-content: <><p>This issue has been answered in this <a href={"https://stackoverflow.developer.gov.bc.ca/questions/1202/1203#1203"}>discussion</a></p></>}];
+## After login into CSS App with the IDP, user sees a KeyCloak page with a message: User with (email / username) already exists. How do you want to continue?
 
-<FaqItem faqs={faqs}/>
+### Steps to debug duplicated email
+
+- first of all, try to clear cache and reopen browser to test a clean start
+
+- check with realm admin on the login settings: `Realm Settings` -\> `Login` tab -\> `Login with email` If this field is set to true, no new accounts with duplicate email address can be created.
+
+- check if any user account in the realm has the same email address as your currently account. This usually happens between two accounts from the same person (e.g.: IDIR and BCeID with the same email), or different accounts with ***empty email attributes***.
+
+- If that's the case, either enable `Duplicate email` setting, or update one of the accounts with another email address
+
+### Steps to debug duplicated username
+
+- fist of all, try to clear cache and reopen browser to test a clean start
+
+- have you recently updated your IDIR/BCeID account? If so, please request for a KeyCloak user update [here](https://github.com/BCDevOps/devops-requests)
+
+- if above does not apply, please contact RocketChat channel sso
+
+NOTE I now see a `Configure -> Realm Settings -> Cache` option that MDS could've tried prior to deleting the 2nd account (with the same email). The 1st account did NOT show up in the list of users but may have been in the cache. In the future, if this happens again we should try clearing the cache before making any config changes.
+
+Reference: [bcgov/ocp-sso#68](https://github.com/bcgov/ocp-sso/issues/68)
+
+---
+
+## Warning: You are not authorized to access this page” while accessing Business BCeID account.
+
+You need to contact [IDIM team](mailto:IDIM.Consulting@gov.bc.ca) to get the access
+
+---
+
+## How can I resolve SSO login error in dev (Invalid parameter: redirect_uri)?
+
+The easy way to track down this error is to take the URL and decode it using any online utility. Usually what we see is that there's a `/` on the end or that the configuration in CSS has an incorrect scheme (http vs https). Once you've noted the delta, either change it in your application configuration or the CSS configuration for your client
+
+---
+
+## Error message: “Invalid signature in response from identity provider” while login into CSS app using Business BCeID
+
+This could happen because of a cross-session issue, please try a clean incognito window and log in again. This occurs when you’re logged in with IDIR and then try to login with BCeID or vice-versa.
+

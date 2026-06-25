@@ -28,21 +28,78 @@ The SSO service supports a range of identity providers (IDPs) to cover different
 | **BC Services Card**    | BC residents using the BC Services Card app            |
 | **Digital Credential**  | Verifiable credential-based authentication             |
 | **GitHub BC Gov**       | BC Government GitHub organization members              |
+| **One-Time Passcode**   | Any user with a valid email address                    |
 
 > **Note:** In line with the BC Government's MFA Everywhere policy **IDIR is no longer available for new integrations**. Teams requiring employee authentication should use **Azure IDIR** instead, which enforces MFA by default. Existing IDIR integrations continue to function and are not affected.
 
+Many times, our clients ask, which identity provider should we use for our product. We can't really make that decision for you and with our partners, can refer you to a few helpful links
+
+* [ID services](https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/id-services)
+* [Compare ID services by who uses your service](https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/id-services/compare-people)
+
 ## Features
 
-- **Self-serve integration provisioning** — request and manage OIDC or SAML integrations through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) without involving the SSO team for routine changes.
-- **Multi-IDP federation** — broker authentication across IDIR, Azure IDIR, BCeID (Basic and Business), BC Services Card, Digital Credential, and GitHub BC Gov from a single integration.
-- **Standard and Custom Realm options** — use the shared Standard Realm for most use cases, or request a Custom Realm for teams with unique IDP, protocol, or policy requirements.
-- **OIDC Authorization Code Flow with PKCE** — industry-standard secure login flow for web and mobile applications, with PKCE enforced for public clients.
-- **Service account support** — machine-to-machine authentication via the OAuth 2.0 Client Credentials Flow for backend integrations that do not involve a human user.
-- **Role-based access control (RBAC)** — define roles per integration and assign users to roles through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) or [CSS API](https://api.loginproxy.gov.bc.ca/openapi/swagger/); roles are included in the access token for your application to consume.
-- **Configurable token and session lifetimes** — adjust access token lifespan, refresh token lifespan, and session maximums per integration to match your application's security requirements.
-- **Token signature validation** — all tokens are signed with realm-specific keys and exposed via JWKS endpoints, enabling your application to verify token integrity without a network call to Keycloak.
-- **Programmatic management via CSS API** — automate user and role management using the RESTful [CSS API](https://api.loginproxy.gov.bc.ca/openapi/swagger/), secured with a dedicated API account.
-- **High Availability** — the SSO service is deployed across a primary and a secondary site. In the event of a primary site failure, traffic is automatically redirected to the secondary site, ensuring continued availability of authentication for all integrated applications with minimal disruption.
+### Self-serve integration provisioning
+
+Request and manage OIDC or SAML integrations through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) without involving the SSO team for routine changes.
+
+### Multi-IDP federation
+
+Broker authentication across IDIR, Azure IDIR, BCeID (Basic and Business), BC Services Card, Digital Credential, and GitHub BC Gov from a single integration.
+
+### Standard and Custom Service Options
+
+Use the shared Standard Realm for most use cases, or request a Custom Realm for teams with unique IDP, protocol, or policy requirements.
+
+### OIDC Authorization Code Flow with PKCE
+
+Industry-standard secure login flow for web and mobile applications, with PKCE enforced for public clients.
+
+### Service account support
+
+Machine-to-machine authentication via the OAuth 2.0 Client Credentials Flow for backend integrations that do not involve a human user.
+
+### Role-based access control (RBAC)
+
+Define roles per integration and assign users to roles through the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) or [CSS API](https://api.loginproxy.gov.bc.ca/openapi/swagger/); roles are included in the access token for your application to consume.
+
+### Configurable token and session lifetimes
+
+Adjust access token lifespan, refresh token lifespan, and session maximums per integration to match your application's security requirements.
+
+### Token signature validation
+
+All tokens are signed with realm-specific keys and exposed via JWKS endpoints, enabling your application to verify token integrity without a network call to Keycloak.
+
+### Programmatic management via CSS API
+
+Automate user and role management using the RESTful [CSS API](https://api.loginproxy.gov.bc.ca/openapi/swagger/), secured with a dedicated API account.
+
+### High Availability
+
+The SSO service is deployed across a primary and a secondary site. In the event of a primary site failure, traffic is automatically redirected to the secondary site, ensuring continued availability of authentication for all integrated applications with minimal disruption.
+
+## Limitations
+
+The SSO service is shared across many teams and applications. Most use cases are well-supported, but the following scenarios may require direct IDP integration:
+
+### High Volume Expectations
+
+If your application expects millions of login requests, direct IDP integration may be more appropriate. The shared SSO platform has resource limits, and excessive traffic from a single client can degrade service for all integrated applications.
+
+### BC Services Card
+
+BC Services Card is available for OIDC and SAML clients. However, user personal information is not stored in the Keycloak database for security and privacy reasons. This means:
+
+- **No Role Management** — roles cannot be assigned without persistent user data.
+- **No Single Sign-On** — each application requires separate user authentication and consent, even if a user has an active BC Services Card session elsewhere.
+
+### Digital Credentials
+
+Digital Credentials are available **only for OIDC clients** (SAML is not supported). Like BC Services Card, user attributes are not retained after authentication to prioritize privacy. This results in:
+
+- **No Role Management** — no persistent user data means roles cannot be managed.
+- **No Single Sign-On** — users must authenticate separately for each application.
 
 ## Quickstart
 
@@ -63,7 +120,8 @@ If your application runs on the BC Government's OpenShift-based Private Cloud Pl
 
 ## Support and Contact
 
-Have questions or need help? The SSO team is available through:
+Many development teams have gone through similar processes in exploring SSO integration with their applications. When you have questions or issues, it is highly likely that someone in the community has had a similar experience previously. These issues may already have a solution or are actively resolving. Here are some ways to get SSO help:
 
+- **FAQ(S)** - The SSO team tracks some frequently asked questions and with answers are made available through the following [FAQ(S)](./category/faqs) link
 - **Microsoft Teams** — [Keycloak How-to Channel](https://teams.microsoft.com/l/channel/19%3A35d0b3389e39479590ba45a19a67a3ba%40thread.tacv2/SSOKeycloak-howto?groupId=a80418da-c27b-406e-89ab-7695b61924d8&tenantId=6fdb5200-3d0d-4a8a-b036-d3685e359adc) (preferred for quick questions)
 - **Email** — [bcgov.sso@gov.bc.ca](mailto:bcgov.sso@gov.bc.ca)
