@@ -289,3 +289,9 @@ Yes, you can pass a return URL to the identity provider so users are redirected 
 ## Can I get Active Directory groups from a normal login callout?
 
 No. Regular authentication callouts do not provide those groups. If your application needs directory group information, contact the IDIM team to determine whether a web service lookup is available.
+
+---
+
+## Can I have a pop-up style login window instead of redirection?
+
+You can fully customize your login experience from the UI side in terms of your login buttons (using `kc_idp_hint`). That said, you could leverage a popup window to house the IDP login; however you'll still have to enter credentials on the common logon page (CLP) for BCeID and IDIR.
