@@ -28,7 +28,7 @@ The SSO service supports a range of identity providers (IDPs) to cover different
 | Identity Provider       | Use Case                                               |
 | ----------------------- | ------------------------------------------------------ |
 | **IDIR**                | BC Government employees and contractors                |
-| **Azure IDIR**          | IDIR accounts federated through Azure Active Directory |
+| **IDIR - MFA**            | IDIR accounts federated through Azure Active Directory |
 | **Basic BCeID**         | BC residents with a basic BCeID account                |
 | **Business BCeID**      | Organizations transacting with government              |
 | **BC Services Card**    | BC residents using the BC Services Card app            |
@@ -36,7 +36,7 @@ The SSO service supports a range of identity providers (IDPs) to cover different
 | **GitHub BC Gov**       | BC Government GitHub organization members              |
 | **One-Time Passcode**   | Any user with a valid email address                    |
 
-> **Note:** In line with the BC Government's MFA Everywhere policy **IDIR is no longer available for new integrations**. Teams requiring employee authentication should use **Azure IDIR** instead, which enforces MFA by default. Existing IDIR integrations continue to function and are not affected.
+> **Note:** In line with the BC Government's MFA Everywhere policy **IDIR is no longer available for new integrations**. Teams requiring employee authentication should use **IDIR - MFA** instead, which enforces MFA by default. Existing IDIR integrations continue to function and are not affected.
 
 Many times, our clients ask, which identity provider should we use for our product. We can't really make that decision for you and with our partners, can refer you to a few helpful links
 
@@ -51,7 +51,7 @@ Request and manage OIDC or SAML integrations through the [CSS](https://sso-reque
 
 ### Multi-IDP federation
 
-Broker authentication across IDIR, Azure IDIR, BCeID (Basic and Business), BC Services Card, Digital Credential, and GitHub BC Gov from a single integration.
+Broker authentication across IDIR, IDIR - MFA, BCeID (Basic and Business), BC Services Card, Digital Credential, and GitHub BC Gov from a single integration.
 
 ### Standard and Custom Service Options
 

@@ -68,7 +68,7 @@ Because the Standard Realm is shared across many teams, role names are not globa
 
 The `aud` claim identifies the intended recipient of the token. Combine it with the issuer (`iss`) and the role to confirm a token is genuinely valid for your API:
 
-```
+```js
 token.aud === "<your-client-id>"
   && token.iss === "https://loginproxy.gov.bc.ca/auth/realms/standard"
   && token.client_roles.includes("<your-role>")
@@ -78,23 +78,29 @@ token.aud === "<your-client-id>"
 
 ## Role Assignments
 
-The most important step in role assignment is accurate user identification. When you search in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/), the platform retrieves matching users from both Keycloak and the upstream identity providers. This helps you find users even when they are not yet present in Keycloak. Because profile attributes are not always unique, you should still validate identity carefully. In BC Government contexts, different users can share the same first name, last name, or email. Always verify the **GUID** before assigning a role, because it is the most reliable identifier for confirming you are assigning access to the correct person.
+The most important step in role assignment is accurate user identification. When you search in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/), the platform returns matching users from available sources, but profile attributes are not always unique. In BC Government contexts, different people can share the same first name, last name, or email address. Always verify the **GUID** before assigning a role, because it is the most reliable identifier for confirming access is granted to the correct person.
 
 ### User Search
 
-When you search for users in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/), the platform can query both:
+For IDIR and IDIR - MFA identity providers, user search in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) can query both:
 
-- existing users already present in Keycloak
-- users available in the identity provider directory (for example, on-prem Active Directory for IDIR and cloud Active Directory for Azure IDIR)
+- Existing users already present in Keycloak
+- Users available in the upstream identity provider directory (for example, on-prem Active Directory for IDIR and cloud Active Directory for IDIR - MFA)
 
-This means a user can be discovered and assigned roles even if they have not yet logged into Keycloak.
+**What this means:** You can often find and assign roles to users before their first login.
+
+#### BCeID Constraint
+
+Querying the BCeID Web Service requires a separate approval and service agreement with the IDIM team. The SSO Team does not currently have this agreement, so BCeID user search is more limited than IDIR and IDIR - MFA.
+
+**What this means:** For BCeID integrations, user search in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) can only return users that already exist in Keycloak. CSS cannot search the upstream BCeID directory directly. As a result, you generally cannot pre-assign roles. Users must first log in so Keycloak can create their account and link it to their BCeID identity. After that first login, the user appears in CSS and roles can be assigned.
 
 When assigning roles in CSS, the available user search fields depend on the identity provider (IDP) configured for your integration.
 
 | IDP | Searchable attributes in CSS |
 | --- | --- |
 | IDIR | First Name, Last Name, Email, Username |
-| Azure IDIR | First Name, Last Name, Email, Username |
+| IDIR - MFA | First Name, Last Name, Email, Username |
 | BCeID | Display Name, Username, Email, IDP GUID |
 | GitHub BC Gov | Name, Login, Email, IDP GUID |
 | BC Services Card | Not searchable |
@@ -108,12 +114,10 @@ For **BC Services Card** and **Digital Credential**, CSS cannot search users bec
 
 ### What happens when you assign a role pre-login?
 
-If user is not already in Keycloak, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) imports the user first and then assigns the role. 
-
-**Note:** Upon un-assigning the role from the user, the user record will still stay in Keycloak and not automatically deleted unless the user's IDIR account is deactivated.
+For IDIR and IDIR - MFA IDP(S), if an user does not exist in Keycloak, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) imports the user first (for example from, on-prem Active Directory for IDIR and cloud Active Directory for IDIR - MFA) and then assigns the role.
 
 ### Why teams use this
 
-- enables day-one access for new users
-- reduces onboarding delays
-- avoids "first login succeeded but no permissions" support issues
+- Enables day-one access for new users
+- Reduces onboarding delays
+- Avoids "first login succeeded but no permissions" support issues

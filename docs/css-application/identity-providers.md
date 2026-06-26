@@ -19,7 +19,7 @@ For attribute-level details used in tokens and user mapping, see [Identity Mappe
 
 | Identity Provider | Typical Users | Notes |
 | --- | --- | --- |
-| **Azure IDIR** | BC Government employees and contractors | Recommended option for employee sign-in with MFA support. Learn more about [MFA registration](https://intranet.gov.bc.ca/thehub/ocio/ocio-enterprise-services/information-security-branch/information-security-mfa/mfa-registration). |
+| **IDIR - MFA** | BC Government employees and contractors | Recommended option for employee sign-in with MFA support. Learn more about [MFA registration](https://intranet.gov.bc.ca/thehub/ocio/ocio-enterprise-services/information-security-branch/information-security-mfa/mfa-registration). |
 | **BCeID** | Residents and businesses accessing government services | Supports Basic and Business BCeID. Learn more about [BCeID Authentication Service](https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-services-program/bceid-authentication-service). |
 | **BC Services Card (BCSC)** | BC residents | Available through SSO with additional approval requirements. See [BC Services Card Login](https://www2.gov.bc.ca/gov/content/governments/government-id/bcservicescardapp). |
 | **Digital Credential** | Verifiable credential users | Available for OIDC integrations. Learn more about [Digital Credentials](https://digital.gov.bc.ca/design/digital-trust/digital-credentials/). |
@@ -31,21 +31,21 @@ If you are deciding which IDP to use, these references may help:
 - [BC Government ID Services](https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/id-services)
 - [Identity providers comparison page](https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/id-services/compare-people)
 
-## Azure IDIR (MFA) Notes
+## IDIR - MFA (MFA) Notes
 
-Azure IDIR includes multi-factor authentication and is more secure than legacy on-prem IDIR flows.
+IDIR - MFA includes multi-factor authentication and is more secure than legacy on-prem IDIR flows.
 
 If a user's IDIR account is not tied to a `gov.bc.ca` email address, they may need to use the format `idir_username@gov.bc.ca` when prompted for email.
 
-If users see an Azure IDIR sign-in error, confirm they have an active BC Government Azure IDIR account.
+If users see an IDIR - MFA sign-in error, confirm they have an active BC Government IDIR - MFA account.
 
-![Azure IDIR error](/img/azureidir-error.png)
+![IDIR - MFA error](/img/azureidir-error.png)
 
 ## Common Login Issues
 
 ### I can't login to both on-prem IDIR and BCeID in the same browser?
 
-When using legacy on-prem IDIR (not Azure IDIR), browser session conflicts can occur if one tab is logged in with IDIR and another with BCeID.
+When using legacy on-prem IDIR (not IDIR - MFA), browser session conflicts can occur if one tab is logged in with IDIR and another with BCeID.
 
 Use an incognito/private browser window, or clear browser cache and cookies before testing.
 
@@ -86,6 +86,12 @@ This is less common, but can be appropriate for closely related programs with co
 For rare cases requiring full ownership of authentication infrastructure, teams can run their own Keycloak deployment and configure a direct OIDC integration with BCSC.
 
 This option has the highest operational overhead and should be considered only when Standard or existing Custom Realm options cannot meet requirements.
+
+## Restricted Identity Providers
+
+- `IDIR` and `GitHub Public` are not available for self-service selection. Contact the SSO team if you need to integrate with either provider.
+- `Basic BCeID` and `Basic or Business BCeID` are being discontinued. Even DEV and TEST environments require explicit approval from the [IDIM team](mailto:IDIM.consulting@gov.bc.ca). For more information, contact the [IDIM team](mailto:IDIM.consulting@gov.bc.ca).
+- The OTP identity provider is currently being piloted by a single team and is not yet generally available. Contact the SSO team if you are interested in joining the pilot.
 
 ## Need Help?
 

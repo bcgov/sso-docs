@@ -30,7 +30,7 @@ For some production identity providers, additional approval and onboarding is re
 Common options include:
 
 - IDIR
-- IDIR - MFA (Azure IDIR)
+- IDIR - MFA
 - Basic BCeID
 - Business BCeID
 - Basic or Business BCeID
@@ -40,11 +40,11 @@ Common options include:
 - Digital Credential
 - One Time Passcode (OTP)
 
-**Note:** 
+**Note:**
 
-- The `Basic BCeID` and `Basic or Business BCeID` are being discontinued so even DEV and TEST environments require explicit approval from [IDIM](mailto:IDIM.consulting@gov.bc.ca) team. For further details please contact [IDIM](mailto:IDIM.consulting@gov.bc.ca) team.
-
-- The OTP IDP is currently being piloted by one team and is not generally available yet. If you would like to join the pilot, please contact SSO team.
+- `IDIR` and `GitHub Public` are not available for self-service selection. Contact the SSO team if you need to integrate with either provider.
+- `Basic BCeID` and `Basic or Business BCeID` are being discontinued. Even DEV and TEST environments require explicit approval from the [IDIM team](mailto:IDIM.consulting@gov.bc.ca). For more information, contact the [IDIM team](mailto:IDIM.consulting@gov.bc.ca).
+- The OTP identity provider is currently being piloted by a single team and is not yet generally available. Contact the SSO team if you are interested in joining the pilot.
 
 ---
 
@@ -259,7 +259,7 @@ You need to login to you account at [BCeID App](https://www.bceid.ca) and naviga
 
 ---
 
-## How can I integrate my digital application with a with BC government approved login option?
+## How can I integrate my digital application with a BC Government approved login option?
 
 Please use this quickstart [guide](../index.md) to learn about requesting an integration. The quickest option to setup your integration would be to use our standard service but if you have more sophisticated requirement, please contact SSO team either through [Microsoft Teams How-to Channel](https://teams.microsoft.com/l/channel/19%3A35d0b3389e39479590ba45a19a67a3ba%40thread.tacv2/SSOKeycloak-howto?groupId=a80418da-c27b-406e-89ab-7695b61924d8&tenantId=6fdb5200-3d0d-4a8a-b036-d3685e359adc) (preferred for quick questions) or via [email](mailto:bcgov.sso@gov.bc.ca) and we will be able to help you
 
@@ -315,13 +315,7 @@ This is a limitation from siteminder. You can use incognito windows if you’re 
 
 ## Can I assign roles before a user logs in for the first time?
 
-Yes. [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) can search users from both Keycloak and the identity provider directory, which lets you pre-import and assign roles before the user's first login for IDIR and Azure IDIR integrations.
-
----
-
-## What is the `idpHint` for BC Services Card?
-
-For BC Services Card integrations, the `idpHint` is the same value as the client ID, which is stored in the downloaded Installation JSON under `resource`.
+Yes. [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) can search users from both Keycloak and the identity provider directory, which lets you pre-import and assign roles before the user's first login for IDIR and IDIR - MFA integrations.
 
 ---
 
@@ -385,7 +379,7 @@ Yes, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) lets you assign/un-
 
 ---
 
-## I'm building a custom service/login page on Pathfinder SSO — what label should I use for the IDIR option?
+## I'm building a custom service/login page on SSO — what label should I use for the IDIR option?
 
 Label it **`IDIR - MFA`** (this is the official wording the SSO service standardized on — the earlier "Azure IDIR" name was renamed to "IDIR - MFA" because it is a different *way to log in* with IDIR, not a different identity provider).
 

@@ -105,53 +105,7 @@ Use it when you need:
 
 ### Overview
 
-Testing pages protected by Keycloak requires authenticating within your Cypress test suite. This section outlines two approaches: 
-
-1. Using a Keycloak integration library 
-2. Mocking authentication in tests (recommended best practice).
-
-### Approach 1: Use the `cypress-keycloak` Package
-
-The [cypress-keycloak](https://www.npmjs.com/package/cypress-keycloak) npm package has been updated and is now compatible with recent Cypress versions.
-
-```js
-describe('thing', () => {
-  beforeEach(() => {
-    cy.login({
-      root: 'https://dev.loginproxy.gov.bc.ca',
-      realm: 'standard',
-      username: '<USERNAME>',
-      password: '<PASSWORD>',
-      client_id: '<CLIENT_ID>',
-      redirect_uri: 'https://<YOUR_APPLICATION_URI>/',
-    });
-
-    // or login with OTP
-    cy.loginOTP({
-      root: 'https://dev.loginproxy.gov.bc.ca',
-      realm: 'standard',
-      username: '<USERNAME>',
-      password: '<PASSWORD>',
-      client_id: '<CLIENT_ID>',
-      redirect_uri: 'https://<YOUR_APPLICATION_URI>/',
-      otp_secret: '<OTP_SECRET>', // e.g. 32 chars
-      otp_credential_id: '<CREDENTIAL_ID>', // e.g. 36 chars
-    });
-  });
-
-  afterEach(() => {
-    cy.logout({
-      root: 'https://dev.loginproxy.gov.bc.ca',
-      realm: 'standard',
-      post_logout_redirect_uri: 'https://<YOUR_APPLICATION_URI>/',
-    });
-  });
-});
-```
-
-### Approach 2: Custom Keycloak Library
-
-If the package does not meet your needs, you can extract the Keycloak library directly into your Cypress project.
+Testing pages protected by Keycloak requires authenticating within your Cypress test suite. You can extract the Keycloak library directly into your Cypress project. Please use below example to complete the setup.
 
 **Example:** The [bcgov/biohubbc](https://github.com/bcgov/biohubbc/tree/dev/testing/e2e/cypress) repository maintains a custom `keycloak.js` library in the `support/` folder that works with Keycloak-only and federated identities (IDIR, BCeID). See [commands.ts](https://github.com/bcgov/biohubbc/blob/dev/testing/e2e/cypress/support/commands.ts) for implementation examples.
 

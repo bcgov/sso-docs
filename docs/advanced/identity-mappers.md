@@ -26,7 +26,7 @@ tags:
 | IDIR User GUID                        | idir_user_guid         | idir_user_guid      | idir_user_guid                                   | idir_user_guid                |
 | Keycloak Generated Preferred Username | idir_user_guid         | preferred_username  | preferred_username=`{{preferred_username}}@idir` | preferred_username            |
 
-## Azure IDIR
+## IDIR - MFA
 
 | User Property/Attribute               | IDP - SAML Payload(\*) | Parent Realm Mapper | Custom/Standard Realm Mapper                          | Standard Realm - OIDC Payload |
 | ------------------------------------- | ---------------------- | ------------------- | ----------------------------------------------------- | ----------------------------- |

@@ -31,36 +31,19 @@ Please follow this [guide](../advanced/custom-realms/guides/grant-admin-permissi
 
 ---
 
-## How to be mindful while working in a custom realm?
+## What are the recommended practices for working in a custom realm?
 
-Below are the Do(s) and Don't(s) when working with a custom realm. Please contact SSO team if you have any questions.
+When working with a custom realm, consider the below stated recommendations. Please contact the SSO team if you have any questions.
 
-### Do not
-
-1. update the ***name*** of the realm;
-2. delete the role ***realm-admin***
-3. delete the role ***realm-viewer***
-4. delete the group ***Realm Administrator***
-5. delete the group ***Realm Viewer***
-6. delete the client ***realm-admin-cli***
-7. delete the client ***realm-viewer-cli***
-
-### Do
-
-1. you ensure offline tokens are revoked after use or set the maximum time.
-2. you ensure logs not are stored or only store for a short period of time.
-3. make sure the user username has a suffix with `@{idp}` and is based on the source of truth of the user type.
-4. try to avoid using realm-level resources such as groups and roles to share the realm with multiple application teams.
-5. validate the token at the application level rather than using an introspection endpoint
-6. try to avoid user registration and create local users.
-7. allow duplicate emails in the realm.
-8. extensions are not possible in custom realms
-9. only use introspection in use-cases where user volume is low and token revocation is required
-10. avoid using `custom extensions developed by SSO team` since they are subject to change without notice.
-    - `https://github.com/bcgov/sso-keycloak/tree/main/docker/keycloak#custom-extensions`
-11. since we don't have a scenario that users regster via Keycloak, and the Keycloak services act as a `IDP broker`, the recommended realm `Login` configs are following:
-
-![Keycloak Recommended Configuration](/img/keycloak_recommended_config.png)
+1. Do not change your realm name
+2. Do not delete below resources:
+   - roles: realm-admin, realm-viewer
+   - groups: Realm Administrator, Realm Viewer
+   - clients: realm-admin-cli, realm-viewer-cli
+3. Ensure logs not are stored or only store for a short period of time.
+4. Validate the token at the application level by asserting signature and claims (iss, aud, sub and exp etc.) rather than using introspection endpoint
+5. Avoid user registration and local users except for testing purposes
+6. Only use introspection in use-cases where token revocation is required
 
 ---
 

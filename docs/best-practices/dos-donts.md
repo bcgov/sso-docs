@@ -120,7 +120,7 @@ For all integrations, your logout flow must:
 2. Clear any local session state, cookies, and tokens held by your application.
 3. Inform the user if a full IDP-level logout could not be completed.
 
-#### SiteMinder (IDIR / Azure IDIR) — Chained Logout
+#### SiteMinder (IDIR / IDIR - MFA) — Chained Logout
 
 IDPs that use SiteMinder — such as IDIR — retain their own session independently of Keycloak. Even after the Keycloak session is destroyed, the SiteMinder session remains active. This means that when the user next clicks Login, they are silently authenticated again without being prompted to enter credentials.
 
@@ -155,7 +155,7 @@ When a client is configured with multiple IDPs, Keycloak displays a login page p
 | Display Name            | `kc_idp_hint`       |
 | ----------------------- | :-----------------: |
 | IDIR                    | `idir`              |
-| Azure IDIR              | `azureidir`         |
+| IDIR - MFA                | `azureidir`         |
 | Basic BCeID             | `bceidbasic`        |
 | Business BCeID          | `bceidbusiness`     |
 | Basic or Business BCeID | `bceidboth`         |

@@ -59,6 +59,12 @@ keycloak.init({ onLoad: 'check-auth' }).then((authenticated) => {
 
 ---
 
+## What is the `idpHint` for BC Services Card?
+
+For BC Services Card integrations, the `idpHint` is the same value as the client ID, which is stored in the downloaded Installation JSON under `resource`.
+
+---
+
 ## Can I implement SSO in plain JavaScript?
 
 Yes. For browser-based apps, you can use the `keycloak-js` library directly without requiring a framework-specific wrapper.

@@ -182,7 +182,7 @@ The SSO service depends on external identity providers for authentication. Outag
 
 | IDP | Operated By | Impact If Down |
 | --- | --- | --- |
-| **IDIR / Azure IDIR** | Access Directory Management Services (ADMS/WAM) | Users cannot authenticate with IDIR or Azure IDIR |
+| **IDIR / IDIR - MFA** | Access Directory Management Services (ADMS/WAM) | Users cannot authenticate with IDIR or IDIR - MFA |
 | **BCeID** | Provincial Identity Information Management (IDIM) | Users cannot authenticate with BCeID |
 | **BC Services Card** | BC Services Card team | Users cannot authenticate with BC Services Card |
 | **Other IDPs** | GitHub, Digital Credential, etc. | Users cannot authenticate with that specific IDP |
