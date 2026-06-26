@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunksso_docs=globalThis.webpackChunksso_docs||[]).push([[4552],{1526(s){s.exports=JSON.parse('{"tag":{"label":"SSO","permalink":"/sso-docs/tags/sso","allTagsPath":"/sso-docs/tags","count":1,"items":[{"id":"FAQs/SSO","title":"SSO","description":"","permalink":"/sso-docs/FAQs/SSO"}],"unlisted":false}}')}}]);
