@@ -67,8 +67,8 @@ If your application keys access to the email address, a second user who signs in
 
 **What to do instead:**
 
-- Use the OIDC `sub` claim as the stable identifier for the user.
-- Treat `sub` as the canonical user key in your application database and access-control logic.
+- Use the user's GUID as the stable identifier for the user. See the [identity mappers](/docs/advanced/identity-mappers.md) section for which claim the different providers will map it to.
+- Treat the user's GUID as the canonical user key in your application database and access-control logic.
 - If you need a display value, store email as a profile attribute, not as the identity key.
 
 ---

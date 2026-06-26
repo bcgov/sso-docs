@@ -45,6 +45,12 @@ Use a public client in the frontend, send the user access token to the backend o
 
 ---
 
+## How should I identify users in my application?
+
+You should use the user's GUID to identify them. See the [identity mappers](/docs/advanced/identity-mappers.md) section for which claim the different providers will map it to. The standard realm will also include the GUID in the `sub` claim with the identity provider alias appended, e.g `<user-guid>@idir`. This is to ensure users are unique within the standard realm. Storing just the GUID without the alias is preferable to match the upstream IDP's identifier.
+
+---
+
 ## Could SSO Keycloak be used to allow members of the federal government to authenticate and access resources?
 
 This is restricted to BC Government only at the moment

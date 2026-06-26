@@ -339,3 +339,19 @@ You can fully customize your login experience from the UI side in terms of your 
 ## What should I do if login fails with a redirect_uri error?
 
 Check that the redirect URI configured in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) exactly matches the one your application sends. The most common issues are trailing slashes, scheme mismatches, wrong hosts, and wrong ports.
+
+---
+
+## What version of keycloak are you using?
+
+Check our [releases page](https://github.com/bcgov/sso-keycloak/releases) for the current version. The semver tag will match the Redhat Build of Keycloak version, e.g. `v26.4.11-build.3` uses RHBK 26.4.11. This closely aligns with the open source Keycloak version but is not exact, generally the major and minor will match but the patch may not. For more information on how the Redhat Build of Keycloak version aligns with the open source version see [here](https://access.redhat.com/support/policy/updates/red_hat_build_of_keycloak_notes).
+
+---
+
+## Why am I seeing a "Client not found" error message?
+
+If you are seeing the below page:
+
+![client not found](/img/client-not-found.png)
+
+The client id is not recognized. Check the URL for the query parameter `client_id=`. The value after the equal sign must exactly match the value under the `resource` key of your installation JSON. 
