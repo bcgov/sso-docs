@@ -1,6 +1,9 @@
 ---
 sidebar_position: 1
 description: Learn about custom realms
+tags:
+  - custom-realm
+  - best-practices
 ---
 
 # Introduction

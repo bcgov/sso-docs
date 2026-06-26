@@ -1,6 +1,9 @@
 ---
 sidebar_position: 6
 description: Learn how to manage roles and role-based access control in the CSS App
+tags:
+  - roles
+  - css-api
 ---
 
 # Role Management
@@ -65,8 +68,56 @@ Because the Standard Realm is shared across many teams, role names are not globa
 
 The `aud` claim identifies the intended recipient of the token. Combine it with the issuer (`iss`) and the role to confirm a token is genuinely valid for your API:
 
-```
+```js
 token.aud === "<your-client-id>"
   && token.iss === "https://loginproxy.gov.bc.ca/auth/realms/standard"
   && token.client_roles.includes("<your-role>")
 ```
+
+---
+
+## Role Assignments
+
+The most important step in role assignment is accurate user identification. When you search in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/), the platform returns matching users from available sources, but profile attributes are not always unique. In BC Government contexts, different people can share the same first name, last name, or email address. Always verify the **GUID** before assigning a role, because it is the most reliable identifier for confirming access is granted to the correct person.
+
+### User Search
+
+For IDIR and IDIR - MFA identity providers, user search in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) can query both:
+
+- Existing users already present in Keycloak
+- Users available in the upstream identity provider directory (for example, on-prem Active Directory for IDIR and cloud Active Directory for IDIR - MFA)
+
+**What this means:** You can often find and assign roles to users before their first login.
+
+#### BCeID Constraint
+
+Querying the BCeID Web Service requires a separate approval and service agreement with the IDIM team. The SSO Team does not currently have this agreement, so BCeID user search is more limited than IDIR and IDIR - MFA.
+
+**What this means:** For BCeID integrations, user search in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) can only return users that already exist in Keycloak. CSS cannot search the upstream BCeID directory directly. As a result, you generally cannot pre-assign roles. Users must first log in so Keycloak can create their account and link it to their BCeID identity. After that first login, the user appears in CSS and roles can be assigned.
+
+When assigning roles in CSS, the available user search fields depend on the identity provider (IDP) configured for your integration.
+
+| IDP | Searchable attributes in CSS |
+| --- | --- |
+| IDIR | First Name, Last Name, Email, Username |
+| IDIR - MFA | First Name, Last Name, Email, Username |
+| BCeID | Display Name, Username, Email, IDP GUID |
+| GitHub BC Gov | Name, Login, Email, IDP GUID |
+| BC Services Card | Not searchable |
+| Digital Credential | Not searchable |
+
+### Why Some IDPs Are Not Searchable
+
+For **BC Services Card** and **Digital Credential**, CSS cannot search users because user profile attributes are not retained in Keycloak for these IDPs.
+
+> If your integration relies on role assignments through user lookup, use an IDP that supports searchable attributes.
+
+### What happens when you assign a role pre-login?
+
+For IDIR and IDIR - MFA IDP(S), if an user does not exist in Keycloak, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) imports the user first (for example from, on-prem Active Directory for IDIR and cloud Active Directory for IDIR - MFA) and then assigns the role.
+
+### Why teams use this
+
+- Enables day-one access for new users
+- Reduces onboarding delays
+- Avoids "first login succeeded but no permissions" support issues

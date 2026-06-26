@@ -1,5 +1,9 @@
 ---
 sidebar_position: 1
+tags:
+  - oidc
+  - terminology
+  - tokens
 ---
 
 # OpenID Connect
@@ -56,3 +60,85 @@ Within the SSO service, Keycloak acts as an **identity broker** — it does not 
 Keycloak supports both **OIDC** and **SAML 2.0** client protocols. While SAML is available for legacy or enterprise systems that require it, **OIDC is strongly recommended** for new integrations. OIDC is a modern, lightweight protocol with broad library support across all major languages and frameworks, simpler token handling via JSON Web Tokens (JWTs), and better alignment with current security best practices.
 
 Once a user is authenticated through their chosen IDP, Keycloak issues signed tokens on behalf of your application. These tokens can be validated independently by your application without contacting Keycloak on every request, keeping the authentication flow efficient and loosely coupled from the upstream IDPs.
+
+## Terminology
+
+This section covers general terms used throughout this documentation.
+
+Here's a shortcut to additional [resources and links](#more-resources) for learning about and using this service.
+
+### Authentication
+
+Authentication is the process of verifying who someone is.
+
+### Authorization
+
+Authorization is the process of verifying what specific applications, files, and data an entity has access to. Authorization can be broken into two categories based on the entity being authorized:
+
+- **Client Authorization**: This determines the resources that a client is allowed to access on a user's behalf, and is most often what is meant by Authorization in an OAuth context.
+
+- **User Authorization**: This determines the resources a user is allowed access, and usually applies when the user is interacting directly with the resource server.
+
+User authorization can be implemented in many ways. Our service supports user roles allowing RBAC for robust user authorization. See [Creating and Managing a Role](./css-application/roles.md) for more information on managing roles.
+
+### Identity Provider
+
+An **Identity Provider (IDP)** is the authoritative source for user identity and credentials. Examples include IDIR, BCeID, GitHub, and BC Services Card.
+
+The SSO service itself is **not** an identity provider — it is an identity broker that mediates authentication between your application and the upstream IDPs. When a user logs in:
+
+1. They authenticate directly with their chosen IDP (e.g., entering IDIR credentials).
+2. The IDP confirms their identity and returns that information to the SSO service.
+3. The SSO service (Keycloak) issues signed tokens to your application proving the user's identity.
+4. Your application uses these tokens to establish the user's session.
+
+User credentials are never handled by your application or by Keycloak — they remain under the IDP's control at all times.
+
+### Keycloak
+
+[Keycloak](https://www.keycloak.org/) is an open source identity and access management tool. Our team runs [Redhat Build of Keycloak](https://access.redhat.com/products/red-hat-build-of-keycloak/), a component built on top of keycloak, and this documentation may use the terms interchangeably. [See here](#what-is-openid-connect) for a general overview of how we use keycloak.
+
+### Client
+
+Clients are entities that can request Keycloak to authenticate a user. Most often, clients are applications and services that want to use Keycloak to secure themselves and provide a single sign-on solution. Clients can also be entities that just want to request identity information or an access token so that they can securely invoke other services on the network that are secured by Keycloak. Clients can be either public or confidential:
+
+- **Public Clients** are unable to use registered client secrets, for example applications running in the browser.
+- **Confidential Clients** are applications that are able to securely store a client secret, such as server-rendered web applications.
+
+### Realm
+
+A realm manages a set of users, credentials, roles, and groups. A user belongs to and logs into a realm. Realms are isolated from one another and can only manage and authenticate the users that they control.
+
+### Standard Realm
+
+Clients created through our [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) will be configured into the standard realm, which includes a default set of optional IDP's and configurations suitable for most applications. Additional client-level configurations can be made through the webapp.
+
+### Custom Realm
+
+Custom realms are regular keycloak realms, which may be required by some clients who need features not supported in the standard realm. [See here](./advanced/custom-realms/introduction.md#standard-realm-vs-custom-realm) for more information on the difference between standard and custom realms.
+
+## More Resources
+
+### Readings for OAuth 2.0
+
+- [The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749)
+- [The State Of The Implicit Flow In Oauth2](https://brockallen.com/2019/01/03/the-state-of-the-implicit-flow-in-oauth2/)
+- [OAuth 2.0 Threat Model and Security Considerations](https://tools.ietf.org/html/rfc6819)
+- [OAuth 2.0 Security Best Current Practice](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-13)
+- [OAuth 2.0 for Browser-Based Apps](https://tools.ietf.org/html/draft-parecki-oauth-browser-based-apps-02)
+
+### Learn about the OpenID-Connect and OAuth Protocols
+
+- [Example OIDC Applications Repository](https://github.com/bcgov/keycloak-example-apps/tree/dev/examples/oidc)
+- [Our videos material from August 2023 Iteration on OIDC Learning ](https://www.youtube.com/playlist?list=PL9CV_8JBQHirMRjBk62jeYUE_MpE4unU8)
+- [Powerpoint of OIDC and OAuth](https://github.com/bcgov/sso-keycloak/files/12422946/oidc-oauth-presentationk-beta.pptx)
+- [OIDC Primer](https://developer.okta.com/blog/2017/07/25/oidc-primer-part-1)
+- [SAML2 vs JWT: Understanding OpenID Connect Part 1](https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-1-fffe0d50f953)
+- [Whats The Difference Between Oauth, Openid Connect And Saml](https://www.okta.com/identity-101/whats-the-difference-between-oauth-openid-connect-and-saml/)
+- [SAML2 vs JWT: Understanding OpenID Connect Part 2](https://medium.com/@robert.broeckelmann/saml2-vs-jwt-understanding-openid-connect-part-2-f361ca867baa)
+- [How OIDC authorization code flow works with a public client](https://www.pingidentity.com/en/company/blog/posts/2018/securely-using-oidc-authorization-code-flow-public-client-single-page-apps.html)
+
+### Learn about Keycloak and its admin API
+
+- [Redhat Build of Keycloak (Keycloak)](https://access.redhat.com/products/red-hat-build-of-keycloak/)
+- [Realm Admin guide](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6/html/server_administration_guide/index)

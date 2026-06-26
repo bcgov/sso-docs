@@ -2,6 +2,10 @@
 sidebar_position: 5
 title: Additional Settings
 description: Learn about token and session lifespans
+tags:
+  - css
+  - best-practices
+  - tokens
 ---
 
 ## What are the Additional Settings?

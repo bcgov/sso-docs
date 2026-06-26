@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 description: Our advice on what to do
+tags:
+  - best-practices
 ---
 
 # Do's & Don'ts
@@ -65,8 +67,8 @@ If your application keys access to the email address, a second user who signs in
 
 **What to do instead:**
 
-- Use the OIDC `sub` claim as the stable identifier for the user.
-- Treat `sub` as the canonical user key in your application database and access-control logic.
+- Use the user's GUID as the stable identifier for the user. See the [identity mappers](/docs/advanced/identity-mappers.md) section for which claim the different providers will map it to.
+- Treat the user's GUID as the canonical user key in your application database and access-control logic.
 - If you need a display value, store email as a profile attribute, not as the identity key.
 
 ---
@@ -118,7 +120,7 @@ For all integrations, your logout flow must:
 2. Clear any local session state, cookies, and tokens held by your application.
 3. Inform the user if a full IDP-level logout could not be completed.
 
-#### SiteMinder (IDIR / Azure IDIR) — Chained Logout
+#### SiteMinder (IDIR / IDIR - MFA) — Chained Logout
 
 IDPs that use SiteMinder — such as IDIR — retain their own session independently of Keycloak. Even after the Keycloak session is destroyed, the SiteMinder session remains active. This means that when the user next clicks Login, they are silently authenticated again without being prompted to enter credentials.
 
@@ -153,7 +155,7 @@ When a client is configured with multiple IDPs, Keycloak displays a login page p
 | Display Name            | `kc_idp_hint`       |
 | ----------------------- | :-----------------: |
 | IDIR                    | `idir`              |
-| Azure IDIR              | `azureidir`         |
+| IDIR - MFA                | `azureidir`         |
 | Basic BCeID             | `bceidbasic`        |
 | Business BCeID          | `bceidbusiness`     |
 | Basic or Business BCeID | `bceidboth`         |

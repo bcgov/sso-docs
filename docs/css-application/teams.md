@@ -1,6 +1,9 @@
 ---
 sidebar_position: 6
 description: Learn about CSS teams and member roles
+tags:
+  - css
+  - css-team
 ---
 
 # Teams & Members

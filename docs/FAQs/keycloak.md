@@ -1,42 +1,311 @@
 ---
 sidebar_position: 1
 tags:
-  - Keycloak
+  - keycloak
+  - faq
+  - custom-realm
+  - standard-realm
+description: Frequently asked questions about Keycloak integrations, realms, authentication flows, and operational guidance
 ---
 
 # Keycloak
 
-import FaqItem from '../../src/components/FaqItem';
+---
 
-export const faqs = [
-{
-title: "Why does Logging out of Keycloak does not kill my session with the identity provider?",
-content: <><p>This is a known issue with identity providers which retain session and has been discussed in <a href={"https://stackoverflow.developer.gov.bc.ca/questions/83/84#84"}>here</a>.</p></>},
-{title: "Where can I find libraries or client adapters to connect to Keycloak?",
-content: <><p>Please refer to <a href={"https://stackoverflow.developer.gov.bc.ca/questions/89/90#90"}>here</a> to learn more about this topic.</p></>},
-{title: "How to share Keycloak Realm between application teams without sharing the admin credentials?",
-content: <><p>This question was discussed previously. Please refer to <a href={"https://stackoverflow.developer.gov.bc.ca/questions/770/771#771"}>here</a>.</p></>},
-{title: "How do I test protected pages with Cypress and Keycloak?",
-content: <><p>Click <a href={"https://stackoverflow.developer.gov.bc.ca/questions/100/101#101"}>here</a> for the different approaches to address this query.</p></>},
-{title: "How do i get the GUID of the client under Client settings in Keyclock?",
-content: <><p>We do not provide this unless you are a custom realm owner pursuing a migration.</p></>
-},
-{title: "Which time zone is used for the SSO (Keycloak) product?",
-content: <><p>The time zone used is PST (Pacific Standard Time). For more information, click <a href={"https://stackoverflow.developer.gov.bc.ca/questions/1260/1261#1261"}>here</a>.</p></>},
-{title: "Does the SSO/Keycloak support indigenous characters?",
-content: <><p>Yes, it does. This question has been answered in following <a href={"https://stackoverflow.developer.gov.bc.ca/questions/1267/1268#1268"}>discussion</a>.</p></>},
-{title: "When using the IDIR IDP is there a way to automatically detect the BC Gov VPN so the user doesn’t have to enter their credentials? E.g. Compass Intranet?",
-content: <><p> This is a functionality specifically on the identity provider side and needs to be discussed with them. </p></>},
-{title: "Could SSO/Keycloak be used to allow members of the federal gov to authenticate and access resources?",
-content: <><p>This is restricted to BC Gov only at the moment.</p></>},
-{title: "Is there a way to check if an IDIR user exists in an automated fashion?",
-content: <><p>There are a couple of approaches to this which can be found in this <a href={"https://stackoverflow.developer.gov.bc.ca/questions/1237/1238#1238"}>discussion</a>.</p></>},
-{title: "How can I get user details from the KeyCloak API in the default realm?",
-content: <><p>For more information, please refer to <a href={"https://stackoverflow.developer.gov.bc.ca/questions/173/175#175"}>here</a>.</p></>},
-{title: "What is the recommended timeout for an access token? What about a refresh token?",
-content: <><p>The recommended settings can be found <a href={"https://stackoverflow.developer.gov.bc.ca/questions/508/509#509"}>here</a>.</p></>},
-{title: "Where can I find more information about the BC Government Keycloak offerings?",
-content: <><p>The BC Gov SSO team has created <a href={"https://mvp.developer.gov.bc.ca/docs/default/component/css-docs/"}>SSO Pathfinder Knowledge Base</a>. 
-You can also refer to <a href={"https://stackoverflow.developer.gov.bc.ca/questions/95/96#96"}>here</a> for more information.</p></>}];
+## What are the discovery endpoints for the Keycloak?
 
-<FaqItem faqs={faqs}/>
+The sso configuration or discovery endpoint for the standard realm in different envinonments are the following:
+
+| environment | URI |
+|---|---|
+| dev | https://dev.loginproxy.gov.bc.ca/auth/realms/standard/.well-known/openid-configuration |
+| test | https://test.loginproxy.gov.bc.ca/auth/realms/standard/.well-known/openid-configuration |
+| prod | https://loginproxy.gov.bc.ca/auth/realms/standard/.well-known/openid-configuration |
+
+**Note:** For custom realms, just replace `standard` with `<YOUR_CUSTOM_REALM_ID>` in the above URLs
+
+---
+
+## Where can I find the public keys for the Keycloak?
+
+You can find the public keys for the standard realm in different environments at the following links:
+
+| environment | URI |
+|---|---|
+| dev | https://dev.loginproxy.gov.bc.ca/auth/realms/standard/protocol/openid-connect/certs |
+| test | https://test.loginproxy.gov.bc.ca/auth/realms/standard/protocol/openid-connect/certs |
+| prod | https://loginproxy.gov.bc.ca/auth/realms/standard/protocol/openid-connect/certs |
+
+**Note:** For custom realms, just replace `standard` with `<YOUR_CUSTOM_REALM_ID>` in the above URLs
+
+---
+
+## Why does Logging out of Keycloak does not kill my session with the identity provider?
+
+This is a known issue with identity providers which retain session. SiteMinder (for example) will hold that session until the user is logged out using the SiteMinder logout endpoint. The result with your current flow is that although the Keycloak session is destroyed, the SM session is retained so when the login endpoint is clicked the user is logged in seamlessly.
+
+The solution is to chain your logout call:
+
+- On user logout, first call the `SiteMinder` logout endpoint with a redirect back to the Keycloak logout endpoint
+
+- Then redirect back to the application from the Keycloak logout endpoint
+
+This should effectively drop your sessions in SiteMinder & Keycloak.
+
+**URL Format:**
+
+```sh
+https://${SM_LOGOUT_URL}?retnow=1&returl=${KC_LOGOUT_URL}?post_logout_redirect_uri=${APP_LOGOUT_URL}
+```
+
+**Prod Example URL:**
+
+```sh
+https://logon7.gov.bc.ca/clp-cgi/logoff.cgi?retnow=1&returl=https://dev.loginproxy.gov.bc.ca/auth/realms/<myrealm>/protocol/openid-connect/logout?post_logout_redirect_uri=https://myapp/logout
+```
+
+---
+
+## How to share Keycloak Realm between application teams without sharing the admin credentials?
+
+The SSO Service is built on top of RedHat Build of Keycloak(RHBK) and it offers Standard and Custom realms. The applications integrating through Standard realm does not have access to Keycloak native admin UI but are provided with [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) to manage their integration instead. However, teams provisioned with custom realm do have access to their realm's admin UI and can use Keycloak's fine-grained admin permissions (FGAP) feature to manage admin access in the realm. Please follow this [guide](https://www.keycloak.org/docs/latest/server_admin/#enabling-admin-permissions-to-a-realm) to learn more.
+
+FGAP in Keycloak let you precisely control who can do what on which specific admin resources, instead of giving broad admin roles. It works by combining four things:
+
+1. Resources → what is being managed
+   Examples: users, a specific client, a group
+
+2. Scopes → what action is allowed
+   Examples: view, manage, configure
+
+3. Policies → who is allowed
+   Examples: users with a role, a group, custom rules
+
+4. Permissions → the rule that ties everything together
+   (resource + scope + policy)
+
+### How it works?
+
+When an admin tries to perform an action, Keycloak checks: “Does this user’s policy allow this action (scope) on this resource?”
+
+Admin action → FGAP check → policy evaluation → allow / deny
+
+###  When to Use FGAP?
+
+Use it when you need:
+
+1. Delegated administration
+2. Multi-tenant admin isolation
+3. Per-team resource ownership
+4. Least-privilege admin access
+
+---
+
+## How do I test protected pages with Cypress and Keycloak?
+
+### Overview
+
+Testing pages protected by Keycloak requires authenticating within your Cypress test suite. You can extract the Keycloak library directly into your Cypress project. Please use below example to complete the setup.
+
+**Example:** The [bcgov/biohubbc](https://github.com/bcgov/biohubbc/tree/dev/testing/e2e/cypress) repository maintains a custom `keycloak.js` library in the `support/` folder that works with Keycloak-only and federated identities (IDIR, BCeID). See [commands.ts](https://github.com/bcgov/biohubbc/blob/dev/testing/e2e/cypress/support/commands.ts) for implementation examples.
+
+### Best Practice: Mock Authentication in Tests
+
+The [Cypress best practice](https://docs.cypress.io/guides/end-to-end-testing/testing-your-app#Logging-in) is to test the authentication flow **once**, then mock authentication in all subsequent tests. This approach is faster and more reliable.
+
+**Mocking with cookies (backend-handled authentication):**
+
+```js
+Cypress.Commands.add("mockLogin", (userName) => {
+  cy.setCookie("auth", userName);
+});
+```
+
+**Mocking with feature flags (frontend-handled authentication):**
+
+Configure your application to check for a test mode flag and bypass authentication in tests.
+
+**Available resources:**
+
+- Cypress [authentication plugins](https://docs.cypress.io/plugins/index#Authentication)
+- Cypress [login recipes](https://github.com/cypress-io/cypress-example-recipes#logging-in-recipes)
+
+---
+
+## How do I get the GUID of the client under Client settings in Keycloak?
+
+The client GUID is not available in the **Standard Realm**. This information is only accessible in a **Custom Realm** and must be retrieved via the Keycloak Admin API.
+
+### For Custom Realm Owners
+
+If you own a Custom Realm and need to retrieve a client's GUID, you can use two ways:
+
+#### Keycloak Admin API
+
+**GET request:**
+
+```html
+GET /admin/realms/{realm-name}/clients?clientId=<YOUR_CLIENT_ID>
+```
+
+This returns a JSON response containing the client details, including the `id` field (the GUID).
+
+**Example using curl:**
+
+```html
+curl -X GET "https://dev.loginproxy.gov.bc.ca/auth/admin/realms/<YOUR_CUSTOM_REALM>/clients?clientId=<YOUR_CLIENT_ID>" \
+  -H "Authorization: Bearer $ACCESS_TOKEN"
+```
+
+#### Keycloak Native Admin UI
+
+Navigate to your custom realm and select `clients` and search and click on your client. After the client is opened in edit mode, you can copy your client GUID from the browser URL, which should be in the format below.
+
+```html
+https://dev.sandbox.loginproxy.gov.bc.ca/auth/admin/<YOUR_CUSTOM_REALM>/console/#/<YOUR_CUSTOM_REALM>/clients/<YOUR_CLIENT_GUID>/settings
+```
+
+---
+
+## Which time zone is used for the SSO (Keycloak) product?
+
+The time zone used is PST (Pacific Standard Time)
+
+---
+
+## Does the Keycloak support indigenous characters?
+
+Yes, it does
+
+![indigenous-characters](/img/indigenous-characters.png)
+
+---
+
+## When using the IDIR IDP is there a way to automatically detect the BC Government VPN so the user doesn't have to enter their credentials? E.g. Compass Intranet?
+
+### Integrated Windows Authentication (IWA)
+
+Yes. When users log into SiteMinder-protected applications from BC Government machines or inside the BC Government network, **Integrated Windows Authentication (IWA)** automatically detects their machine credentials and authenticates them in the background — without prompting for login credentials.
+
+### How IWA Works
+
+**On successful detection:**
+
+- The IWA server retrieves credentials from the user's machine
+- User is authenticated and redirected directly to the application
+- No login screen is displayed
+- A session cookie (`SMSESSION`) is created
+
+**Behind the scenes:**
+
+- An automatic background request is made to `https://ssotest7.gov.bc.ca/login/ntlm.htm` (for test) or equivalent prod URL
+- This request triggers NTLM authentication if the user is on a Gov machine or network
+- Session credentials are established invisibly
+
+**If IWA detection fails:**
+
+- Browser prompts user for IDIR credentials (fallback to manual login)
+- This typically occurs if the user is not on a Gov machine or network segment
+
+### Default Behavior
+
+IWA is **enabled by default** for all SiteMinder integrations. This allows Gov users to access applications seamlessly without re-entering credentials.
+
+### Logging Out
+
+When a user logs out, a logout cookie is set:
+
+```yaml
+SMSESSION: LOGGEDOFF
+```
+
+This terminates the SiteMinder session.
+
+### Workarounds for Testing or Bypass
+
+If you need to bypass IWA (for example, to test explicit login flows):
+
+- Use **Firefox** browser on Gov machines (IWA not supported)
+- Use **Chrome Incognito mode** on Gov machines (IWA bypassed)
+
+---
+
+## What is the recommended timeout for an access token? What about a refresh token?
+
+The recommended settings are the following:
+
+- **Access Token** - Usually **5 minutes or less**. The access token should always be short lived; this will ensure minimal loss of data if one of your tokens is compromised.
+
+- **Refresh Token** - Usually **30 minutes.** The refresh token is used to retrieve a new access token (once the access token has expired)
+
+Note these are the default values for Keycloak (5 min access/30 min refresh)
+
+The pattern most teams take is to keep checking the access token timeout before any calls are made. If the token is expired (or very close), use the refresh token to renew it. This will result in a new refresh token as well. If the refresh token is past expiry, log the user out for inactivity
+
+---
+
+## How can I get user details from the KeyCloak API in the custom realm?
+
+If your team has your own custom realm, you'll need a service account client within your realm which has been granted with a client role `view-users` from the client `realm-management`
+
+---
+
+## How can I have a back to app/website navigation on an IDP login page using the broker URL?
+
+Yes, you can pass a return URL to the identity provider so users are redirected back to your application after authentication. This is done using Keycloak's **Forward Query Parameters** feature.
+
+### How It Works
+
+1. **Define a query parameter name** — Your IDP specifies the name of the parameter it will accept (for example, `safeReturnURL`, `returnTo`, or `redirectAfterLogin`).
+
+2. **Configure Forward Query Parameters in Keycloak** — Add this parameter to the IDP's `Forward Query Parameters` list so Keycloak passes it through to the IDP.
+
+3. **Your application includes the parameter** — When sending users to authenticate, append the parameter with your desired return URL:
+
+   ```sh
+   https://loginproxy.gov.bc.ca/auth/realms/<YOUR-REALM>/protocol/openid-connect/auth?
+   ...
+   &safeReturnURL=https://myapp.example.com/dashboard
+   ```
+
+4. **IDP receives and uses it** — The IDP receives the parameter in the authentication request and can use it to redirect the user after successful login.
+
+### Important Notes
+
+- The parameter name must match exactly what your IDP expects.
+- The return URL must be a valid, authorized redirect URI for your client.
+- Not all IDPs support this feature — check with your IDP first.
+
+---
+
+## Can I get Active Directory groups from a normal login callout?
+
+No. Regular authentication callouts do not provide those groups. If your application needs directory group information, contact the IDIM team to determine whether a web service lookup is available.
+
+---
+
+## Can I have a pop-up style login window instead of redirection?
+
+You can fully customize your login experience from the UI side in terms of your login buttons (using `kc_idp_hint`). That said, you could leverage a popup window to house the IDP login; however you'll still have to enter credentials on the common logon page (CLP) for BCeID and IDIR
+
+---
+
+## What should I do if login fails with a redirect_uri error?
+
+Check that the redirect URI configured in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) exactly matches the one your application sends. The most common issues are trailing slashes, scheme mismatches, wrong hosts, and wrong ports.
+
+---
+
+## What version of keycloak are you using?
+
+Check our [releases page](https://github.com/bcgov/sso-keycloak/releases) for the current version. The semver tag will match the Redhat Build of Keycloak version, e.g. `v26.4.11-build.3` uses RHBK 26.4.11. This closely aligns with the open source Keycloak version but is not exact, generally the major and minor will match but the patch may not. For more information on how the Redhat Build of Keycloak version aligns with the open source version see [here](https://access.redhat.com/support/policy/updates/red_hat_build_of_keycloak_notes).
+
+---
+
+## Why am I seeing a "Client not found" error message?
+
+If you are seeing the below page:
+
+![client not found](/img/client-not-found.png)
+
+The client id is not recognized. Check the URL for the query parameter `client_id=`. The value after the equal sign must exactly match the value under the `resource` key of your installation JSON. 

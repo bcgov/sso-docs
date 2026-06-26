@@ -2,6 +2,8 @@
 sidebar_position: 2
 title: Security considerations
 description: Security best practices
+tags:
+  - best-practices
 ---
 
 ## Overview

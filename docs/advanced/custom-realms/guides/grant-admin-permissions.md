@@ -1,20 +1,33 @@
 ---
 sidebar_position: 1
 description: How to grant admin permissions
+tags:
+  - custom-realm
+  - keycloak-realm-admin
 ---
 
 # Grant Admin Permissions
 
-When the SSO team provisions your Custom Realm, they create the initial realm administrator accounts for **product owner**, **technical contact**, and **secondary technical contacts** and give you access via the **master realm console**. From that point, your team is responsible for provisioning all future realm administrators.
+When the SSO team provisions your Custom Realm, they create the initial realm administrator accounts for your **product owner**, **technical contact**, and **secondary technical contacts** using the **master console**. After that, your team is responsible for granting admin access to additional users.
 
-**Understanding the two admin console URLs:**
+This guide explains how to add Realm Administrators safely and consistently across environments.
+
+## Before you begin
+
+- You must already have Realm Administrator access.
+- You must know the target environment: DEV, TEST, or PROD.
+- You must add an IDP to your realm
+- The user seeking admin access should be able to login with that IDP at `https://<env>.loginproxy.gov.bc.ca/auth/admin/<your-realm>/console/`
+- Admin access is environment-specific. Repeat these steps separately for DEV, TEST, and PROD.
+
+## Understanding the two admin console URLs
 
 | Console | URL Pattern | When to Use |
 | --- | --- | --- |
-| **Master console** | `https://<env>.loginproxy.gov.bc.ca/auth/admin/master/console/#<your-realm>` | Required for initial setup and for adding admins before the realm's own IDP is configured. |
-| **Realm console** | `https://<env>.loginproxy.gov.bc.ca/auth/admin/<your-realm>/console/` | Standard day-to-day admin URL once your IDP is configured. |
+| **Master console** | `https://<env>.loginproxy.gov.bc.ca/auth/admin/master/console/#<your-realm>` | Required for initial setup and for adding admins before your realm IDP is configured. |
+| **Realm console** | `https://<env>.loginproxy.gov.bc.ca/auth/admin/<your-realm>/console/` | Standard day-to-day admin URL after your realm IDP is configured. |
 
-**Environment base URLs:**
+## Environment base URLs
 
 | Environment | Base URL |
 | --- | --- |
@@ -22,27 +35,68 @@ When the SSO team provisions your Custom Realm, they create the initial realm ad
 | TEST | `https://test.loginproxy.gov.bc.ca` |
 | PROD | `https://loginproxy.gov.bc.ca` |
 
-**Steps to add a new Realm Administrator:**
+## Choose the right workflow
 
-1. **Ensure your IDP is configured.** If it is not yet set up, follow the [IDP setup guide](https://stackoverflow.developer.gov.bc.ca/questions/864) with particular attention to step 2 before proceeding.
+### If your realm IDP is already configured
 
-2. **Import the new admin's user account into the realm.** Ask the new admin to visit the realm console URL for their target environment and log in:
-   ```
-   https://<env>.loginproxy.gov.bc.ca/auth/admin/<your-realm>/console/
-   ```
-   They will see a **Forbidden** message — this is expected. The login attempt creates their user record in the realm's user store, which is required before they can be assigned to a group.
+Use the **standard workflow** in the next section.
 
-3. **Add the user to the Realm Administrator group.** An existing Realm Administrator logs in to the master console:
-   ```
-   https://<env>.loginproxy.gov.bc.ca/auth/admin/master/console/#<your-realm>
-   ```
-   Navigate to **Users**, find the newly imported user, open their **Groups** tab, and assign them to the **Realm Administrator** group.
+### If your realm IDP is not configured yet
 
-4. **Verify access.** The new admin can now log in to the realm console and will have full administrative access:
-   ```
-   https://<env>.loginproxy.gov.bc.ca/auth/admin/<your-realm>/console/
-   ```
+You can only add admins through the **master console**. Follow the fallback workflow under [Adding an admin before IDP setup](#adding-an-admin-before-idp-setup).
 
-> **If a new admin needs access before the IDP is configured:** They can only be added via the master console. Contact the SSO team if you require assistance.
+## Standard workflow: add a new Realm Administrator
 
-> **Repeat for each environment.** The above steps must be performed separately for DEV, TEST, and PROD — user accounts and group memberships are not shared between environments.
+### Step 1: Import the user into the realm
+
+Ask the user to open the realm console URL for the target environment and log in:
+
+```sh
+https://<env>.loginproxy.gov.bc.ca/auth/admin/<your-realm>/console/
+```
+
+They will see a **Forbidden** message. This is expected.
+
+The login attempt creates the user record in your realm, which is required before group assignment.
+
+### Step 2: Assign Realm Administrator group
+
+An existing Realm Administrator signs in to the master console:
+
+```sh
+https://<env>.loginproxy.gov.bc.ca/auth/admin/master/console/#<your-realm>
+```
+
+Then:
+
+- Go to **Users**.
+- Find and open the newly imported user.
+- Open the **Groups** tab.
+- Add the user to the **Realm Administrator** group.
+
+### Step 3: Verify access
+
+Ask the new admin to log in again via the realm console:
+
+```sh
+https://<env>.loginproxy.gov.bc.ca/auth/admin/<your-realm>/console/
+```
+
+They should now have full administrative access.
+
+## Adding an admin before IDP setup
+
+If your realm IDP is not configured yet, perform admin assignment in the master console only.
+
+1. Sign in to the master console for the environment.
+2. Locate the target user record.
+3. Add the user to **Realm Administrator** group.
+4. Confirm access after IDP setup is complete.
+
+If you need help with this pre-IDP scenario, contact the SSO team.
+
+## Important notes
+
+- Access is not shared between DEV, TEST, and PROD.
+- Group membership is environment-specific and must be managed separately.
+- Keep at least two active Realm Administrators per environment to avoid lockout risk.

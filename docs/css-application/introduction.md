@@ -1,6 +1,9 @@
 ---
 sidebar_position: 1
 title: Introduction
+tags:
+  - css
+  - bc-services-card
 ---
 
 ## Overview
@@ -20,6 +23,8 @@ The CSS was built to abstract away the complexity of the native Keycloak Admin U
 - Managing team members and their access levels
 - Promoting integrations across environments (Development, Test, Production)
 - Retrieving client credentials securely
+
+![Overview or SSO Standard Service](/img/keycloak_overview_Dec2023.png)
 
 ## Accessing the CSS
 
@@ -62,4 +67,4 @@ Once you have access, you can submit an integration request directly through the
 
 When you opt-in for BC Services Card identity provider, its expected that you have received formal go-ahead from that team and the last step to configure this IDP is through [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/).
 
-After you select `BC Services Card` under `Identity Providers (S)`, you have to choose `Privacy Zone` and `Attributes`. Please refer to this [guide](../advanced/bc-services-card.md#privacy-zones) for more information on privacy zones. If you further need assistance, please reach out to [IDIM](mailto:idim.consulting@gov.bc.ca) team
+After you select `BC Services Card` under `Identity Providers(S)`, you have to choose `Privacy Zone` and `Attributes`. Please refer to this [guide](../advanced/bc-services-card.md#privacy-zones) for more information on privacy zones. If you further need assistance, please reach out to [IDIM](mailto:idim.consulting@gov.bc.ca) team

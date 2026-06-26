@@ -1,6 +1,9 @@
 ---
-sidebar_position: 8
+sidebar_position: 9
 description: Learn how to use CSS API to interact with CSS in RESTful way
+tags:
+  - css-api
+  - css
 ---
 
 # CSS API

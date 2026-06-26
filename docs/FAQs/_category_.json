@@ -1,8 +1,8 @@
 {
-  "label": "FAQs",
-  "position": 7,
+  "label": "Frequently Asked Questions",
+  "position": 8,
   "link": {
     "type": "generated-index",
-    "description": "FAQs"
+    "description": "Need help? Find answers to common questions about Common Hosted Single Sign-on (CSS), Keycloak, and Custom Realms."
   }
 }

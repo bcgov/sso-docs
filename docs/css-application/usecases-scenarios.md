@@ -1,6 +1,9 @@
 ---
 sidebar_position: 2
 description: Learn about the different types of client authentication
+tags:
+  - css
+  - client-types
 ---
 
 # Types of Client Authentication
