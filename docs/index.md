@@ -1,6 +1,12 @@
 ---
 sidebar_position: 1
 slug: /
+tags:
+  - sso
+  - keycloak
+  - css
+  - sso-features
+  - sso-contact
 ---
 
 # Introduction

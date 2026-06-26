@@ -2,6 +2,9 @@
 sidebar_position: 4
 title: Redirect URIs
 description: Learn about redirect uri and how is it used in oidc flow
+tags:
+  - css
+  - best-practices
 ---
 
 ## Overview

@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 description: Our advice on what to do
+tags:
+  - best-practices
 ---
 
 # Do's & Don'ts

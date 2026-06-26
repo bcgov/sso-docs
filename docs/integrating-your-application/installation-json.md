@@ -1,6 +1,10 @@
 ---
 sidebar_position: 1
 description: Learn about your integration credentials
+tags:
+  - client-credentials
+  - client-types
+  - idp-approval
 ---
 
 # Integration Credentials

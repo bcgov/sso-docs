@@ -1,6 +1,9 @@
 ---
 sidebar_position: 4
 description: Learn about BCeID environments and how to set up test accounts.
+tags:
+  - bceid
+  - identity-provider
 ---
 
 # BCeID Integration

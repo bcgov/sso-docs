@@ -1,6 +1,9 @@
 ---
 sidebar_position: 3
 description: Learn how to customize default keycloak login page.
+tags:
+  - best-practices
+  - login-page
 ---
 
 # Customizing Login Page

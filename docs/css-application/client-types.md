@@ -1,6 +1,9 @@
 ---
 sidebar_position: 3
 description: Learn about various client types to choose from based on the security needs of your app.
+tags:
+  - css
+  - client-types
 ---
 
 # Client Types

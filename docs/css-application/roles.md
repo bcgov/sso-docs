@@ -1,6 +1,9 @@
 ---
 sidebar_position: 6
 description: Learn how to manage roles and role-based access control in the CSS App
+tags:
+  - roles
+  - css-api
 ---
 
 # Role Management

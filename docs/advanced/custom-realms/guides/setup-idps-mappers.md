@@ -1,6 +1,10 @@
 ---
 sidebar_position: 2
 description: How to setup identity provider and its mappers
+tags:
+   - custom-realm
+   - keycloak-mappers
+   - identity-providers
 ---
 
 # Set Up IDP(S) and Mappers

@@ -1,6 +1,9 @@
 ---
 sidebar_position: 7
 title: SAML Integrations
+tags:
+  - saml
+  - css
 ---
 
 ## Choosing an Identity Provider

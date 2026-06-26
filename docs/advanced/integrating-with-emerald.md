@@ -2,6 +2,8 @@
 sidebar_position: 12
 title: Emerald Integrations
 description: Learn how to configure keycloak client with your application in emerald cluster
+tags:
+  - emerald
 ---
 
 If your project is hosted on the **Emerald cluster**, you must account for its security restrictions and network policies when using our Keycloak instance as a login proxy.

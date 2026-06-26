@@ -1,5 +1,9 @@
 ---
 sidebar_position: 6
+tags:
+  - sso-contact
+  - uptime
+  - service-levels
 ---
 
 # Service Uptime and Monitoring

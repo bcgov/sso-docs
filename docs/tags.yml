@@ -28,3 +28,84 @@ errors:
 faq:
   label: "FAQ"
   description: "Frequently Asked Questions (FAQs) for Common Hosted Single Sign-on (CSS), Keycloak, and Custom Realms."
+oidc:
+  label: "OIDC"
+  description: "OpenID Connect (OIDC) is an authentication protocol that allows clients to verify the identity of end-users based on the authentication performed by an authorization server."
+terminology:
+  label: "Terminology"
+  description: "Common terms and definitions related to Common Hosted Single Sign-on (CSS), Keycloak, and Custom Realms."
+sso-features:
+  label: "SSO Features"
+  description: "Features and capabilities of SSO Service"
+sso-contact:
+  label: "SSO Contact"
+  description: "Contact information for SSO Service support and inquiries."
+tokens:
+  label: "Tokens"
+  description: "Information about OpenID Connect (OIDC) tokens, including access tokens, ID tokens, and refresh tokens."
+bc-services-card:
+  label: "BC Services Card"
+  description: "BC Government approved Identity Provider (IdP) that allows users to authenticate using their BC Services Card."
+digital-credentials:
+  label: "Digital Credentials"
+  description: "BC Government approved Identity Provider (IdP) that allows users to authenticate using their Digital Credentials stored in the BC Wallet app."
+mfa-totp:
+  label: "MFA TOTP"
+  description: "Multi-Factor Authentication (MFA) using Time-based One-Time Password (TOTP) for enhanced security."
+keycloak-mappers:
+  label: "Keycloak Mappers"
+  description: "Keycloak Mappers are used to map user attributes and roles from the identity provider to the Keycloak user model."
+emerald:
+  label: "Emerald"
+  description: "Emerald is one of the OpenShift clusters used by applications that handle protected level C data."
+css-team:
+  label: "CSS Team"
+  description: "The CSS Team is responsible for managing and maintaining the Common Hosted Single Sign-on (CSS) service."
+roles:
+  label: "Roles"
+  description: "Roles define the permissions and access levels for users that are managed within the Common Hosted Single Sign-on (CSS) service and/or Keycloak."
+client-credentials:
+  label: "Client Credentials"
+  description: "Client Credentials are used for machine-to-machine authentication in the Common Hosted Single Sign-on (CSS) service and Keycloak."
+bceid:
+  label: "BCeID"
+  description: "BC Government approved Identity Provider (IdP) that allows users to authenticate using their BCeID credentials."
+sso-playground:
+  label: "SSO Playground"
+  description: "The SSO Playground is a testing environment for developers to experiment with their integration."
+best-practices:
+  label: "Best Practices"
+  description: "Best practices for integrating applications with the Common Hosted Single Sign-on (CSS) service and Keycloak."
+keycloak-realm-admin:
+  label: "Keycloak Realm Admin"
+  description: "Keycloak Realm Admin is a user with administrative privileges to manage realms, users, and configurations within Keycloak."
+user-attributes:
+  label: "User Attributes"
+  description: "User Attributes are properties associated with a user in Keycloak."
+token-claims:
+  label: "Token Claims"
+  description: "Token Claims are pieces of information asserted about a subject (user) in a token issued by the Common Hosted Single Sign-on (CSS) service or Keycloak."
+identity-provider:
+  label: "Identity Provider"
+  description: "An Identity Provider (IdP) is a service that authenticates users and provides identity information to applications."
+identity-providers:
+  label: "Identity Providers"
+  description: "Identity Providers (IdPs) are services that authenticate users and provide identity information to applications."
+client-types:
+  label: "Client Types"
+  description: "Client Types define the type of application that is integrating with the Common Hosted Single Sign-on (CSS) service or Keycloak."
+saml:
+  label: "SAML"
+  description: "Security Assertion Markup Language (SAML) is an open standard for exchanging authentication and authorization data between parties, in particular, between an identity provider and a service provider."
+idp-approval:
+  label: "IDP Approval"
+  description: "Certain identity providers require approval before users can access applications or resources."
+login-page:
+  label: "Login Page"
+  description: "The Login Page is the user interface where users enter their credentials to authenticate with the Common Hosted Single Sign-on (CSS) service or Keycloak."
+uptime:
+  label: "Uptime"
+  description: "Uptime refers to the amount of time Keycloak is operational and available for use."
+service-levels:
+  label: "Service Levels"
+  description: "Service Levels refer to the performance and availability standards that the Common Hosted Single Sign-on (CSS) service and Keycloak adhere to."

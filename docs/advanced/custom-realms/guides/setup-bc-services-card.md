@@ -1,6 +1,10 @@
 ---
 sidebar_position: 3
 description: How to set up BC Services Card as an identity provider in a custom realm
+tags:
+  - custom-realm
+  - bc-services-card
+  - identity-provider
 ---
 
 # Set Up BC Services Card IDP

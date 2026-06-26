@@ -1,6 +1,8 @@
 ---
 sidebar_position: 5
 description: Learn how to use sso playground to test your oidc or saml client
+tags:
+  - sso-playground
 ---
 
 # SSO Playground

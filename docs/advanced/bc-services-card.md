@@ -1,6 +1,9 @@
 ---
 sidebar_position: 3
 title: BC Services Card
+tags:
+  - identity-provider
+  - bc-services-card
 ---
 
 ## Overview

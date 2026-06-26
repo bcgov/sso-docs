@@ -1,6 +1,9 @@
 ---
 sidebar_position: 1
 description: How to grant admin permissions
+tags:
+  - custom-realm
+  - keycloak-realm-admin
 ---
 
 # Grant Admin Permissions

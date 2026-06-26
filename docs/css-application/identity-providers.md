@@ -1,6 +1,10 @@
 ---
 sidebar_position: 8
 description: Learn about choosing identity providers
+tags:
+  - identity-providers
+  - digital-credentials
+  - bc-services-card
 ---
 
 # Identity Providers

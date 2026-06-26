@@ -1,6 +1,9 @@
 ---
 sidebar_position: 2
 title: Digital Credentials
+tags:
+  - identity-provider
+  - digital-credentials
 ---
 
 ## Overview

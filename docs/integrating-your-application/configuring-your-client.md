@@ -1,6 +1,10 @@
 ---
 sidebar_position: 2
 description: Learn how to configure keycloak client with your application
+tags:
+  - client-credentials
+  - keycloak
+  - keycloak-adapter
 ---
 
 # Keycloak Client Setup
