@@ -62,3 +62,23 @@ keycloak.init({ onLoad: 'check-auth' }).then((authenticated) => {
 ## Can I implement SSO in plain JavaScript?
 
 Yes. For browser-based apps, you can use the `keycloak-js` library directly without requiring a framework-specific wrapper.
+
+---
+
+## What do I need to integrate a Java Spring Boot back-end API to Keycloak?
+
+This is a common flow, and how you wire it up depends on your architecture. The starting point is the same: the user logs into your application, and Keycloak produces and returns an access token and an ID token.
+
+What happens next depends on how your front end is deployed:
+
+- **React app with a server-side component** — you have two options:
+  1. Use the JWT produced by the user login to call your API endpoints directly, or
+  2. Use a separate **service account** in your server-side component to retrieve tokens and use them to call your downstream Spring Boot API.
+- **Single Page Application (SPA)** — use the token produced when the user logs in to make the API callouts.
+
+One final note which is paramount: **securing your API endpoints.** If you are using the standard realm, you must validate incoming tokens using a combination of roles (created in [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/)), the issuer and audience, and the public key, to confirm the token is genuinely valid for *your* API. Otherwise, other teams in the same realm would be able to make the same calls.
+
+For a working reference, see this example Spring Boot API that validates incoming tokens:
+
+- Repo: [bcgov/EDUC-DIGITALID-API](https://github.com/bcgov/EDUC-DIGITALID-API)
+- Endpoint security (by scopes, in this case): [`DigitalIDEndpoint.java`](https://github.com/bcgov/EDUC-DIGITALID-API/blob/master/api/src/main/java/ca/bc/gov/educ/api/digitalid/endpoint/v1/DigitalIDEndpoint.java)

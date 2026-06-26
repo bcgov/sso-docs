@@ -382,3 +382,11 @@ Yes. In many cases, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) lets
 ## Is there a way to manage service account roles in Gold?
 
 Yes, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) lets you assign/un-assingn roles to your service acconts. Please refer to this [section](../css-application/roles.md#service-account-role-management) for more details.
+
+---
+
+## I'm building a custom service/login page on Pathfinder SSO — what label should I use for the IDIR option?
+
+Label it **`IDIR - MFA`** (this is the official wording the SSO service standardized on — the earlier "Azure IDIR" name was renamed to "IDIR - MFA" because it is a different *way to log in* with IDIR, not a different identity provider).
+
+When you trigger the login programmatically, the displayed label is separate from the technical `idpHint` alias you pass to route the user to that provider — keep the alias as configured in Keycloak (for example, `azureidir`) and only customize the human-readable label.

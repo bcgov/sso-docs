@@ -97,3 +97,14 @@ Personal BCeID has been deprecated by the IDIM team so its recommended for teams
 
 - Email: [bcgov.sso@gov.bc.ca](mailto:bcgov.sso@gov.bc.ca)
 - Chat: [Microsoft Teams How-to Channel](https://teams.microsoft.com/l/channel/19%3A35d0b3389e39479590ba45a19a67a3ba%40thread.tacv2/SSOKeycloak-howto?groupId=a80418da-c27b-406e-89ab-7695b61924d8&tenantId=6fdb5200-3d0d-4a8a-b036-d3685e359adc)
+
+---
+
+## I received an "In-active IDIR User Removed" email, and a teammate's invite is expired - what do I do?
+
+These two situations are part of the same housekeeping process and are expected behaviour:
+
+- **"In-active IDIR User Removed"** — the SSO service periodically reconciles team members against the IDIR source of truth. When an IDIR account is deactivated (for example, the person has left government or changed ministries), that user is automatically removed from any integration teams they belonged to, and the remaining team admins are notified by email. No action is needed unless the removed user was your only team admin — in that case, contact the SSO team so access can be restored.
+- **Expired invite** — team invitations are valid for a limited time. If a teammate's invite has expired before they accepted it, simply re-send the invitation from the **My Teams** section of [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/). The new invite link will let them join.
+
+If you are left without an active admin on an integration, reach out to the SSO team at [bcgov.sso@gov.bc.ca](mailto:bcgov.sso@gov.bc.ca).
