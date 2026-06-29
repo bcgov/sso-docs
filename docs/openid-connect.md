@@ -141,4 +141,4 @@ Custom realms are regular keycloak realms, which may be required by some clients
 ### Learn about Keycloak and its admin API
 
 - [Redhat Build of Keycloak (Keycloak)](https://access.redhat.com/products/red-hat-build-of-keycloak/)
-- [Realm Admin guide](https://access.redhat.com/documentation/en-us/red_hat_single_sign-on/7.6/html/server_administration_guide/index)
+- [Realm Admin guide](https://docs.redhat.com/en/documentation/red_hat_build_of_keycloak/26.4/html/server_administration_guide/index)

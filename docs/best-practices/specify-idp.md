@@ -6,7 +6,7 @@ tags:
   - best-practices
 ---
 
-If more than one Identity Provider (IDP) is configured in a realm, Keycloak directs users to a login page where they can select the IDP they want to use for authentication. You can skip this selection page or override the default IDP by passing the optional query parameter `kc_idp_hint`. See [here](dos-donts#do-skip-the-standard-login-page) for list of supported kc_idp_hints
+If more than one Identity Provider (IDP) is configured in a realm, Keycloak directs users to a login page where they can select the IDP they want to use for authentication. You can skip this selection page or override the default IDP by passing the optional query parameter `kc_idp_hint`. See [here](dos-donts#do-skip-the-keycloak-default-login-page) for list of supported kc_idp_hints
 
 There are two common ways to provide the IdP hint:
 

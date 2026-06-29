@@ -29,11 +29,11 @@ Using the [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/), you can speci
 
 ## Skipping the Default Login Page
 
-We strongly recommend **skipping the default Keycloak login page** wherever possible. Bypassing it provides a smoother user experience by taking users directly to their IDP without an intermediate selection step. See the [do's and don'ts](../best-practices/dos-donts#do-skip-the-standard-login-page) for further guidance. Only display the default login page if your use case genuinely requires users to choose from multiple IDPs at runtime.
+We strongly recommend **skipping the default Keycloak login page** wherever possible. Bypassing it provides a smoother user experience by taking users directly to their IDP without an intermediate selection step. See the [do's and don'ts](../best-practices/dos-donts#do-skip-the-keycloak-default-login-page) for further guidance. Only display the default login page if your use case genuinely requires users to choose from multiple IDPs at runtime.
 
 ### How to Skip Default Login Page?
 
-When a Keycloak client is configured with multiple IDPs, users are shown the default login page to select their IDP. You can skip this step entirely by passing the `kc_idp_hint` query parameter in your authorization request, which routes the user directly to the specified IDP. See the full list of [supported `kc_idp_hint` values](../best-practices/dos-donts#do-skip-the-standard-login-page).
+When a Keycloak client is configured with multiple IDPs, users are shown the default login page to select their IDP. You can skip this step entirely by passing the `kc_idp_hint` query parameter in your authorization request, which routes the user directly to the specified IDP. See the full list of [supported `kc_idp_hint` values](../best-practices/dos-donts#do-skip-the-keycloak-default-login-page).
 
 - **If using an adapter**: supply the `idpHint` option during initialization.
 - **If not using an adapter**: include `kc_idp_hint` in your authorization request URL, for example `http://localhost:8080/auth?kc_idp_hint=<idp_name>`
