@@ -108,17 +108,12 @@ const config = {
           },
           // { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://mvp.developer.gov.bc.ca/docs/default/component/css-docs",
-            label: "Wiki",
-            position: "right",
-          },
-          {
             href: "https://sso-requests.apps.gold.devops.gov.bc.ca/",
             label: "CSS",
             position: "right",
           },
           {
-            href: "https://mvp.developer.gov.bc.ca/docs/default/component/css-docs/Pathfinder-Uptime-Monitoring",
+            href: "https://status.loginproxy.gov.bc.ca/",
             label: "Uptime",
             position: "right",
           },
