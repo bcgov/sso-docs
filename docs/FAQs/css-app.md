@@ -384,3 +384,15 @@ Yes, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) lets you assign/un-
 Label it **`IDIR - MFA`** (this is the official wording the SSO service standardized on — the earlier "Azure IDIR" name was renamed to "IDIR - MFA" because it is a different *way to log in* with IDIR, not a different identity provider).
 
 When you trigger the login programmatically, the displayed label is separate from the technical `idpHint` alias you pass to route the user to that provider — keep the alias as configured in Keycloak (for example, `azureidir`) and only customize the human-readable label.
+
+---
+
+## Is it possible to get access to the Keycloak logs?
+
+Yes, if you select your client from the my-dashboard page, there is a logs tab. This will allow you to view logs related to your selected client for debugging.
+
+---
+
+## If we currently have Basic BCeID and we want to add Business BCeID, how do we get that added?
+
+Once you have been approved for a BCeID type, to change type you will have to get approved for it. You can either remove the existing BCeID type in CSS and request a new one, or begin a new integration if you want to keep the existing BCeID while doing the approval.
