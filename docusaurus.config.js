@@ -143,6 +143,8 @@ const config = {
         },
       },
     }),
+
+  plugins: [require.resolve("./plugins/snowplow-page-view-plugin.js")],
 };
 
 module.exports = config;
