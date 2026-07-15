@@ -23,7 +23,7 @@ jobs:
       - name: Build website
         run: yarn build
         env:
-          SNOWPLOW_ENDPOINT: ${{ secrets.SNOWPLOW_ENDPOINT || 'https://spm.apps.gov.bc.ca' }}
+          SNOWPLOW_ENDPOINT: ${{ secrets.SNOWPLOW_ENDPOINT || 'https://spt.apps.gov.bc.ca' }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
