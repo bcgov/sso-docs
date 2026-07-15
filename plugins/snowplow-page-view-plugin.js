@@ -1,6 +1,6 @@
 module.exports = function () {
   const snowplowEndpoint =
-    process.env.SNOWPLOW_ENDPOINT || "https://spt.apps.gov.bc.ca";
+    process.env.SNOWPLOW_ENDPOINT || "https://spm.apps.gov.bc.ca";
 
   return {
     name: "snowplow-page-view-plugin",
