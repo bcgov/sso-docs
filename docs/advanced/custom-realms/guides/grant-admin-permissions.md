@@ -8,9 +8,9 @@ tags:
 
 # Grant Admin Permissions
 
-When the SSO team provisions your Custom Realm, they create the initial realm administrator accounts for your **product owner**, **technical contact**, and **secondary technical contacts** using the **master console**. After that, your team is responsible for granting admin access to additional users.
+When the SSO team provisions your Custom Realm, they create the initial realm administrator accounts for your **product owner**, **technical contact**, and all **additional members** using the **master console**. Your product owner and technical lead can control access and add up to 10 additional members this way. 
 
-This guide explains how to add Realm Administrators safely and consistently across environments.
+If you would like to have administrators log into your realm directly, e.g. for more granular access control or to add more members, you can follow this guide.
 
 ## Before you begin
 
@@ -86,14 +86,7 @@ They should now have full administrative access.
 
 ## Adding an admin before IDP setup
 
-If your realm IDP is not configured yet, perform admin assignment in the master console only.
-
-1. Sign in to the master console for the environment.
-2. Locate the target user record.
-3. Add the user to **Realm Administrator** group.
-4. Confirm access after IDP setup is complete.
-
-If you need help with this pre-IDP scenario, contact the SSO team.
+If your realm IDP is not configured yet, you can add more members through the realm registry app. They will have access via the master console.
 
 ## Important notes
 
