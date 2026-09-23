@@ -109,3 +109,6 @@ uptime:
 service-levels:
   label: "Service Levels"
   description: "Service Levels refer to the performance and availability standards that the Common Hosted Single Sign-on (CSS) service and Keycloak adhere to."
+organizations:
+  label: "Organizations"
+  description: "Organizations group teams and provide shared access to their integrations."
