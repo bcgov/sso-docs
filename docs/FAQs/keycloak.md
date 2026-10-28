@@ -169,7 +169,7 @@ https://dev.sandbox.loginproxy.gov.bc.ca/auth/admin/<YOUR_CUSTOM_REALM>/console/
 
 ## Which time zone is used for the SSO (Keycloak) product?
 
-The time zone used is PST (Pacific Standard Time)
+The time zone used is Pacific time (PCT)
 
 ---
 
