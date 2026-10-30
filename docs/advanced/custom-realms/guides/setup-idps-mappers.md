@@ -59,7 +59,7 @@ For each IDP you selected in the [CSS](https://sso-requests.apps.gold.devops.gov
 
 2. Click **Add provider…** and select **OpenID Connect v1.0**.
 
-3. Set **Alias** to a short identifier for the IDP (e.g. `idir`, `idir-mfa`).
+3. Set **Alias** to a short identifier for the IDP (e.g. `idir`, `idir-mfa`, `bcgovidir`).
 
 4. Set **Sync Mode** to **Force**.
 
@@ -77,6 +77,7 @@ For each IDP you selected in the [CSS](https://sso-requests.apps.gold.devops.gov
    | --- | --- |
    | IDIR | `idir` |
    | IDIR - MFA | `idir-mfa` |
+   | BCGOV IDIR | `bcgovidir` |
    | Basic BCeID | `bceidbasic` |
    | Business BCeID | `bceidbusiness` |
    | Basic or Business BCeID | `bceidboth` |
@@ -148,6 +149,7 @@ For any **additional attributes** your application needs, you must create an **A
 |-----|---------------------|
 | `idir` | `display_name`, `idir_user_guid`, `idir_username` |
 | `idir-mfa` | `display_name`, `idir_user_guid`, `idir_username`, `user_principal_name` |
+| `bcgovidir` | `display_name`, `idir_user_guid`, `idir_username`, `user_principal_name` |
 | `bceidbasic` | `display_name`, `bceid_user_guid`, `bceid_username` |
 | `bceidbusiness` | `display_name`, `bceid_user_guid`, `bceid_business_guid`, `bceid_business_name`, `bceid_username` |
 | `bceidboth` | `display_name`, `bceid_user_guid`, `bceid_business_guid`, `bceid_business_name`, `bceid_username` |
