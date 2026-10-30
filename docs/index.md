@@ -25,18 +25,19 @@ When a user authenticates through a particular IDP, Keycloak establishes a sessi
 
 The SSO service supports a range of identity providers (IDPs) to cover different user populations — from government employees and contractors to BC residents and businesses:
 
-| Identity Provider       | Use Case                                               |
-| ----------------------- | ------------------------------------------------------ |
-| **IDIR**                | BC Government employees and contractors                |
-| **IDIR - MFA**            | IDIR accounts federated through Azure Active Directory |
-| **Basic BCeID**         | BC residents with a basic BCeID account                |
-| **Business BCeID**      | Organizations transacting with government              |
-| **BC Services Card**    | BC residents using the BC Services Card app            |
-| **Digital Credential**  | Verifiable credential-based authentication             |
-| **GitHub BC Gov**       | BC Government GitHub organization members              |
-| **One-Time Passcode**   | Any user with a valid email address                    |
+Here are refined, user-friendly descriptions:
 
-> **Note:** In line with the BC Government's MFA Everywhere policy **IDIR is no longer available for new integrations**. Teams requiring employee authentication should use **IDIR - MFA** instead, which enforces MFA by default. Existing IDIR integrations continue to function and are not affected.
+- **IDIR**: Authentication for BC Government employees and authorized contractors.
+- **IDIR - MFA**: IDIR authentication with mandatory multi-factor authentication (MFA) through Microsoft Entra ID (Azure Active Directory).
+- **BCGOV IDIR**: IDIR - MFA authentication with optional support for approved guest accounts.
+- **Basic BCeID**: Authentication for BC residents using a personal Basic BCeID account.
+- **Business BCeID**: Authentication for businesses and organizations transacting with the Government of British Columbia.
+- **BC Services Card**: Authentication for BC residents using the BC Services Card mobile app.
+- **Digital Credential**: Authentication using secure, verifiable digital credentials.
+- **GitHub BC Gov**: Authentication for members of the BC Government GitHub organization.
+- **One-Time Passcode**: Authentication using a time-limited passcode sent to a verified email address.
+
+> **Note:** In line with the BC Government's MFA Everywhere policy **IDIR is no longer available for new integrations**. Teams requiring employee authentication should use one of **IDIR - MFA** or **BCGOV IDIR** instead, which enforces MFA by default. Existing IDIR integrations continue to function and are not affected.
 
 Many times, our clients ask, which identity provider should we use for our product. We can't really make that decision for you and with our partners, can refer you to a few helpful links
 

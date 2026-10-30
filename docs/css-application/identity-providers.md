@@ -19,7 +19,8 @@ For attribute-level details used in tokens and user mapping, see [Identity Mappe
 
 | Identity Provider | Typical Users | Notes |
 | --- | --- | --- |
-| **IDIR - MFA** | BC Government employees and contractors | Recommended option for employee sign-in with MFA support. Learn more about [MFA registration](https://intranet.gov.bc.ca/thehub/ocio/ocio-enterprise-services/information-security-branch/information-security-mfa/mfa-registration). |
+| **IDIR - MFA** | BC Government employees and contractors | **BCGOV IDIR** is the preferred authentication option for all new client integrations. Existing clients currently using **IDIR - MFA** may continue to do so; however, new implementations should adopt **BCGOV IDIR** |
+| **BCGOV IDIR** | BC Government employees, contractors and optional support for approved guest accounts | Recommended option for employee sign-in with MFA support. Learn more about [MFA registration](https://intranet.gov.bc.ca/thehub/ocio/ocio-enterprise-services/information-security-branch/information-security-mfa/mfa-registration). |
 | **BCeID** | Residents and businesses accessing government services | Supports Basic and Business BCeID. Learn more about [BCeID Authentication Service](https://www2.gov.bc.ca/gov/content/governments/services-for-government/information-management-technology/identity-services-program/bceid-authentication-service). |
 | **BC Services Card (BCSC)** | BC residents | Available through SSO with additional approval requirements. See [BC Services Card Login](https://www2.gov.bc.ca/gov/content/governments/government-id/bcservicescardapp). |
 | **Digital Credential** | Verifiable credential users | Available for OIDC integrations. Learn more about [Digital Credentials](https://digital.gov.bc.ca/design/digital-trust/digital-credentials/). |
@@ -40,6 +41,12 @@ If a user's IDIR account is not tied to a `gov.bc.ca` email address, they may ne
 If users see an IDIR - MFA sign-in error, confirm they have an active BC Government IDIR - MFA account.
 
 ![IDIR - MFA error](/img/azureidir-error.png)
+
+## BCGOV IDIR (MFA) Notes
+
+**BCGOV IDIR** and **IDIR - MFA** use the same underlying authentication service. **BCGOV IDIR** is the standard option for all new client integrations going forward, while existing clients currently using **IDIR - MFA** may continue to use it without requiring any changes or migration.
+
+An additional benefit of **BCGOV IDIR** is support for authorized guest accounts. To learn more see [BCGOV IDIR and Guest Accounts](../advanced/bcgovidir-and-guest-accounts.md)
 
 ## Common Login Issues
 
