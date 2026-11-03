@@ -5,7 +5,7 @@ description: BC Government IDIR login with MFA and support for authorized guest 
 tags:
   - idir
   - identity-provider
-  - mfa
+  - mfa-totp
 ---
 
 ## Overview
