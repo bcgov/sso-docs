@@ -155,7 +155,8 @@ When a client is configured with multiple IDPs, Keycloak displays a login page p
 | Display Name            | `kc_idp_hint`       |
 | ----------------------- | :-----------------: |
 | IDIR                    | `idir`              |
-| IDIR - MFA                | `azureidir`         |
+| IDIR - MFA              | `azureidir`         |
+| BCGOVIDIR               | `bcgovidir`         |
 | Basic BCeID             | `bceidbasic`        |
 | Business BCeID          | `bceidbusiness`     |
 | Basic or Business BCeID | `bceidboth`         |

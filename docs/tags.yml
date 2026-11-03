@@ -112,3 +112,6 @@ service-levels:
 organizations:
   label: "Organizations"
   description: "Organizations group teams and provide shared access to their integrations."
+idir:
+  label: "IDIR"
+  description: "IDIR (Identity and Access Management) is a government-approved identity provider used for authenticating users within the BC Government ecosystem."

@@ -383,7 +383,7 @@ Yes, [CSS](https://sso-requests.apps.gold.devops.gov.bc.ca/) lets you assign/un-
 
 Label it **`IDIR - MFA`** (this is the official wording the SSO service standardized on — the earlier "Azure IDIR" name was renamed to "IDIR - MFA" because it is a different *way to log in* with IDIR, not a different identity provider).
 
-When you trigger the login programmatically, the displayed label is separate from the technical `idpHint` alias you pass to route the user to that provider — keep the alias as configured in Keycloak (for example, `azureidir`) and only customize the human-readable label.
+When you trigger the login programmatically, the displayed label is separate from the technical `idpHint` alias you pass to route the user to that provider — keep the alias as configured in Keycloak (for example, `azureidir`, `bcgovidir`) and only customize the human-readable label.
 
 ---
 
