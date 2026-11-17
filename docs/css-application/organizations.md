@@ -9,11 +9,6 @@ tags:
 
 # Organizations
 
-:::info Coming soon
-
-Organizations will be available in the CSS application soon.
-
-:::
 
 ## Overview
 
